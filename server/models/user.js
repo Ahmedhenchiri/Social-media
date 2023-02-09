@@ -8,7 +8,7 @@ const UserModel = new mongoose.Schema({
         unique: true,
     },
     password: "string",
-},
+   },
     {
         timestamps: true
     },
