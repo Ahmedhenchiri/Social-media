@@ -3,6 +3,7 @@ const ValidateLogin = require("../validation/Login")
 const ValidateRegister = require("../validation/Register")
 const bcrypt =  require("bcryptjs") 
 const jwt = require ("jsonwebtoken")
+const { exists } = require("../models/user")
 const Login = async (req,res)=>{
     const {error,isVallid} = ValidateLogin(req.body)
      try{
@@ -17,7 +18,7 @@ const Login = async (req,res)=>{
             }else {
             bcrypt.compare(req.body.password,user.password)
             .then(isMatch=>{
-                if (isMatch){
+                if (!isMatch){
                 error.password = "is incorrect"
                 res.status(404).json(error)
             }else {
@@ -40,3 +41,27 @@ const Login = async (req,res)=>{
      }
 
 }
+const Register = async (req,res)=>{
+    const {error, isVallid}= ValidateRegister (req.body);
+    try{
+      if(!isVallid){
+        res.status(404).json(error)
+      }else {
+        UserModel.findOne({email:req.body.email})
+        .then(async(exists)=>{
+            if(exists){
+                error.email= "user exist"
+                res.status(404).json(error)
+            }else {
+                const hash = bcrypt.hashSync(req.body.password,10)
+                req.body.password= hash
+               await UserModel.create(req.body)
+               res.status(200).json({message:"success"})
+            }
+        })
+      }
+    }catch(error){
+    res.status(404).json(error)
+    }
+}
+module.exports={Login,Register}
