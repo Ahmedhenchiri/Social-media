@@ -1,9 +1,3 @@
-.container{
-    border-radius: 5px;
-    background-color: #dfe0d98b;
-    padding: 150px;
-}
-
 .input{
     display: flex;
     width: 100%;
@@ -12,7 +6,4 @@
     border-radius: 4px;
     background-color: rgba(240, 244, 255, 0.947);
     color: black;
-}
-.button{
-    background-color: rgba(52, 51, 51, 0.951);
 }
