@@ -6,7 +6,7 @@ function Register() {
   return (
   <div className='container'>
    <h1 className='register'>Register</h1><br/>
-   <form>
+   <form >
      <Inputs name="email" placeholder="ENTER YOUR NAME" type="text"/><br/> {"           "}
      <Inputs name="email" placeholder="ENTER YOUR EMAIL" type="text"/><br/> {"           "}
      <Inputs name="email" placeholder="ENTER YOUR PASSWORD" type="password"/><br/> {"           "}

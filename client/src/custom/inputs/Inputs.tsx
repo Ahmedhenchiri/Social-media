@@ -1,6 +1,11 @@
 import React from 'react'
 
-function Inputs({placeholder,name,type}:any) {
+type parametre = {
+  placeholder:string,
+  name:string
+  type:string
+}
+function Inputs({placeholder,name,type}:parametre) {
   return (
     <div>
       <input
