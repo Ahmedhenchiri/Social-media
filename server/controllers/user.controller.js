@@ -5,9 +5,9 @@ const bcrypt =  require("bcryptjs")
 const jwt = require ("jsonwebtoken")
 const { exists } = require("../models/user")
 const Login = async (req,res)=>{
-    const {error,isVallid} = ValidateLogin(req.body)
+    const {error,isValid} = ValidateLogin(req.body)
      try{
-      if(!isVallid){
+      if(!isValid){
         res.status(404).json(error)
       }else{
         UserModel.findOne({email:req.body.email})
@@ -37,19 +37,19 @@ const Login = async (req,res)=>{
         })
       }
      }catch(error){
-      res.status(404).json(error)
+      res.status(404).json(error.message)
      }
 
 }
 const Register = async (req,res)=>{
-    const {error, isVallid}= ValidateRegister (req.body);
+    const {error, isValid}= ValidateRegister (req.body);
     try{
-      if(!isVallid){
+      if(!isValid){
         res.status(404).json(error)
       }else {
         UserModel.findOne({email:req.body.email})
-        .then(async(exists)=>{
-            if(exists){
+        .then(async(exist)=>{
+            if(exist){
                 error.email= "user exist"
                 res.status(404).json(error)
             }else {
@@ -61,7 +61,7 @@ const Register = async (req,res)=>{
         })
       }
     }catch(error){
-    res.status(404).json(error)
+    res.status(404).json(error.message)
     }
 }
 module.exports={Login,Register}

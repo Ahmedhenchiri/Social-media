@@ -7,7 +7,7 @@ const app = express() ;
 
 app.use(express.json()) ; 
 app.use(cors()) ;
-// require('dotenv').config()
+require('dotenv').config()
 const PORT = 6000 ; 
 const userRouter = require("./routes/user.router")
 app.use("/user",userRouter)
