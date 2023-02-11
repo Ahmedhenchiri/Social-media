@@ -1,6 +1,8 @@
 import React from 'react'
-
-function Buttons({type}:any) {
+type parametre ={
+    type:any 
+}
+const Buttons=({type}:parametre) =>{
   return (
     <div>
         <button className='button' type={type} >Submit</button>

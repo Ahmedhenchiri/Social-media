@@ -1,11 +1,11 @@
 import React from 'react'
 
-type parametre = {
+type InputsType = {
   placeholder:string,
   name:string
   type:string
 }
-function Inputs({placeholder,name,type}:parametre) {
+const Inputs=({placeholder,name,type}:InputsType)=> {
   return (
     <div>
       <input

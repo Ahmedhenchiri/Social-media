@@ -2,7 +2,7 @@ import React from 'react'
 import Buttons from '../../custom/buttons/Buttons'
 import Inputs from '../../custom/inputs/Inputs'
 import "./register.css"
-function Register() {
+const Register = () =>{
   return (
   <div className='container'>
    <h1 className='register'>Register</h1><br/>
