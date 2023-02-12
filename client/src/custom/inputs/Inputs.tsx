@@ -2,10 +2,12 @@ import React from 'react'
 
 type InputsType = {
   placeholder:string,
-  name:string
-  type:string
+  name:string,
+  type:string,
+  className:string
 }
-const Inputs=({placeholder,name,type}:InputsType)=> {
+
+const Inputs=({placeholder,name,type,className}:InputsType)=> {
   return (
     <div>
       <input
