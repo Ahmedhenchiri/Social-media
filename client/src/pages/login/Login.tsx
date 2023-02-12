@@ -5,10 +5,13 @@ import api from '../../api/Api'
 import Buttons from '../../custom/buttons/Buttons'
 import Inputs from '../../custom/inputs/Inputs'
 import "./login.css"
-
+type errorType = {
+  email:string
+  password:string
+}
 function Login() {
   const [form,setForm] = useState({})
-  const [errors,setErrors] = useState({})
+  const [errors,setErrors] = useState<errorType>({email:'',password:''})
   const navigate = useNavigate()
   const onChangeHandler = (event: any)=>{
     setForm({
