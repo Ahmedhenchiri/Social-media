@@ -6,14 +6,13 @@ type InputsType = {
   label: string;
   type: string;
   icon: string;
-  placeholder?: string;
   className?: string;
   classts?: any;
   errors: any;
   onChange: (event: any) => void;
 }
 
-const Inputs=({placeholder,name,type,onChange,label,icon,errors}:InputsType)=> {
+const Inputs=({name,type,onChange,label,icon,errors}:InputsType)=> {
   return (
     <div className=" mb-3 bg-white">
       <label className="form-label">{label}</label>
@@ -24,9 +23,8 @@ const Inputs=({placeholder,name,type,onChange,label,icon,errors}:InputsType)=> {
         <input
           type={type}
           name={name}
-          className="form-control"
           onChange={onChange}
-          class={classnames('form-control', { 'is-invalid': errors })}
+          className={classnames('form-control', { 'is-invalid': errors })}
         />
         {errors && <div className="invalid-feedback">{errors}</div>}
       </div>

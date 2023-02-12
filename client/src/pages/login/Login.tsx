@@ -13,7 +13,7 @@ function Login() {
   const onChangeHandler = (event: any)=>{
     setForm({
       ...form,
-      [event?.target?.name]:event?.target?.value as any
+      [event?.target?.name]:event?.target?.value as string
     })
   }
   const handleSubmit = async (event:any) => {
