@@ -4,9 +4,11 @@ import Buttons from '../../custom/buttons/Buttons'
 import Inputs from '../../custom/inputs/Inputs'
 import "./register.css"
 import api from '../../api/Api'
+import { useNavigate } from 'react-router-dom'
 const Register = () =>{
   const [form ,setForm] = useState({})
-  console.log(form)
+const navigate = useNavigate()
+
   const onChangeHandler=(event:any)=>{
     setForm({
       ...form,
@@ -18,7 +20,8 @@ const Register = () =>{
     event.preventDefault();
     try {
     const response= await api.post("/user/register",form)
-    alert("yeeey te5dem ")
+    alert("your register successfully")
+    navigate("/")
     }catch(error){
       console.log(error)
     }

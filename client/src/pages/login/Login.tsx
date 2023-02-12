@@ -4,10 +4,11 @@ import api from '../../api/Api'
 import Buttons from '../../custom/buttons/Buttons'
 import Inputs from '../../custom/inputs/Inputs'
 import "./login.css"
+import { useNavigate } from 'react-router-dom'
 
 function Login() {
   const [form,setForm] = useState({})
-   console.log(form)
+ const navigate = useNavigate()
   const onChangeHandler = (event: any)=>{
     setForm({
       ...form,
@@ -20,6 +21,7 @@ function Login() {
     try{
       const response = await api.post("/user/login",form)
       alert("welcom to your home page ")
+      navigate("/")
       console.log(response)
     }catch(error){
       console.log(error)
