@@ -1,16 +1,7 @@
 import React from 'react'
 import classnames from "classnames"
+import { InputsType } from '../../../Config/types/types'
 
-type InputsType = {
-  name: string;
-  label: string;
-  type: string;
-  icon: string;
-  className?: string;
-  classts?: any;
-  errors: any;
-  onChange: (event: any) => void;
-}
 
 const Inputs=({name,type,onChange,label,icon,errors}:InputsType)=> {
   return (

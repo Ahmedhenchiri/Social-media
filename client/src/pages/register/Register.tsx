@@ -2,15 +2,10 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import Buttons from '../../componets/custom/buttons/Buttons'
 import Inputs from '../../componets/custom/inputs/Inputs'
-import "./register.css"
-import api from '../../api/Api'
-import { useNavigate } from 'react-router-dom'
-type ErrorsType = {
-  name:string,
-  email:string,
-  password:string,
-  confirm:string
-}
+import "./register.css";
+import api from '../../api/Api';
+import { useNavigate } from 'react-router-dom';
+import { ErrorsType } from '../../Config/types/types';
 const Register = () =>{
   const [form ,setForm] = useState({})
   const [errors ,setErrors] = useState<ErrorsType>({name:'',email:'',password:'',confirm:''})

@@ -4,11 +4,9 @@ import { useNavigate } from "react-router-dom";
 import api from "../../api/Api";
 import Buttons from "../../componets/custom/buttons/Buttons";
 import Inputs from "../../componets/custom/inputs/Inputs";
+import { errorType } from "../../Config/types/types";
 import "./login.css";
-type errorType = {
-  email: string;
-  password: string;
-};
+
 const Login = () => {
   const [form, setForm] = useState({});
   const [errors, setErrors] = useState<errorType>({ email: "", password: "" });

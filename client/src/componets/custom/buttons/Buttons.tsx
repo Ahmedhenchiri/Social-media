@@ -1,7 +1,6 @@
 import React from 'react'
-type buttonType ={
-    type?: "button" | "submit" | "reset" | undefined
-}
+import { buttonType } from '../../../Config/types/types'
+
 const Buttons=({type}:buttonType) =>{
   return (
     <div>
