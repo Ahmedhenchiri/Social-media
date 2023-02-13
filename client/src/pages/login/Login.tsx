@@ -9,7 +9,7 @@ type errorType = {
   email:string
   password:string
 }
-function Login() {
+const  Login  =()=> {
   const [form,setForm] = useState({})
   const [errors,setErrors] = useState<errorType>({email:'',password:''})
   const navigate = useNavigate()

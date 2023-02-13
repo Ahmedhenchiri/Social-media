@@ -1,21 +1,23 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import Register from './pages/register/Register'
-import { BrowserRouter,Routes , Route} from 'react-router-dom'
-import Login from './pages/login/Login'
-import Home from './pages/home/Home'
+import {Routes , Route} from 'react-router-dom'
+import routes from './Config/routes'
 
-const App =() =>{
+
+
+const App : React.FC =() =>{
   return (
-    <BrowserRouter>
+   
     <div >
       <Routes>
-        <Route path='register' element={ <Register /> }/>
-        <Route path='login' element={ <Login /> }/>
-        <Route path='/' element={<Home />} />
+        {routes.map((route)=>(
+          <Route  
+          key={route.path}
+           path={route.path}
+           element={route?.element()}
+          />
+        ))}
       </Routes>
     </div>
-    </BrowserRouter>
+    
   )
 }
 
