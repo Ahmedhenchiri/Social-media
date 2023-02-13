@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import api from '../../api/Api'
-import Buttons from '../../custom/buttons/Buttons'
-import Inputs from '../../custom/inputs/Inputs'
+import Buttons from '../../componets/custom/buttons/Buttons'
+import Inputs from '../../componets/custom/inputs/Inputs'
 import "./login.css"
 type errorType = {
   email:string
@@ -63,9 +63,7 @@ function Login() {
               onChange={onChangeHandler}
             />
             <div className="d-flex justify-content-between">
-              <button type="submit" className="btn btn-outline-primary">
-                Save <i className="fa-solid fa-floppy-disk"></i>
-              </button>
+              <Buttons  type='submit'/>
               <Link to="/register">I don't have account</Link>
             </div>
           </form>

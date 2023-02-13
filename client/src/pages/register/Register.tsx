@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import Buttons from '../../custom/buttons/Buttons'
-import Inputs from '../../custom/inputs/Inputs'
+import Buttons from '../../componets/custom/buttons/Buttons'
+import Inputs from '../../componets/custom/inputs/Inputs'
 import "./register.css"
 import api from '../../api/Api'
 import { useNavigate } from 'react-router-dom'
 type ErrorsType = {
-  name:string
-  email:string
-  password:string
+  name:string,
+  email:string,
+  password:string,
   confirm:string
 }
 const Register = () =>{
@@ -31,7 +31,7 @@ const navigate = useNavigate()
     alert("your register successfully")
     navigate("/")
     }catch(error:any){
-      setErrors(error.response.message)
+      setErrors(error.response.data)
     }
 
   }
@@ -81,9 +81,7 @@ const navigate = useNavigate()
                 errors={errors.confirm}
               />
               <div className="d-flex justify-content-between">
-                <button type="submit" className="btn btn-outline-primary">
-                  Save <i className="fa-solid fa-floppy-disk"></i>
-                </button>
+               <Buttons type='submit'/>
                 <Link to="/login">I have account</Link>
               </div>
             </form>
