@@ -1,7 +1,6 @@
 import React from 'react'
 type buttonType ={
     type?: "button" | "submit" | "reset" | undefined
-    // name:string
 }
 const Buttons=({type}:buttonType) =>{
   return (
