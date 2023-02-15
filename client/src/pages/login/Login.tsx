@@ -6,7 +6,7 @@ import Buttons from "../../componets/custom/buttons/Buttons";
 import Inputs from "../../componets/custom/inputs/Inputs";
 import { errorType } from "../../Config/types/types";
 import "./login.css";
-
+// import {onChangeHandler,handleSubmit} from "./loginFunctions"
 const Login = () => {
   const [form, setForm] = useState({});
   const [errors, setErrors] = useState<errorType>({ email: "", password: "" });
