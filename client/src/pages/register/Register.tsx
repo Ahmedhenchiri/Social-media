@@ -24,7 +24,8 @@ const navigate = useNavigate()
     try {
     const response= await api.post("/user/register",form)
     alert("your register successfully")
-    navigate("/")
+    navigate("/login")
+    
     }catch(error:any){
       setErrors(error.response.data)
     }
