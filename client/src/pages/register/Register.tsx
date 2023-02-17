@@ -24,7 +24,9 @@ const navigate = useNavigate()
     try {
     const response= await api.post("/user/register",form)
     alert("your register successfully")
-    navigate("/login")
+    setTimeout(() => {
+      navigate('/login');
+    }, 1000);
     
     }catch(error:any){
       setErrors(error.response.data)
@@ -55,7 +57,7 @@ const navigate = useNavigate()
               <Inputs
                 name="email"
                 label="Email"
-                type="text"
+                type="email"
                 icon="fa-solid fa-user"
                 onChange={onChangeHandler}
                 errors={errors.email}

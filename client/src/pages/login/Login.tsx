@@ -22,9 +22,10 @@ const Login = () => {
 
     try {
       const response = await api.post("/user/login", form);
+      const token = response.data.token
+     localStorage.setItem("user",JSON.stringify(token))
       alert("welcom to your home page ");
       navigate("/");
-      // console.log(response)
     } catch (error: any | undefined) {
       setErrors(error.response.data);
     }
@@ -45,7 +46,7 @@ const Login = () => {
               <Inputs
                 name="email"
                 label="Email"
-                type="text"
+                type="email"
                 icon="fa-solid fa-user"
                 errors={errors.email}
                 onChange={onChangeHandler}
