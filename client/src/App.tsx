@@ -1,6 +1,7 @@
 import {Routes , Route} from 'react-router-dom'
 import routes from './Config/routes'
 import Navba from './componets/navbar/Navbar'
+import Footer from './componets/footer/Footer'
 
 
 const App : React.FC =() =>{
@@ -17,6 +18,9 @@ const App : React.FC =() =>{
           />
         ))}
       </Routes>
+      <div>
+      <Footer />
+      </div>
     </div>
     
   )
