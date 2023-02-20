@@ -8,6 +8,10 @@ const PostUser = new mongoose.Schema({
     image:{
         type:"string"
     },
+    user:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"users"
+    }
  },
    {
     timestamps:true

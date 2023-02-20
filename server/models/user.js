@@ -8,7 +8,13 @@ const UserModel = new mongoose.Schema({
         unique: true,
     },
     password: "string",
-   },
+    
+    posts:[{
+     type:mongoose.Schema.Types.ObjectId,
+     ref:"posts"
+    }],
+},
+  
     {
         timestamps: true
     },
