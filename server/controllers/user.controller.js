@@ -28,7 +28,7 @@ const Login = async (req,res)=>{
                     email:user.email
                 },process.env.PRIVETE_KEY,{expiresIn:'1h'})
                 res.status(200).json({
-                    message:'succses',
+                    // message:'succses',
                     token
                 })
             }
