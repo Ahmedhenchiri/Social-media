@@ -9,7 +9,7 @@ module.exports= function ValidateRegister(data){
     data.confirm = !isEmpty(data.confirm) ? data.confirm: ""
 
          if (validator.isEmpty(data.name)){
-        error.name ="Required name"
+          error.name ="Required name"
          }
          if (!validator.isEmail(data.email)){
           error.email ="Required format email "
