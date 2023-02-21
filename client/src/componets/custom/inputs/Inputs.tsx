@@ -1,6 +1,6 @@
 import React from 'react'
 import classnames from "classnames"
-import { InputsType } from '../../../Config/types/types'
+import { InputsType } from '../../../types/types'
 
 
 const Inputs=({name,type,onChange,label,icon,errors}:InputsType)=> {

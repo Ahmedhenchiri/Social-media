@@ -5,7 +5,7 @@ import Inputs from '../../componets/custom/inputs/Inputs'
 import "./register.css";
 import api from '../../api/Api';
 import { useNavigate } from 'react-router-dom';
-import { ErrorsType } from '../../Config/types/types';
+import { ErrorsType } from '../../types/types';
 const Register = () =>{
   const [form ,setForm] = useState({})
   const [errors ,setErrors] = useState<ErrorsType>({name:'',email:'',password:'',confirm:''})

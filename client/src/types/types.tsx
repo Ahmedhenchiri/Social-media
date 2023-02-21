@@ -1,6 +1,6 @@
 
 
- export type ErrorsType = {
+export type ErrorsType = {
         name:string,
         email:string,
         password:string,

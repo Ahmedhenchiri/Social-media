@@ -3,9 +3,8 @@ import Navba from '../../componets/navbar/Navbar'
 
 const  Home = () => {
   return (
-    <div>
+      <div>
       <Navba />
-
       home
       </div>
   )

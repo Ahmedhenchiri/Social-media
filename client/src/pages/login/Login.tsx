@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import api from "../../api/Api";
 import Buttons from "../../componets/custom/buttons/Buttons";
 import Inputs from "../../componets/custom/inputs/Inputs";
-import { errorType } from "../../Config/types/types";
+import { errorType } from "../../types/types";
 import "./login.css";
 
 const Login = () => {

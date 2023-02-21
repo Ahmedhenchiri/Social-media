@@ -8,7 +8,6 @@ const App : React.FC =() =>{
   return (
    
     <div >
-      {/* <Navba /> */}
       <Routes>
         {routes.map((route)=>(
           <Route  

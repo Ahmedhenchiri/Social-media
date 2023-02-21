@@ -16,7 +16,6 @@ const Navba = () => {
         <Nav.Link href="/login">Login</Nav.Link>
         <Nav.Link href="/register">Register</Nav.Link>
         <Nav.Link href="/register"> Log Out <i className="fa-solid fa-right-to-bracket " ></i></Nav.Link>
-        
       </Nav>
     </Container>
   </Navbar>
