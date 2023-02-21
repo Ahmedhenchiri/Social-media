@@ -10,8 +10,9 @@ app.use(cors()) ;
 require('dotenv').config()
 const PORT = 6001 ; 
 const userRouter = require("./routes/user.router")
+const postRouter = require ("./routes/post.router")
 app.use("/user",userRouter)
-
+app.use("/post",postRouter)
 
 
 const db ="mongodb://localhost:27017/social-media"
