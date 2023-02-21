@@ -1,8 +1,8 @@
 import React from 'react'
-
+import "./notfond.css"
 const NotFond = () => {
   return (
-    <div>NotFond</div>
+    <h1 style={{top:20}}>NotFond</h1>
   )
 }
 
