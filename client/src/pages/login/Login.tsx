@@ -23,6 +23,7 @@ const Login = () => {
     try {
       const response = await api.post("/user/login", form);
       const token = response.data.token
+      console.log("🚀 ~ file: Login.tsx:26 ~ handleSubmit ~ response:", response)
      localStorage.setItem("user",JSON.stringify(token))
       alert("welcom to your home page ");
       navigate("/");
