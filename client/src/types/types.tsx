@@ -26,3 +26,6 @@ export type errorType = {
   export type buttonType ={
     type?: "button" | "submit" | "reset" | undefined
 }
+ export type UserContextType = {
+  
+ }
