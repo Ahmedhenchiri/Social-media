@@ -6,7 +6,6 @@ import Footer from './componets/footer/Footer'
 
 const App : React.FC =() =>{
   return (
-   
     <div >
       <Routes>
         {routes.map((route)=>(

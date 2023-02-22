@@ -19,12 +19,12 @@ const Login = () => {
   };
   const handleSubmit = async (event: any) => {
     event.preventDefault();
-
     try {
       const response = await api.post("/user/login", form);
       const token = response.data.token
-      console.log("🚀 ~ file: Login.tsx:26 ~ handleSubmit ~ response:", response)
-     localStorage.setItem("user",JSON.stringify(token))
+      const user = response.data.user
+     localStorage.setItem("user-token",JSON.stringify(token))
+     localStorage.setItem("user",JSON.stringify(user))
       alert("welcom to your home page ");
       navigate("/");
     } catch (error: any | undefined) {
