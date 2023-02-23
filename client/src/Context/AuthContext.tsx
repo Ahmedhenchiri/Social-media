@@ -1,20 +1,24 @@
 import React,{createContext,useState} from "react"
 import { useNavigate } from "react-router-dom"
 import api from "../api/Api"
-
-type AuthContextType = {
+type User = {
+    email: string;
+    password: string;
+  };
+  
+  type AuthContextType = {
     user: User | null;
     login: (email: string, password: string) => void;
-    // logout: () => void;
-    // register: (email: string, password: string) => void;
+    logout: () => void;
+    register: (email: string, password: string) => void;
   };
 export  const AuthContext= createContext(null)
 
-export const  AuthProvider  =({children}:any)=> {
-const [user,setUser] = useState(null)
+export const  AuthProvider : React.FC =({children}:any)=> {
+const [user,setUser] = useState<User | null>(null)
 const navigate = useNavigate();
  
-const Login = async(form:any)=>{
+const login = async(form:any)=>{
     try {
         const response = await api.post("/user/login", form);
         const token = response.data.token
@@ -29,6 +33,6 @@ const Login = async(form:any)=>{
 }
 const authValues: AuthContextType = { user, login };
 
-return <AuthContext.Provider value={authValues}>{children}</AuthContext.Provider>;
+return <AuthContext.Provider value={authValues}>{children}</AuthContext.Provider>
 
 }
