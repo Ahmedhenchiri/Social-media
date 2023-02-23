@@ -6,8 +6,9 @@ import { AuthProvider } from './Context/AuthContext'
 
 const App : React.FC =() =>{
   return (
-    <div >
-      <AuthProvider>
+
+      // <AuthProvider>
+      <div>
       <Routes>
         {routes.map((route)=>(
           <Route  
@@ -17,11 +18,10 @@ const App : React.FC =() =>{
           />
         ))}
       </Routes>
-      <div>
       <Footer />
       </div>
-      </AuthProvider>
-    </div>
+      // </AuthProvider>
+
     
   )
 }
