@@ -26,6 +26,7 @@ export type errorType = {
   export type buttonType ={
     type?: "button" | "submit" | "reset" | undefined
 }
- export type UserContextType = {
-  
- }
+ export type LocaleStorageContextType = {
+  myData:string;
+  setMyData: React.Dispatch<React.SetStateAction<string>>;
+}

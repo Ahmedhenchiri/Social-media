@@ -7,6 +7,7 @@ import { LocalStorageContext } from './Context/LocalStorageContext'
 
 const App : React.FC =() =>{
   const [myData, setMyData] = useState<string>(() => {
+    // Load saved data from local storage on initial render
     const savedData = localStorage.getItem('user');
     return savedData ? savedData : '';
   });
@@ -14,6 +15,7 @@ const App : React.FC =() =>{
   return (
       <div>
       <LocalStorageContext.Provider value={contextValue}>
+        <Navba />
       <Routes>
         {routes.map((route)=>(
           <Route  
