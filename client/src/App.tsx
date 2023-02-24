@@ -2,7 +2,7 @@ import {Routes , Route} from 'react-router-dom'
 import routes from './Config/routes'
 import Navba from './componets/navbar/Navbar'
 import Footer from './componets/footer/Footer'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { LocalStorageContext } from './Context/LocalStorageContext'
 
 const App : React.FC =() =>{
@@ -11,9 +11,12 @@ const App : React.FC =() =>{
     const savedData = localStorage.getItem('user');
     return savedData ? savedData : '';
   });
+ 
   const logout = () => {
     localStorage.removeItem('user');
     localStorage.removeItem('user-token');
+    
+
     setMyData('');
   };
   const contextValue = { myData, setMyData,logout };
