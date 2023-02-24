@@ -11,7 +11,11 @@ const App : React.FC =() =>{
     const savedData = localStorage.getItem('user');
     return savedData ? savedData : '';
   });
-  const contextValue = { myData, setMyData };
+  const logout = () => {
+    localStorage.removeItem('user');
+    setMyData('');
+  };
+  const contextValue = { myData, setMyData,logout };
   return (
       <div>
       <LocalStorageContext.Provider value={contextValue}>

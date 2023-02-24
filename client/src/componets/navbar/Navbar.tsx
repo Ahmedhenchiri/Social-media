@@ -7,7 +7,7 @@ import { LocalStorageContext } from '../../Context/LocalStorageContext';
 
 
 const Navba = () => {
-  const {myData} = useContext(LocalStorageContext)
+  const {myData,logout} = useContext(LocalStorageContext)
   console.log("🚀 ~ file: Navbar.tsx:11 ~ Navba ~ myData:", myData)
   return (
     <div>
@@ -18,7 +18,7 @@ const Navba = () => {
         {myData ? (
           <>
         <Nav.Link href="/">Home</Nav.Link>
-        <Nav.Link href="/register"> Log Out <i className="fa-solid fa-right-to-bracket " ></i></Nav.Link>
+        <Nav.Link href="/register" onClick={logout}> Log Out <i className="fa-solid fa-right-to-bracket " ></i></Nav.Link>
         </>
         ):(
           <>

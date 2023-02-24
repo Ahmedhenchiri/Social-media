@@ -29,4 +29,5 @@ export type errorType = {
  export type LocaleStorageContextType = {
   myData:string;
   setMyData: React.Dispatch<React.SetStateAction<string>>;
+  logout: () => void;
 }
