@@ -1,5 +1,5 @@
-import {Routes , Route} from 'react-router-dom'
-import routes from './Config/routes'
+// import {Routes , Route} from 'react-router-dom'
+import routes from './Routes/routes'
 import Navba from './componets/navbar/Navbar'
 import Footer from './componets/footer/Footer'
 import { useEffect, useState } from 'react'
@@ -24,7 +24,7 @@ const App : React.FC =() =>{
       <div>
       <LocalStorageContext.Provider value={contextValue}>
         <Navba />
-      <Routes>
+      {/* <Routes>
         {routes.map((route)=>(
           <Route  
            key={route.path}
@@ -32,7 +32,7 @@ const App : React.FC =() =>{
            element={route?.element()}
           />
         ))}
-      </Routes>
+      </Routes> */}
       <Footer />
       </LocalStorageContext.Provider>
       </div>
