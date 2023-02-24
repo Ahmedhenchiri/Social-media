@@ -1,9 +1,13 @@
-import React from 'react'
+import React, { Children, useContext } from 'react'
+import { Navigate } from 'react-router-dom'
+import { LocalStorageContext } from '../../Context/LocalStorageContext'
 
-const ForceRedirect = () => {
-  return (
-    <div>ForceRedirect</div>
-  )
+const ForceRedirect = ({children}:any) => {
+    const {myData} = useContext(LocalStorageContext)
+    if (myData){
+      return <Navigate  to="/" replace/>
+    }
+    return children
 }
 
 export default ForceRedirect
