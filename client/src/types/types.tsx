@@ -1,5 +1,4 @@
 
-
 export type ErrorsType = {
         name:string,
         email:string,
@@ -26,6 +25,7 @@ export type errorType = {
   export type buttonType ={
     type?: "button" | "submit" | "reset" | undefined
 }
+
  export type LocaleStorageContextType = {
   myData:string;
   setMyData: React.Dispatch<React.SetStateAction<string>>;
