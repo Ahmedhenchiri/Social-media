@@ -1,4 +1,4 @@
-import ForceRedirect from '../componets/ForceRedirect/ForceRedirect'
+import ForceRedirect from '../componets/ForseRederict/ForceRedirect'
 import Home from '../pages/home/Home'
 import Login from '../pages/login/Login'
 import NotFond from "../pages/not fond/NotFond"
