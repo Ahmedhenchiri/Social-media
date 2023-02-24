@@ -2,12 +2,16 @@ import {Routes , Route} from 'react-router-dom'
 import routes from './Config/routes'
 import Navba from './componets/navbar/Navbar'
 import Footer from './componets/footer/Footer'
-import { AuthProvider } from './Context/AuthContext'
+import { useState } from 'react'
+
 
 const App : React.FC =() =>{
-  return (
+  const [myData, setMyData] = useState<string>(() => {
+    const savedData = localStorage.getItem('user');
+    return savedData ? savedData : '';
+  });
 
-      // <AuthProvider>
+  return (
       <div>
       <Routes>
         {routes.map((route)=>(
@@ -20,9 +24,6 @@ const App : React.FC =() =>{
       </Routes>
       <Footer />
       </div>
-      // </AuthProvider>
-
-    
   )
 }
 
