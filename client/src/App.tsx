@@ -13,6 +13,7 @@ const App : React.FC =() =>{
   });
   const logout = () => {
     localStorage.removeItem('user');
+    localStorage.removeItem('user-token');
     setMyData('');
   };
   const contextValue = { myData, setMyData,logout };
