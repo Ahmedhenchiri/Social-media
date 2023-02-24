@@ -1,4 +1,5 @@
 import ForceRedirect from '../componets/ForseRederict/ForceRedirect'
+import PriveteRouter from '../componets/PriveteRouter/PriveteRouter'
 import Home from '../pages/home/Home'
 import Login from '../pages/login/Login'
 import NotFond from "../pages/not fond/NotFond"
@@ -7,7 +8,11 @@ import Register from '../pages/register/Register'
 const routes = [
   {
     path:"/",
-    element: <Home />,
+    element: (
+      <PriveteRouter>
+    <Home />
+    </PriveteRouter>
+    )
   },
   {
     path:"/login",

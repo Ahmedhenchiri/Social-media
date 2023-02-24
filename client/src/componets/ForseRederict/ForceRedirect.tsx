@@ -7,7 +7,7 @@ const ForceRedirect : React.FC = ({children}:any) => {
     if (myData.length > 0){
       return <Navigate  to="/" replace/>
     }
-    return <>{children}</>
+    return children
 }
 
 export default ForceRedirect
