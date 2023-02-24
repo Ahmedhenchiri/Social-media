@@ -1,9 +1,11 @@
-import React from 'react'
-
-const LocalStorageContext = () => {
-  return (
-    <div>LocalStorageContext</div>
-  )
+import React,{createContext} from 'react'
+type LocaleStorageContextType = {
+  myData:string;
+  setMyData: React.Dispatch<React.SetStateAction<string>>;
 }
 
-export default LocalStorageContext
+
+export const LocalStorageContext = createContext <LocaleStorageContextType> ({
+myData:"",
+setMyData: () => {},
+})
