@@ -2,10 +2,13 @@ import React from 'react'
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-
+import { useContext } from 'react';
+import { LocalStorageContext } from '../../Context/LocalStorageContext';
 
 
 const Navba = () => {
+  const {myData} = useContext(LocalStorageContext)
+  console.log("🚀 ~ file: Navbar.tsx:11 ~ Navba ~ myData:", myData)
   return (
     <div>
   <Navbar bg="primary" variant="dark">
