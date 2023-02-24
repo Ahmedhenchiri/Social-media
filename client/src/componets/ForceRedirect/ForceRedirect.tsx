@@ -4,7 +4,8 @@ import { LocalStorageContext } from '../../Context/LocalStorageContext'
 
 const ForceRedirect = ({children}:any) => {
     const {myData} = useContext(LocalStorageContext)
-    if (myData){
+    console.log("🚀 ~ file: ForceRedirect.tsx:7 ~ ForceRedirect ~ myData:", myData.length)
+    if (myData.length > 0){
       return <Navigate  to="/" replace/>
     }
     return children

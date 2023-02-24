@@ -8,6 +8,7 @@ import { LocalStorageContext } from '../../Context/LocalStorageContext';
 
 const Navba = () => {
   const {myData,logout} = useContext(LocalStorageContext)
+  console.log("🚀 ~ file: Navbar.tsx:11 ~ Navba ~ myData:", myData)
 
   return (
     <div>

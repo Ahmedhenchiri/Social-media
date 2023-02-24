@@ -19,7 +19,11 @@ const routes = [
   },
   {
     path:"/register",
-    element:<Register/>
+    element:(
+      <ForceRedirect>
+    <Register/>
+    </ForceRedirect>
+    )
   },
   {
     path:"/*",
