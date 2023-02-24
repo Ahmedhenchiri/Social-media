@@ -13,8 +13,7 @@ const App : React.FC =() =>{
   });
  
   const logout = () => {
-    localStorage.removeItem('user');
-    localStorage.removeItem('user-token');
+    localStorage.clear();
     setMyData('');
   };
   const contextValue = { myData, setMyData,logout };
@@ -27,7 +26,7 @@ const App : React.FC =() =>{
           <Route  
            key={route.path}
            path={route.path}
-           element={route?.element()}
+           element={route.element}
           />
         ))}
       </Routes>

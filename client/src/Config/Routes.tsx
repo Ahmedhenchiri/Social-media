@@ -7,25 +7,25 @@ import Register from '../pages/register/Register'
 const routes = [
   {
     path:"/",
-    element:Home,
+    element: <Home />,
   },
   {
     path:"/login",
     element : (
       <ForceRedirect>
       <Login />
-      </ForceRedirect>
-    ),
+     </ForceRedirect>
+    )
   },
   {
     path:"/register",
-    element:Register,
+    element:<Register/>
   },
   {
     path:"/*",
-    element:NotFond,
+    element:<NotFond/>
   },
-]
+] as { path: string; element: React.ReactNode }[];
   
 
 
