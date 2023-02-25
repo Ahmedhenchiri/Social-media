@@ -10,7 +10,7 @@ const routes = [
   {
     path:"/",
     element: (
-      <PriveteRouter>
+    <PriveteRouter>
      <Home />
     </PriveteRouter>
     )
@@ -26,7 +26,7 @@ const routes = [
   {
     path:"/register",
     element:(
-      <ForceRedirect>
+    <ForceRedirect>
     <Register/>
     </ForceRedirect>
     )
