@@ -1,3 +1,4 @@
+import Modal from 'cdbreact/dist/components/Modal'
 import ForceRedirect from '../componets/ForseRederict/ForceRedirect'
 import PriveteRouter from '../componets/PriveteRouter/PriveteRouter'
 import Home from '../pages/home/Home'
@@ -40,6 +41,15 @@ const routes = [
     element:(
       <PriveteRouter>
       <Profile/>
+    </PriveteRouter>
+    
+    )
+  },
+  {
+    path:"/modal",
+    element:(
+      <PriveteRouter>
+      <Modal/>
     </PriveteRouter>
     
     )
