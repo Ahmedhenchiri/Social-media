@@ -10,7 +10,7 @@ const routes = [
     path:"/",
     element: (
       <PriveteRouter>
-    <Home />
+     <Home />
     </PriveteRouter>
     )
   },
