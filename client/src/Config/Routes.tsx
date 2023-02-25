@@ -1,4 +1,4 @@
-import Modal from 'cdbreact/dist/components/Modal'
+import Modal from '../componets/custom/Modal/Modal'
 import ForceRedirect from '../componets/ForseRederict/ForceRedirect'
 import PriveteRouter from '../componets/PriveteRouter/PriveteRouter'
 import Home from '../pages/home/Home'

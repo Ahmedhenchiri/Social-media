@@ -10,7 +10,7 @@ const Modale = () => {
   return (
     <>
       <Button variant="primary" onClick={handleShow}>
-        Launch demo modal
+      Add Post
       </Button>
 
       <Modal show={show} onHide={handleClose}>
