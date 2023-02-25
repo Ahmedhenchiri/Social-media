@@ -37,7 +37,12 @@ const routes = [
   },
   {
     path:"/profile",
-    element:<Profile/>
+    element:(
+      <PriveteRouter>
+      <Profile/>
+    </PriveteRouter>
+    
+    )
   },
 ] as { path: string; element: React.ReactNode }[];
   
