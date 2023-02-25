@@ -18,6 +18,7 @@ const Navba = () => {
         {myData ? (
           <>
         <Nav.Link href="/">Home</Nav.Link>
+        <Nav.Link href="/profile">Profile</Nav.Link>
         <Nav.Link href="/login" onClick={logout}> Log Out <i className="fa-solid fa-right-to-bracket " ></i></Nav.Link>
         </>
         ):(
