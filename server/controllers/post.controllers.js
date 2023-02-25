@@ -9,8 +9,8 @@ module.exports={
     }catch(error){
       res.status(404).json(error)
     }
-   }
-   addPost :async (req,res) => {
+   },
+   addPost: async (req,res) => {
       const newPost = new PostUser (req.body)
       try {
       await newPost.save()

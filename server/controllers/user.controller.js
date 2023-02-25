@@ -69,7 +69,7 @@ const Register = async (req,res)=>{
   let findAll = await UserModel.find({name:req.params.name})
   .populate("posts")
   res.json(findAll)
-  console.log("🚀 ~ file: user.controller.js:69 ~ getAllPost:async ~ req.params", req.params)
+
 }
 
 
