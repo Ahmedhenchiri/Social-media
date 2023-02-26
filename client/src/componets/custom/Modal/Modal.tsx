@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
+import api from '../../../api/Api';
 
 const Modale = () => {
     const [show, setShow] = useState(false);
@@ -9,15 +10,21 @@ const Modale = () => {
     const handleShow = () => setShow(true);
     const [form,setForm] = useState({})
     console.log("🚀 ~ file: Modal.tsx:11 ~ Modale ~ form:", form)
-    const onChangeHandler = (event: React.ChangeEvent<EventTarget>) => {
+    const onChangeHandler = (event: any) => {
        
         setForm({
           ...form,
           [event?.target?.name]: event?.target?.value as string,
         });
       };
-    const handleSubmit=(event: React.FormEvent<HTMLFormElement>)=>{
-        
+    const handleSubmit= async (event: React.FormEvent<HTMLFormElement>)=>{
+        event.preventDefault()
+        try{
+          const response = await api.post("/post/add")
+           alert("yeyyyyyeyyy")
+        }catch(error){
+        console.log(error)
+        }
     }
    
 
@@ -26,7 +33,7 @@ const Modale = () => {
       <Button variant="primary" onClick={handleShow}>
       Add Post
       </Button>
-
+      <form onSubmit={handleSubmit}>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Modal heading</Modal.Title>
@@ -65,11 +72,12 @@ const Modale = () => {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleClose}>
+          <Button variant="primary" onClick={handleClose}  type="submit">
             Save Changes
           </Button>
         </Modal.Footer>
       </Modal>
+      </form>
     </>
   )
 }
