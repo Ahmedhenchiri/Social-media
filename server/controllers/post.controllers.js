@@ -11,12 +11,15 @@ module.exports={
     }
    },
    addPost: async (req,res) => {
-      const newPost = new PostUser (req.body)
-      try {
-      await newPost.save()
-      .then((result)=>{
-        res.status(201).json(result)
+    const userId = req.user._id;
+      const newPost = new PostUser ({
+        ...req.body,
+        user:  userId
       })
+      try {
+       const result = await newPost.save()
+        res.status(201).json(result)
+    
       }catch(error){
        res.status(404).json(error)
       }
