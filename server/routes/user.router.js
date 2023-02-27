@@ -4,6 +4,6 @@ const {Login,Register,getAllPost} = require('../controllers/user.controller')
 
 router.post("/register",Register)
 router.post("/login",Login)
-router.get("/getAll/:name/posts",getAllPost)
+router.get("/getAll/:id/posts",getAllPost)
 
 module.exports=router

@@ -10,11 +10,21 @@ module.exports={
       res.status(404).json(error)
     }
    },
+   getallPostOfUser:async(req,res) =>{
+    const all =await PostUser.find({user:req.body.user})
+    try{
+      res.status(201).json(all)
+    }catch(error){
+    res.status(404).json(error)
+    }
+   },
    addPost: async (req,res) => {
-    const userId = req.user._id;
+    console.log("🚀 ~ file: post.controllers.js:20 ~ addPost: ~ req:", req.user)
+  
+    const userID = "63ef8dd9ab827c66bd5ec8f3"    
       const newPost = new PostUser ({
         ...req.body,
-        user:  userId
+        userID: userID
       })
       try {
        const result = await newPost.save()
@@ -23,5 +33,5 @@ module.exports={
       }catch(error){
        res.status(404).json(error)
       }
-   }
+   } 
 }

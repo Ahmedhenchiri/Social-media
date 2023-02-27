@@ -66,7 +66,7 @@ const Register = async (req,res)=>{
     }
 }
  const  getAllPost = async(req,res) =>{
-  let findAll = await UserModel.find({name:req.params.name})
+  let findAll = await UserModel.find({id:req.params.id})
   .populate("posts")
   res.json(findAll)
 
