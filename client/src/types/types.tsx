@@ -31,3 +31,6 @@ export type errorType = {
   setMyData: React.Dispatch<React.SetStateAction<string>>;
   logout: () => void;
 }
+export type handleSubmitType ={
+ event: React.FormEvent<HTMLFormElement>
+}

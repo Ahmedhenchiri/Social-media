@@ -9,7 +9,7 @@ const Modale = () => {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     const [form,setForm] = useState({})
-    console.log("🚀 ~ file: Modal.tsx:11 ~ Modale ~ form:", form)
+   
     const onChangeHandler = (event: any) => {
        
         setForm({
@@ -21,8 +21,8 @@ const Modale = () => {
         event.preventDefault()
         try{
         await api.post("/post/add",form)
+        alert("yeyyyyyeyyy")
           setShow(false)
-           alert("yeyyyyyeyyy")
         }catch(error){
         console.log(error)
         }
@@ -30,7 +30,7 @@ const Modale = () => {
    
 
   return (
-    <>
+    <div>
       <Button variant="primary" onClick={handleShow}>
       Add Post
       </Button>
@@ -47,8 +47,6 @@ const Modale = () => {
                 type="text"
                 placeholder="What is your title "
                  name='title'
-                // autoFocus
-                // value="title"
                 onChange={onChangeHandler}
               />
                 <Form.Label>image</Form.Label>
@@ -83,7 +81,7 @@ const Modale = () => {
         </Modal.Footer>
       </form>
       </Modal>
-    </>
+    </div>
   )
 }
 
