@@ -40,13 +40,13 @@ const Modale = () => {
           <Modal.Title>Modal heading</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form>
+          <Form >
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Title</Form.Label>
               <Form.Control
                 type="text"
                 placeholder="What is your title "
-                 name='title'
+                name='title'
                 onChange={onChangeHandler}
               />
                 <Form.Label>image</Form.Label>
@@ -72,7 +72,7 @@ const Modale = () => {
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose} type="submit">
+        <Button variant="secondary" onClick={handleClose} >
             Close
           </Button>
           <Button variant="primary"  type="submit"   >
@@ -80,6 +80,7 @@ const Modale = () => {
           </Button>
         </Modal.Footer>
       </form>
+           
       </Modal>
     </div>
   )

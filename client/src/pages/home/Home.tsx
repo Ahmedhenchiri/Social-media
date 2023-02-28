@@ -6,6 +6,7 @@ import Modal from '../../componets/custom/Modal/Modal'
 
 const  Home = () => {
  const [data,setData] = useState<any>([]) 
+ console.log("🚀 ~ file: home.tsx:9 ~ Home ~ data:", data)
 
  const getAllData = async () => {
   try{
