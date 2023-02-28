@@ -17,7 +17,7 @@ const Modale = () => {
           [event?.target?.name]: event?.target?.value as string,
         });
       };
-    const handleSubmit= async (event: React.FormEvent<HTMLFormElement>)=>{
+    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>)=>{
         event.preventDefault()
         try{
         await api.post("/post/add",form)
