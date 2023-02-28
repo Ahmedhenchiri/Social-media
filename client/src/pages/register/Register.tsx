@@ -79,7 +79,7 @@ const navigate = useNavigate()
                 errors={errors.confirm}
               />
               <div className="d-flex justify-content-between">
-               <Buttons type='submit'/>
+               <Buttons type='submit' name='Register'/>
                 <Link to="/login">I have account</Link>
               </div>
             </form>

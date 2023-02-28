@@ -24,6 +24,7 @@ export type errorType = {
 
   export type buttonType ={
     type?: "button" | "submit" | "reset" | undefined
+    name:"string"
 }
 
  export type LocaleStorageContextType = {
