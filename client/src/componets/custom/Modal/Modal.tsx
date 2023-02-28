@@ -20,7 +20,8 @@ const Modale = () => {
     const handleSubmit= async (event: React.FormEvent<HTMLFormElement>)=>{
         event.preventDefault()
         try{
-          const response = await api.post("/post/add")
+        await api.post("/post/add",form)
+          setShow(false)
            alert("yeyyyyyeyyy")
         }catch(error){
         console.log(error)
@@ -33,8 +34,8 @@ const Modale = () => {
       <Button variant="primary" onClick={handleShow}>
       Add Post
       </Button>
+      <Modal show={show} onHide={handleClose} >
       <form onSubmit={handleSubmit}>
-      <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Modal heading</Modal.Title>
         </Modal.Header>
@@ -61,28 +62,27 @@ const Modale = () => {
             <Form.Group
               className="mb-3"             
               controlId="exampleForm.ControlTextarea1"
-              onChange={onChangeHandler}
-
-            >
+          >
               <Form.Label>Content</Form.Label>
               <Form.Control 
               as="textarea" 
               rows={3} 
               name="content"
+              onChange={onChangeHandler}
               />
             </Form.Group>
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button variant="secondary" onClick={handleClose} type="submit">
             Close
           </Button>
-          <Button variant="primary" onClick={handleClose}  type="submit">
+          <Button variant="primary"  type="submit"   >
             Save Changes
           </Button>
         </Modal.Footer>
-      </Modal>
       </form>
+      </Modal>
     </>
   )
 }
