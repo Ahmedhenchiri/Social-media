@@ -45,26 +45,31 @@ const Modale = () => {
               <Form.Control
                 type="text"
                 placeholder="What is your title "
-                autoFocus
+                 name='title'
+                // autoFocus
+                // value="title"
                 onChange={onChangeHandler}
               />
                 <Form.Label>image</Form.Label>
               <Form.Control
                 type="text"
                 placeholder="What is your image "
-                autoFocus
+                name='image'
                 onChange={onChangeHandler}
-
               />
             </Form.Group>
             <Form.Group
-              className="mb-3"
+              className="mb-3"             
               controlId="exampleForm.ControlTextarea1"
               onChange={onChangeHandler}
 
             >
               <Form.Label>Content</Form.Label>
-              <Form.Control as="textarea" rows={3} />
+              <Form.Control 
+              as="textarea" 
+              rows={3} 
+              name="content"
+              />
             </Form.Group>
           </Form>
         </Modal.Body>
