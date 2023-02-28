@@ -30,7 +30,7 @@ const Modale = () => {
    
 
   return (
-    <div>
+    <>
       <Button variant="primary" onClick={handleShow}>
       Add Post
       </Button>
@@ -82,7 +82,7 @@ const Modale = () => {
       </form>
            
       </Modal>
-    </div>
+    </>
   )
 }
 
