@@ -4,7 +4,6 @@ import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import api from '../../../api/Api';
 
-
 const Modale = () => {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
