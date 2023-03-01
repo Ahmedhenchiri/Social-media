@@ -4,6 +4,7 @@ const validator = require ("validator")
 module.exports= function ValidatePost(data){
     let error={}
     data.title = !isEmpty(data.title) ? data.title : ""
-    data.content = !isEmpty(data.content) ?data.content : ""
+    data.content = !isEmpty(data.content) ? data.content : ""
+    data.image=!isEmpty(data.image) ? data.image  : ""
      
 }
