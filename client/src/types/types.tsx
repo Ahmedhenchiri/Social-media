@@ -36,3 +36,17 @@ export type errorType = {
 export type handleSubmitType ={
  event: React.FormEvent<HTMLFormElement>
 }
+export type Post = {
+  id: number;
+  title: string;
+  content: string;
+  image:string;
+};
+
+export type PostContextType = {
+  posts: Post[];
+  getAllPosts: () => Promise<void>;
+};
+export type PostProviderProps = {
+    children: React.ReactNode;
+  };

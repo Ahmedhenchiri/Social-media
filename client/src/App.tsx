@@ -20,7 +20,7 @@ const App : React.FC =() =>{
   const contextValue = { myData, setMyData,logout };
   return (
       <div>
-        <PostProvider>
+      <PostProvider>
       <LocalStorageContext.Provider value={contextValue}>
         <Navba />
       <Routes>

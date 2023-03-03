@@ -1,20 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import api from "../api/Api";
+import { Post, PostContextType, PostProviderProps } from "../types/types";
 
-type Post = {
-  id: number;
-  title: string;
-  content: string;
-  image:string;
-};
-
-type PostContextType = {
-  posts: Post[];
-  getAllPosts: () => Promise<void>;
-};
-type PostProviderProps = {
-    children: React.ReactNode;
-  };
 
 const PostContext = createContext<PostContextType>({
   posts: [],
