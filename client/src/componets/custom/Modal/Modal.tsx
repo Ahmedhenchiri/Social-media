@@ -45,7 +45,7 @@ const Modale = () => {
               <Form.Label>Title</Form.Label>
               <Form.Control
                 type="text"
-                placeholder="What is your title "
+                placeholder="What is your title  "
                 name='title'
                 onChange={onChangeHandler}
               />
@@ -67,6 +67,8 @@ const Modale = () => {
               rows={3} 
               name="content"
               onChange={onChangeHandler}
+              placeholder="What is your content "
+
               />
             </Form.Group>
           </Form>
