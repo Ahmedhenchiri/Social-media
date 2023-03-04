@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
 import { usePost } from "../../Context/PostContext";
 import "./Post.css";
+
 const Post = () => {
   const { posts } = usePost();
 
