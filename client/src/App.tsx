@@ -2,7 +2,7 @@ import {Routes , Route} from 'react-router-dom'
 import routes from './Config/Routes'
 import Navba from './componets/navbar/Navbar'
 import Footer from './componets/footer/Footer'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { LocalStorageContext } from './Context/LocalStorageContext'
 import { PostProvider } from './Context/PostContext'
 

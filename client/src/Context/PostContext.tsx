@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import api from "../api/Api";
-import { Post, PostContextType, PostProviderProps } from "../types/types";
+import { Post, PostContextType, ChildrenType } from "../types/types";
 
 
 const PostContext = createContext<PostContextType>({
@@ -8,7 +8,7 @@ const PostContext = createContext<PostContextType>({
   getAllPosts: async () => {},
 });
 
-const PostProvider = ({ children }:PostProviderProps) => {
+const PostProvider = ({ children }:ChildrenType) => {
   const [posts, setPosts] = useState<Post[]>([]);
 
   const getAllPosts = async () => {
