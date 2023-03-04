@@ -1,63 +1,57 @@
-import Modal from '../componets/custom/Modal/Modal'
-import ForceRedirect from '../componets/ForseRederict/ForceRedirect'
-import PriveteRouter from '../componets/PriveteRouter/PriveteRouter'
-import Home from '../pages/home/Home'
-import Login from '../pages/login/Login'
-import NotFond from "../pages/not fond/NotFond"
-import Profile from '../pages/Profile/Profile'
-import Register from '../pages/register/Register'
+import Modal from "../componets/custom/Modal/Modal";
+import ForceRedirect from "../componets/ForseRederict/ForceRedirect";
+import PriveteRouter from "../componets/PriveteRouter/PriveteRouter";
+import Home from "../pages/home/Home";
+import Login from "../pages/login/Login";
+import NotFond from "../pages/not fond/NotFond";
+import Profile from "../pages/Profile/Profile";
+import Register from "../pages/register/Register";
 
 const routes = [
   {
-    path:"/",
+    path: "/",
     element: (
-   
-    <PriveteRouter>
-     <Home />
-    </PriveteRouter>
-  
-    )
+      <PriveteRouter>
+        <Home />
+      </PriveteRouter>
+    ),
   },
   {
-    path:"/login",
-    element : (
+    path: "/login",
+    element: (
       <ForceRedirect>
-      <Login />
-     </ForceRedirect>
-    )
+        <Login />
+      </ForceRedirect>
+    ),
   },
   {
-    path:"/register",
-    element:(
-    <ForceRedirect>
-    <Register/>
-    </ForceRedirect>
-    )
+    path: "/register",
+    element: (
+      <ForceRedirect>
+        <Register />
+      </ForceRedirect>
+    ),
   },
   {
-    path:"/*",
-    element:<NotFond/>
+    path: "/*",
+    element: <NotFond />,
   },
   {
-    path:"/profile",
-    element:(
+    path: "/profile",
+    element: (
       <PriveteRouter>
-      <Profile/>
-    </PriveteRouter>
-    
-    )
+        <Profile />
+      </PriveteRouter>
+    ),
   },
   {
-    path:"/modal",
-    element:(
+    path: "/modal",
+    element: (
       <PriveteRouter>
-      <Modal/>
-    </PriveteRouter>
-    
-    )
+        <Modal />
+      </PriveteRouter>
+    ),
   },
 ] as { path: string; element: React.ReactNode }[];
-  
 
-
-export default routes
+export default routes;

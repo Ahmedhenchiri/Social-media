@@ -21,10 +21,10 @@ const Login = () => {
     event.preventDefault();
     try {
       const response = await api.post("/user/login", form);
-      const token = response.data.token
-      const user = response.data.user
-     localStorage.setItem("user-token",JSON.stringify(token))
-     localStorage.setItem("user",JSON.stringify(user))
+      const token = response.data.token;
+      const user = response.data.user;
+      localStorage.setItem("user-token", JSON.stringify(token));
+      localStorage.setItem("user", JSON.stringify(user));
       alert("welcom to your home page ");
       navigate("/");
     } catch (error: any | undefined) {
