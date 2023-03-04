@@ -1,9 +1,9 @@
-import React, {  useContext } from 'react'
 import { Navigate } from 'react-router-dom'
-import { LocalStorageContext } from '../../Context/LocalStorageContext'
+import {  useLocaleStorge } from '../../Context/LocalStorageContext'
+
 
 const ForceRedirect = ({children}:any) => {
-    const {myData} = useContext(LocalStorageContext)
+    const {myData} = useLocaleStorge()
     if (myData.length > 0){
       return <Navigate  to="/" replace/>
     }

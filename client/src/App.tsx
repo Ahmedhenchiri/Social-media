@@ -2,26 +2,15 @@ import {Routes , Route} from 'react-router-dom'
 import routes from './Config/Routes'
 import Navba from './componets/navbar/Navbar'
 import Footer from './componets/footer/Footer'
-import { useState } from 'react'
-import { LocalStorageContext } from './Context/LocalStorageContext'
 import { PostProvider } from './Context/PostContext'
+import { LocalStorage } from './Context/LocalStorageContext'
 
 const App : React.FC =() =>{
-  const [myData, setMyData] = useState<string>(() => {
-    // Load saved data from local storage on initial render
-    const savedData = localStorage.getItem('user');
-    return savedData ? savedData : '';
-  });
- 
-  const logout = () => {
-    localStorage.clear();
-    setMyData('');
-  };
-  const contextValue = { myData, setMyData,logout };
+
   return (
       <div>
       <PostProvider>
-      <LocalStorageContext.Provider value={contextValue}>
+     <LocalStorage>
         <Navba />
       <Routes>
         {routes.map((route)=>(
@@ -33,7 +22,7 @@ const App : React.FC =() =>{
         ))}
       </Routes>
       <Footer />
-      </LocalStorageContext.Provider>
+      </LocalStorage>
       </PostProvider>
       </div>
   )

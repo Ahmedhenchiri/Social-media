@@ -1,10 +1,10 @@
-import React, { useContext } from 'react'
 import { Navigate } from 'react-router-dom'
-import { LocalStorageContext } from '../../Context/LocalStorageContext'
-import { ChildrenType } from '../../types/types'
+import { useLocaleStorge } from '../../Context/LocalStorageContext'
+
+
 
 const PriveteRouter = ({children}:any) => {
-    const {myData} = useContext(LocalStorageContext)
+    const {myData} = useLocaleStorge()
      if(myData.length === 0){
       return <Navigate to="/login"  replace />
      }
