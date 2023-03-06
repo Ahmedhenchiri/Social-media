@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 import api from "../api/Api";
 import { Post, PostContextType, ChildrenType } from "../types/types";
 

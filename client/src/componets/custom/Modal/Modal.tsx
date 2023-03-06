@@ -9,17 +9,23 @@ const Modale = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [form, setForm] = useState({});
-
+  const [file,setFile] = useState({})
   const onChangeHandler = (event: any) => {
     setForm({
       ...form,
       [event?.target?.name]: event?.target?.value as string,
     });
   };
+  function handleFileInputChange(event: React.ChangeEvent<HTMLInputElement>) {
+    const file = event.target.files?.[0];
+    if (file) {
+      setFile(file.name);
+    }
+  }
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
-      await api.post("/post/add", form);
+      await api.post("/post/add", form,file);
       alert("yeyyyyyeyyy");
       setShow(false);
     } catch (error) {
@@ -52,10 +58,10 @@ const Modale = () => {
                 />
                 <Form.Label>image</Form.Label>
                 <Form.Control
-                  type="text"
+                  type="file"
                   placeholder="What is your image "
                   name="image"
-                  onChange={onChangeHandler}
+                  onChange={handleFileInputChange}
                 />
               </Form.Group>
               <Form.Group
