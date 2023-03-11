@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
+import cloudinary from "cloudinary";
 import api from "../../../api/Api";
 
 const Modale = () => {
@@ -10,6 +11,9 @@ const Modale = () => {
   const handleShow = () => setShow(true);
   const [form, setForm] = useState({});
   const [file,setFile] = useState({})
+  // dxpnslfmc 
+  // https://api.cloudinary.com/v1_1/
+  // ahmedhen
   const onChangeHandler = (event: any) => {
     setForm({
       ...form,
@@ -21,6 +25,13 @@ const Modale = () => {
     if (file) {
       setFile(file.name);
     }
+  }
+  const upladImage = async()=>{
+    const forms = new FormData()
+    forms.append('file',file)
+    forms.append('upload_preset',"ahmedhen")
+   await api.post("https://api.cloudinary.com/v1_1/dxpnslfmc/upload",forms)
+
   }
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -39,7 +50,7 @@ const Modale = () => {
         Add Post
       </Button>
       <Modal show={show} onHide={handleClose}>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit,upladImage}>
           <Modal.Header closeButton>
             <Modal.Title>Modal heading</Modal.Title>
           </Modal.Header>
