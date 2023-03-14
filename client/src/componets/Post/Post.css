@@ -4,7 +4,7 @@
 
 
 
-.blog-list-item {    
+.post-list-item {    
   width: 900px;
   min-height: 250px;
   margin: auto;
@@ -16,7 +16,7 @@
   box-shadow: 0 0 1em #cecece66;
 }
 
-.blog-list-item-image { 
+.post-list-item-image { 
   float: left;
   width: 100%;
   max-width: 350px;
@@ -25,26 +25,26 @@
   margin-bottom: 5%;
 }
 
-.blog-list-item-title {   
+.post-list-item-title {   
   font-size: 35px;
   font-family: "Francois One";
   margin-bottom: 10px;
 }
 
-.blog-list-item-lede {   
+.post-list-item-lede {   
   display: block;
   margin-bottom: 50px;
 }
 
 
 
-.blog-list-item-byline {   
+.post-list-item-byline {   
   font-size: 1em;
   margin-bottom: 15px;
   color: #030303;
 }
 
-.blog-list-item-byline-author {  
+.post-list-item-byline-author {  
   font-weight: bolder;
 }
 

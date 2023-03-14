@@ -11,9 +11,6 @@ const Modale = () => {
   const handleShow = () => setShow(true);
   const [form, setForm] = useState({});
   const [file,setFile] = useState<any>({})
-  // dxpnslfmc 
-  // https://api.cloudinary.com/v1_1/
-  // ahmedhen
   const onChangeHandler = (event: any) => {
     setForm({
       ...form,
@@ -30,8 +27,8 @@ const Modale = () => {
     const forms = new FormData()
     forms.append('file',file)
     forms.append('upload_preset',"ahmedhen")
-   const response = await api.post("https://api.cloudinary.com/v1_1/dxpnslfmc/image/upload",forms)
-   return response.data.secure_url
+    const response = await api.post("https://api.cloudinary.com/v1_1/dxpnslfmc/image/upload",forms)
+    return response.data.secure_url
 
   }
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {

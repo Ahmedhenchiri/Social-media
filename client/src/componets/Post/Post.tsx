@@ -7,15 +7,15 @@ const Post = () => {
   return (
     <div>
       {posts.map((post) => (
-        <div className="blog-list-item">
-          <div className="blog-list-item-title">{post.title}</div>
-          <div className="blog-list-item-byline">
-            <span className="blog-list-item-byline-author">
+        <div className="post-list-item">
+          <div className="post-list-item-title">{post.title}</div>
+          <div className="post-list-item-byline">
+            <span className="post-list-item-byline-author">
               {" "}
               {post.content}{" "}
             </span>
           </div>
-          <div className="blog-list-item-lede">
+          <div className="post-list-item-lede">
             <img src={post.image} alt="no image" />
           </div>
         </div>
