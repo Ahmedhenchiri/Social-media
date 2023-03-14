@@ -10,7 +10,7 @@ const Modale = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [form, setForm] = useState({});
-  const [file,setFile] = useState({})
+  const [file,setFile] = useState<any>({})
   // dxpnslfmc 
   // https://api.cloudinary.com/v1_1/
   // ahmedhen
@@ -25,7 +25,6 @@ const Modale = () => {
     if (file) {
       setFile(file);
     }
-      // console.log("🚀 ~ file: Modal.tsx:28 ~ handleFileInputChange ~ file.name:", file)
   }
   const upladImage = async(file:File)=>{
     const forms = new FormData()
