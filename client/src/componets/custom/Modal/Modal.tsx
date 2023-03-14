@@ -23,20 +23,23 @@ const Modale = () => {
   function handleFileInputChange(event: React.ChangeEvent<HTMLInputElement>) {
     const file = event.target.files?.[0];
     if (file) {
-      setFile(file.name);
+      setFile(file);
     }
+      // console.log("🚀 ~ file: Modal.tsx:28 ~ handleFileInputChange ~ file.name:", file)
   }
-  const upladImage = async()=>{
+  const upladImage = async(file:File)=>{
     const forms = new FormData()
     forms.append('file',file)
     forms.append('upload_preset',"ahmedhen")
-   await api.post("https://api.cloudinary.com/v1_1/dxpnslfmc/upload",forms)
+   const response = await api.post("https://api.cloudinary.com/v1_1/dxpnslfmc/image/upload",forms)
+   return response.data.secure_url
 
   }
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
-      await api.post("/post/add", form,file);
+      const imageUrl = await upladImage(file)
+      await api.post("/post/add", {...form,image:imageUrl});
       alert("yeyyyyyeyyy");
       setShow(false);
     } catch (error) {
@@ -50,7 +53,7 @@ const Modale = () => {
         Add Post
       </Button>
       <Modal show={show} onHide={handleClose}>
-        <form onSubmit={handleSubmit,upladImage}>
+        <form onSubmit={handleSubmit}>
           <Modal.Header closeButton>
             <Modal.Title>Modal heading</Modal.Title>
           </Modal.Header>
