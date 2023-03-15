@@ -8,6 +8,8 @@ const UserModel = new mongoose.Schema({
         unique: true,
     },
     password: "string",
+    image:"string",
+    number:"string",
     
     posts:[{
      type:mongoose.Schema.Types.ObjectId,
