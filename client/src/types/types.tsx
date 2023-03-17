@@ -27,7 +27,7 @@ export type buttonType = {
 };
 
 export type LocaleStorageContextType = {
-  myData: string;
+  myData:string
   setMyData: React.Dispatch<React.SetStateAction<string>>;
   logout: () => void;
 };
