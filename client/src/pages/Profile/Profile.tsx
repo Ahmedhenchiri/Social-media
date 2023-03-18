@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useLocaleStorge } from '../../Context/LocalStorageContext'
-import "./Profile.css"
+// import "./Profile.css"
 const Profile = () => {
   const {myData} = useLocaleStorge()
   const Data = JSON.parse(myData);
@@ -16,9 +16,13 @@ const Profile = () => {
 
   return (
     <div>
-       <svg viewBox="0 0 100 100" width="200" height="200">
-        <image className='profile ' xlinkHref={Data.image} width="100" height="100" />
-      </svg>
+    <svg viewBox="0 0 100 100" width="200" height="200">
+    <circle cx="50" cy="50" r="50" />
+    <clipPath id="circle-mask">
+    <circle cx="50" cy="50" r="50" />
+    </clipPath>
+    <image className='profile' xlinkHref={Data.image} width="100" height="100" clipPath="url(#circle-mask)" />
+    </svg>
     </div>
   )
 }
