@@ -3,11 +3,15 @@ import { useLocaleStorge } from '../../Context/LocalStorageContext'
 
 const Profile = () => {
   const {myData} = useLocaleStorge()
+  const Data = JSON.parse(myData);
+ 
+
+  console.log(Data.email);
 
 
 
  
-//  console.log("🚀 ~ file: Profile.tsx:8 ~ Profile ~ imageUrl:", imageUrl)
+
 
   return (
     <div>Profile</div>

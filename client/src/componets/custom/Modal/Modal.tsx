@@ -28,7 +28,7 @@ const Modale = () => {
     forms.append('upload_preset',"ahmedhen")
     const response = await api.post("https://api.cloudinary.com/v1_1/dxpnslfmc/image/upload",forms)
     return response.data.secure_url
-
+   
     
   }
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
