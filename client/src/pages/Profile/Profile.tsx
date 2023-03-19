@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import api from '../../api/Api'
 import { useLocaleStorge } from '../../Context/LocalStorageContext'
 import "./Profile.css"
 const Profile = () => {
@@ -7,8 +8,18 @@ const Profile = () => {
   console.log("🚀 ~ file: Profile.tsx:7 ~ Profile ~ Data:", Data)
  
 
-
-
+const getPostUser = async () => {
+  try{
+  const response = await api.get("/post/getAll")
+  console.log("🚀 ~ file: Profile.tsx:14 ~ getPostUser ~ response:", response.data)
+  
+  }catch(error){
+    console.log(error)
+  }
+}
+  useEffect(()=>{
+    getPostUser()
+  },[])
 
 
  
