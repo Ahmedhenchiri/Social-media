@@ -8,7 +8,9 @@ const UserModel = new mongoose.Schema({
         unique: true,
     },
     password: "string",
-    image:{type: String,default:"https://nakedsecurity.sophos.com/wp-content/uploads/sites/2/2013/08/facebook-silhouette_thumb.jpg"},
+    image:{
+    type: String,default:"https://nakedsecurity.sophos.com/wp-content/uploads/sites/2/2013/08/facebook-silhouette_thumb.jpg"
+     },
     number:"string",
     
     posts:[{
