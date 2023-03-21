@@ -19,9 +19,9 @@ module.exports={
     }
    },
    addPost: async (req,res) => {
-    console.log("🚀 ~ file: post.controllers.js:20 ~ addPost: ~ req:", req.user)
+
   
-    const userID = "63ef8dd9ab827c66bd5ec8f3"    
+    const userID = req.body.user    
       const newPost = new PostUser ({
         ...req.body,
         userID: userID
@@ -34,4 +34,17 @@ module.exports={
        res.status(404).json(error)
       }
    } 
+  //  addPost: async (req, res) => {
+  //   try {
+  //     const { userId } = req.user; // Extract the user ID from the request object
+  //     const newPost = new PostUser({
+  //       ...req.body,
+  //       userID: userId // Associate the post with the user who created it
+  //     });
+  //     const result = await newPost.save();
+  //     res.status(201).json(result);
+  //   } catch (error) {
+  //     res.status(500).json({ error: 'Failed to create post.' });
+  //   }
+  // }
 }

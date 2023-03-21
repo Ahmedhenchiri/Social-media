@@ -6,5 +6,5 @@ const {getAll,addPost,getallPostOfUser} = require("../controllers/post.controlle
 
 router.get("/",getAll)
 router.post("/add",addPost)
-router.get("/getAll",getallPostOfUser)
+router.get("/getAll/:id",getallPostOfUser)
 module.exports=router

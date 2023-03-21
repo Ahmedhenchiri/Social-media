@@ -65,12 +65,33 @@ const Register = async (req,res)=>{
     res.status(404).json(error.message)
     }
 }
- const  getAllPost = async(req,res) =>{
-  let findAll = await UserModel.find({id:req.params.id})
-  .populate("posts")
-  res.json(findAll)
+//  const  getAllPost = async(req,res) =>{
+//   let findAll = await UserModel.find({id:req.params.id})
+//   .populate("posts")
+//   res.json(findAll)
 
-}
+// }
+const getAllPost = async (req, res) => {
+  try {
+    const posts = await UserModel.find({})
+      .populate({
+        path: "posts",
+        select: "posts",
+      })
+      // .populate({
+      //   path: "comments.user",
+      //   select: "username",
+      // });
+    res.json(posts);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Server error" });
+  }
+
+};
+// const getOne = async ()=>{
+   
+// }
 
 
 module.exports={Login,Register,getAllPost}
