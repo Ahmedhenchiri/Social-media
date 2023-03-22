@@ -3,8 +3,13 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import api from "../../../api/Api";
+import { useLocaleStorge } from "../../../Context/LocalStorageContext";
 
 const Modale = () => {
+  const { myData } = useLocaleStorge();
+  const Data = JSON.parse(myData);
+  const userId =Data._id
+  console.log("🚀 ~ file: Modal.tsx:10 ~ Modale ~ myData:", Data._id)
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -35,7 +40,7 @@ const Modale = () => {
     event.preventDefault();
     try {
       const imageUrl = await upladImage(file)
-      await api.post("/post/add", {...form,image:imageUrl});
+      await api.post("/post/add", {...form,image:imageUrl,userId});
       setShow(false);
     } catch (error) {
       console.log(error);

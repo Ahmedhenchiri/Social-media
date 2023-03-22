@@ -6,12 +6,15 @@ const Profile = () => {
   const {myData} = useLocaleStorge()
   const Data = JSON.parse(myData);
   console.log("🚀 ~ file: Profile.tsx:7 ~ Profile ~ Data:", Data)
- 
+   const id = Data._id
+
 
 const getPostUser = async () => {
+ 
   try{
-  const response = await api.get("/post/getAll")
-  console.log("🚀 ~ file: Profile.tsx:14 ~ getPostUser ~ response:", response.data)
+  const response = await api.get(`/post/getAll/${id}`)
+
+  console.log("🚀 ~ file: Profile.tsx:15 ~ getPostUser ~ response:", response.data)
   
   }catch(error){
     console.log(error)
