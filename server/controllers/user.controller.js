@@ -71,6 +71,19 @@ const Register = async (req,res)=>{
 //   res.json(findAll)
 
 // }
+const getOneUser = async (req, res) => {
+  try {
+    let findOne = await UserModel.findById(req.params.id);
+    if (!findOne) {
+      res.status(404).json({ error: 'User not found' });
+    } else {
+      res.status(200).json(findOne);
+    }
+  } catch (error) {
+    res.status(500).json({ error: 'Server error' });
+  }
+}
+
 const getAllPost = async (req, res) => {
   try {
     const posts = await UserModel.find({})
@@ -94,4 +107,4 @@ const getAllPost = async (req, res) => {
 // }
 
 
-module.exports={Login,Register,getAllPost}
+module.exports={Login,Register,getAllPost,getOneUser}
