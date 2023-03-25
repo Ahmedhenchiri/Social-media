@@ -1,28 +1,40 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import api from '../../api/Api'
 import { useLocaleStorge } from '../../Context/LocalStorageContext'
 import "./Profile.css"
 const Profile = () => {
   const {myData} = useLocaleStorge()
+  const [data ,setData]=useState({name:"",image:"",email:""})
+
   const Data = JSON.parse(myData);
-  console.log("🚀 ~ file: Profile.tsx:7 ~ Profile ~ Data:", Data)
+  // console.log("🚀 ~ file: Profile.tsx:7 ~ Profile ~ Data:", Data)
    const id = Data._id
 
 
-const getPostUser = async () => {
+// const getPostUser = async () => {
  
-  try{
-  const response = await api.get(`/post/getAll/${id}`)
+//   try{
+//   const response = await api.get(`/post/getAll/${id}`)
 
-  console.log("🚀 ~ file: Profile.tsx:15 ~ getPostUser ~ response:", response.data)
+//   console.log("🚀 ~ file: Profile.tsx:15 ~ getPostUser ~ response:", response.data)
   
-  }catch(error){
-    console.log(error)
-  }
-}
+//   }catch(error){
+//     console.log(error)
+//   }
+// }
   useEffect(()=>{
-    getPostUser()
+    // getPostUser()
+    getOneUser()
   },[])
+  const getOneUser=async()=>{
+    try{
+      const response = await api.get(`/user/getOne/${id}`)
+      setData(response.data)
+
+    }catch(error){
+      console.log(error)
+  }
+  }
 
 
  
@@ -36,11 +48,11 @@ const getPostUser = async () => {
     <clipPath id="circle-mask">
     <circle cx="50" cy="50" r="50" />
     </clipPath>
-    <image className='profile' xlinkHref={Data.image} width="100" height="100" clipPath="url(#circle-mask)" />
+    <image className='profile' xlinkHref={data.image} width="100" height="100" clipPath="url(#circle-mask)" />
     </svg>
-    <h1>{Data.name}</h1>
-    <h1>{Data.email}</h1>
-    {/* <h1>{Data.posts}</h1> */}
+    <h1>{data.name}</h1>
+    <h1>{data.email}</h1>
+ 
     
     </div>
     </div>
