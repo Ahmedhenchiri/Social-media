@@ -1,3 +1,4 @@
+const { findOneAndDelete } = require("../models/post")
 const PostUser = require ("../models/post")
 
 module.exports={
@@ -33,7 +34,7 @@ module.exports={
       }catch(error){
        res.status(404).json(error)
       }
-   } 
+   } ,
   //  addPost: async (req, res) => {
   //   try {
   //     const { userId } = req.user; // Extract the user ID from the request object
@@ -47,4 +48,12 @@ module.exports={
   //     res.status(500).json({ error: 'Failed to create post.' });
   //   }
   // }
+  deletePost:async(req,res)=>{
+     try{
+      const result = await PostUser.findOneAndDelete({id:req.params.id})
+      res.status(201).json(result)
+     }catch(error){
+      res.status(500).json(error)
+     }
+  }
 }
