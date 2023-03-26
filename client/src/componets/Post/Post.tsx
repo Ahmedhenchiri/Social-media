@@ -2,9 +2,11 @@ import { usePost } from "../../Context/PostContext";
 import "./Post.css";
 
 const Post = () => {
-  const { posts } = usePost();
+  const { posts ,deletePost} = usePost();
 
-
+  const handleDeletePost = (postId:number) => {
+    deletePost(postId);
+  };
   return (
     <div>
       {posts.map((post) => (
@@ -20,7 +22,7 @@ const Post = () => {
           <div className="post-list-item-lede">
             <img src={post.image} alt="no image" />
           </div>
-         <button>delete</button> 
+         <button onClick={() => handleDeletePost(post._id)}>delete</button> 
          <button >update</button> 
 
         </div>

@@ -45,6 +45,8 @@ export type Post = {
 export type PostContextType = {
   posts: Post[];
   getAllPosts: () => Promise<void>;
+  deletePost: (postId: number) => Promise<void>;
+
 };
 export type ChildrenType = {
   children: React.ReactNode;

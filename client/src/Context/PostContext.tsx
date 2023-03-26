@@ -5,6 +5,7 @@ import { Post, PostContextType, ChildrenType } from "../types/types";
 const PostContext = createContext<PostContextType>({
   posts: [],
   getAllPosts: async () => {},
+  deletePost:async()=>{}
 });
 
 const PostProvider = ({ children }: ChildrenType) => {
@@ -18,13 +19,21 @@ const PostProvider = ({ children }: ChildrenType) => {
       console.log(error);
     }
   };
+  const deletePost = async (postId:number )=>{
+     try{
+     await api.delete(`/post/${postId}`)
+     setPosts(posts.filter((post)=>post._id !== postId))
+     }catch(error){
+      console.log(error)
+     }
+  }
 
   useEffect(() => {
     getAllPosts();
   }, []);
 
   return (
-    <PostContext.Provider value={{ posts, getAllPosts }}>
+    <PostContext.Provider value={{ posts, getAllPosts ,deletePost}}>
       {children}
     </PostContext.Provider>
   );
