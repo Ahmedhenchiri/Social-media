@@ -4,10 +4,12 @@ import "./Post.css";
 const Post = () => {
   const { posts } = usePost();
 
+
   return (
     <div>
-      {posts.map((post,index) => (
-        <div className="post-list-item" key={index}>
+      {posts.map((post) => (
+        <div className="post-list-item" key={post._id} >
+
           <div className="post-list-item-title">{post.title}</div>
           <div className="post-list-item-byline">
             <span className="post-list-item-byline-author">
