@@ -6,6 +6,7 @@ const Post = () => {
 
   const handleDeletePost = (postId:number) => {
     deletePost(postId);
+    // console.log("🚀 ~ file: Post.tsx:10 ~ handleDeletePost ~ postId:", postId)
   };
   return (
     <div>

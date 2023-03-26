@@ -21,7 +21,7 @@ const PostProvider = ({ children }: ChildrenType) => {
   };
   const deletePost = async (postId:number )=>{
      try{
-     await api.delete(`/post/${postId}`)
+     await api.delete(`/post/deletePost/${postId}`)
      setPosts(posts.filter((post)=>post._id !== postId))
      }catch(error){
       console.log(error)
