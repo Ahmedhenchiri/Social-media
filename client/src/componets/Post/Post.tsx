@@ -21,7 +21,7 @@ const Post = () => {
             <img src={post.image} alt="no image" />
           </div>
          <button>delete</button> 
-         <button>update</button> 
+         <button >update</button> 
 
         </div>
       ))}

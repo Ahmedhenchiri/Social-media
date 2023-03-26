@@ -36,7 +36,7 @@ export type handleSubmitType = {
   event: React.FormEvent<HTMLFormElement>;
 };
 export type Post = {
-  id: number;
+  _id: number;
   title: string;
   content: string;
   image: string;
