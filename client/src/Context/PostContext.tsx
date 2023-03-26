@@ -14,7 +14,6 @@ const PostProvider = ({ children }: ChildrenType) => {
     try {
       const response = await api.get("/post/");
       setPosts(response.data);
-      console.log("🚀 ~ file: PostContext.tsx:20 ~ getAllPosts ~ response.data:", response.data)
     } catch (error) {
       console.log(error);
     }

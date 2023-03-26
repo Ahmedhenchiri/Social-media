@@ -18,6 +18,9 @@ const Post = () => {
           <div className="post-list-item-lede">
             <img src={post.image} alt="no image" />
           </div>
+         <button>delete</button> 
+         <button>update</button> 
+
         </div>
       ))}
     </div>
