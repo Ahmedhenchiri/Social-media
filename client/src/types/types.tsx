@@ -24,6 +24,8 @@ export type InputsType = {
 export type buttonType = {
   type?: "button" | "submit" | "reset" | undefined;
   name: string;
+  className?:string| undefined;
+  onClick?: () => void | Promise<void>;
 };
 
 export type LocaleStorageContextType = {

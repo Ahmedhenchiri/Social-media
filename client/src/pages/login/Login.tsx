@@ -61,7 +61,9 @@ const Login = () => {
                 onChange={onChangeHandler}
               />
               <div className="d-flex justify-content-between">
-                <Buttons name="Login" type="submit" />
+
+
+                <Buttons name="Login" type="submit" className="fa-solid fa-floppy-disk"/>
                 <Link to="/register">I don't have account</Link>
               </div>
             </form>
