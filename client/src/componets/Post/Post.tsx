@@ -20,12 +20,8 @@ const Post = () => {
           <div className="post-list-item-lede">
             <img src={post.image} alt="no image" />
           </div>
-         {/* <button >delete</button>  */}
-         <Buttons   name="delete" onClick={() => deletePost(post._id)} />
-         <Buttons   name="update" />
-
-         <button >update</button> 
-
+         <Buttons   name="Delete" onClick={() => deletePost(post._id)} />
+         <Buttons   name="Update" />
         </div>
       ))}
     </div>
