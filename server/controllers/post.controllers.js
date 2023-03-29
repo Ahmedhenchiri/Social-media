@@ -55,5 +55,13 @@ module.exports={
      }catch(error){
       res.status(500).json(error)
      }
+  },
+  updatePost :async(req,res)=>{
+    const update = await PostUser.findOneAndUpdate(req.params.id,req.body)
+    try{
+       res.status(201).json(update)
+    }catch(error){
+      res.status(500).json(error)
+    }
   }
 }
