@@ -21,7 +21,7 @@ const Profile = () => {
 //   }
 // }
   useEffect(()=>{
-    // getPostUser()
+    
     getOneUser()
   },[])
   const getOneUser=async()=>{
