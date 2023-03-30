@@ -27,6 +27,7 @@ const PostProvider = ({ children }: ChildrenType) => {
       console.log(error)
      }
   }
+  
 
   useEffect(() => {
     getAllPosts();

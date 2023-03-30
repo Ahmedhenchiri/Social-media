@@ -63,5 +63,8 @@ module.exports={
     }catch(error){
       res.status(500).json(error)
     }
+  },
+  getOnePost:async(req,res)=>{
+       
   }
 }

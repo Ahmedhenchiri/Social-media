@@ -1,10 +1,10 @@
 import { usePost } from "../../Context/PostContext";
 import Buttons from "../custom/buttons/Buttons";
 import "./Post.css";
-
+import CostomModal from "../custom/Modal/CustomModal";
 const Post = () => {
   const { posts ,deletePost} = usePost();
-
+  
   return (
     <div>
       {posts.map((post) => (
@@ -21,7 +21,9 @@ const Post = () => {
             <img src={post.image} alt="no image" />
           </div>
          <Buttons   name="Delete" onClick={() => deletePost(post._id)} />
-         <Buttons   name="Update" />
+         <CostomModal name="Update"  />
+       {/* <Buttons   name="Update"   />
+          <Link  to="/modal/"> UPDATE</Link> */}
         </div>
       ))}
     </div>

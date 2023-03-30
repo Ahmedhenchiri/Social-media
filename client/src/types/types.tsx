@@ -53,3 +53,7 @@ export type PostContextType = {
 export type ChildrenType = {
   children: React.ReactNode;
 };
+export type CostomModalType ={
+  name:string,
+  Name?:string
+}
