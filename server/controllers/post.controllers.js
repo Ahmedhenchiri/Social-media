@@ -16,7 +16,8 @@ module.exports={
     try{
       res.status(201).json(all)
     }catch(error){
-    res.status(404).json(error)
+      res.status(500).json({ message: "Error fetching post", error });
+
     }
    },
    addPost: async (req,res) => {
@@ -32,7 +33,8 @@ module.exports={
         res.status(201).json(result)
     
       }catch(error){
-       res.status(404).json(error)
+        res.status(500).json({ message: "Error fetching post", error });
+
       }
    } ,
   //  addPost: async (req, res) => {
@@ -53,7 +55,8 @@ module.exports={
       const result = await PostUser.findOneAndDelete({id:req.params.id})
       res.status(201).json(result)
      }catch(error){
-      res.status(500).json(error)
+      res.status(500).json({ message: "Error fetching post", error });
+
      }
   },
   updatePost :async(req,res)=>{
@@ -61,10 +64,18 @@ module.exports={
     try{
        res.status(201).json(update)
     }catch(error){
-      res.status(500).json(error)
+      res.status(500).json({ message: "Error fetching post", error });
+
     }
   },
-  getOnePost:async(req,res)=>{
-       
+  findOnePost:async(req,res)=>{
+
+      try {
+        const post = await PostUser.findById(req.params.id);
+        res.status(200).json(post);
+      } catch (error) {
+        res.status(500).json({ message: "Error fetching post", error });
+      }
   }
-}
+
+};

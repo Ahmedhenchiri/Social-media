@@ -46,7 +46,9 @@ export type Post = {
 
 export type PostContextType = {
   posts: Post[];
+  onePost:any;
   getAllPosts: () => Promise<void>;
+  getOne:(postId: number)=>Promise<void>;
   deletePost: (postId: number) => Promise<void>;
 
 };
@@ -55,5 +57,8 @@ export type ChildrenType = {
 };
 export type CostomModalType ={
   name:string,
-  Name?:string
+  Name?:string,
+  postId:number,
+  onClick?: () => void | Promise<void>;
+
 }

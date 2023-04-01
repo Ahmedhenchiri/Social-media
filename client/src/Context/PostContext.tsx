@@ -4,13 +4,17 @@ import { Post, PostContextType, ChildrenType } from "../types/types";
 
 const PostContext = createContext<PostContextType>({
   posts: [],
+  onePost:[],
   getAllPosts: async () => {},
+  getOne: async ()=>{},
   deletePost:async()=>{}
 });
 
 const PostProvider = ({ children }: ChildrenType) => {
   const [posts, setPosts] = useState<Post[]>([]);
+  const [onePost,setOnePost]= useState<any>([])
 
+  
   const getAllPosts = async () => {
     try {
       const response = await api.get("/post/");
@@ -19,6 +23,14 @@ const PostProvider = ({ children }: ChildrenType) => {
       console.log(error);
     }
   };
+  const getOne = async(postId:number)=>{
+    try{
+     const response = await api.get(`/post/getOne/${postId}`)
+     setOnePost(response.data)
+    }catch(error){
+      console.log(error)
+    }
+  }
   const deletePost = async (postId:number )=>{
      try{
      await api.delete(`/post/deletePost/${postId}`)
@@ -27,14 +39,15 @@ const PostProvider = ({ children }: ChildrenType) => {
       console.log(error)
      }
   }
-  
+
 
   useEffect(() => {
-    getAllPosts();
+    getAllPosts(),
+    getOne(onePost._id)
   }, []);
 
   return (
-    <PostContext.Provider value={{ posts, getAllPosts ,deletePost}}>
+    <PostContext.Provider value={{ posts, getAllPosts ,deletePost,getOne,onePost}}>
       {children}
     </PostContext.Provider>
   );
