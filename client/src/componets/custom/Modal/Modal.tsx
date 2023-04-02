@@ -4,9 +4,11 @@ import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import api from "../../../api/Api";
 import { useLocaleStorge } from "../../../Context/LocalStorageContext";
+import { usePost} from "../../../Context/PostContext";
 
 const Modale = () => {
   const { myData } = useLocaleStorge();
+  const {upladImage,addPost} = usePost()
   const Data = JSON.parse(myData);
   const userId =Data._id
   const [show, setShow] = useState(false);
@@ -26,25 +28,42 @@ const Modale = () => {
       setFile(file);
     }
   }
-  const upladImage = async(file:File)=>{
-    const forms = new FormData()
-    forms.append('file',file)
-    forms.append('upload_preset',"ahmedhen")
-    const response = await api.post("https://api.cloudinary.com/v1_1/dxpnslfmc/image/upload",forms)
-    return response.data.secure_url
-   
-    
-  }
+  // const handleFileInputChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
+  //   const file = event.target.files?.[0];
+  //   if (file) {
+  //     setFile(file);
+  //     const imageUrl = await upladImage(file);
+  //     setForm({
+  //       ...form,
+  //       image: imageUrl,
+  //     });
+  //   }
+  
+  // const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+  //   event.preventDefault();
+  //   try {
+  //     const imageUrl = await upladImage(file)
+  //     await api.post("/post/add", {...form,image:imageUrl,user:userId});
+  //     setShow(false);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
-      const imageUrl = await upladImage(file)
-      await api.post("/post/add", {...form,image:imageUrl,user:userId});
+      if (file) {
+        const imageUrl = await upladImage(file);
+        await addPost({...form, image: imageUrl, user: userId});
+      } else {
+        await addPost({...form, user: userId});
+      }
       setShow(false);
     } catch (error) {
       console.log(error);
     }
   };
+
 
   return (
     <>
@@ -96,7 +115,7 @@ const Modale = () => {
             <Button variant="secondary" onClick={handleClose}>
               Close
             </Button>
-            <Button variant="primary" type="submit">
+            <Button variant="primary" type="submit" >
               Save Changes
             </Button>
           </Modal.Footer>

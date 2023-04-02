@@ -51,6 +51,8 @@ export type PostContextType = {
   getOne:(postId: number)=>Promise<void>;
   deletePost: (postId: number) => Promise<void>;
   updatePost: (postId: number, postData: postDataType) => Promise<void>; 
+  upladImage:(file: File) =>Promise<void>;
+  addPost:(form:formType)=>Promise<void>;
  
 };
 export type ChildrenType = {
@@ -66,4 +68,11 @@ export type CostomModalType ={
 export type postDataType ={
   title:string,
   content:string
+}
+export type formType ={
+  image:File | undefined,
+  userId:number,
+  title:string,
+  content:string
+
 }

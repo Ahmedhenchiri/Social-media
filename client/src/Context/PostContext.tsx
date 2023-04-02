@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import api from "../api/Api";
-import { Post, PostContextType, ChildrenType,postDataType } from "../types/types";
+import { Post, PostContextType, ChildrenType,postDataType ,formType} from "../types/types";
 
 const PostContext = createContext<PostContextType>({
   posts: [],
@@ -8,14 +8,22 @@ const PostContext = createContext<PostContextType>({
   getAllPosts: async () => {},
   getOne: async ()=>{},
   deletePost:async()=>{},
-  updatePost:async()=>{}
+  updatePost:async()=>{},
+  upladImage: async () => {},
+  addPost: async () => {}
 });
 
 const PostProvider = ({ children }: ChildrenType) => {
   const [posts, setPosts] = useState<Post[]>([]);
   const [onePost,setOnePost]= useState<any>([])
 
-  
+  const upladImage = async(file:File)=>{
+    const forms = new FormData()
+    forms.append('file',file)
+    forms.append('upload_preset',"ahmedhen")
+    const response = await api.post("https://api.cloudinary.com/v1_1/dxpnslfmc/image/upload",forms)
+    return response.data.secure_url
+  }
   const getAllPosts = async () => {
     try {
       const response = await api.get("/post/");
@@ -48,6 +56,16 @@ const PostProvider = ({ children }: ChildrenType) => {
       console.log(error)
     }
   }
+  const addPost= async (form:formType) => {
+   
+    try {
+      
+      await api.post("/post/add",form);
+     
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
 
   useEffect(() => {
@@ -56,7 +74,7 @@ const PostProvider = ({ children }: ChildrenType) => {
   }, []);
 
   return (
-    <PostContext.Provider value={{ posts, getAllPosts ,deletePost,getOne,onePost,updatePost}}>
+    <PostContext.Provider value={{ posts, getAllPosts ,deletePost,getOne,onePost,updatePost,upladImage,addPost}}>
       {children}
     </PostContext.Provider>
   );
