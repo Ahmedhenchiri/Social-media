@@ -1,13 +1,14 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import api from "../api/Api";
-import { Post, PostContextType, ChildrenType } from "../types/types";
+import { Post, PostContextType, ChildrenType,postDataType } from "../types/types";
 
 const PostContext = createContext<PostContextType>({
   posts: [],
   onePost:[],
   getAllPosts: async () => {},
   getOne: async ()=>{},
-  deletePost:async()=>{}
+  deletePost:async()=>{},
+  updatePost:async()=>{}
 });
 
 const PostProvider = ({ children }: ChildrenType) => {
@@ -39,6 +40,14 @@ const PostProvider = ({ children }: ChildrenType) => {
       console.log(error)
      }
   }
+  const updatePost = async(postId:number,postData:postDataType) =>{
+    try{
+      await api.put(`/post/update/${postId}`,postData)
+      setPosts(posts.map(post => post._id === postId ? {...post, ...postData} : post));
+    }catch(error){
+      console.log(error)
+    }
+  }
 
 
   useEffect(() => {
@@ -47,7 +56,7 @@ const PostProvider = ({ children }: ChildrenType) => {
   }, []);
 
   return (
-    <PostContext.Provider value={{ posts, getAllPosts ,deletePost,getOne,onePost}}>
+    <PostContext.Provider value={{ posts, getAllPosts ,deletePost,getOne,onePost,updatePost}}>
       {children}
     </PostContext.Provider>
   );

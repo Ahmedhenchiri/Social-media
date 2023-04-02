@@ -50,7 +50,8 @@ export type PostContextType = {
   getAllPosts: () => Promise<void>;
   getOne:(postId: number)=>Promise<void>;
   deletePost: (postId: number) => Promise<void>;
-
+  updatePost: (postId: number, postData: postDataType) => Promise<void>; 
+ 
 };
 export type ChildrenType = {
   children: React.ReactNode;
@@ -61,4 +62,8 @@ export type CostomModalType ={
   postId:number,
   onClick?: () => void | Promise<void>;
 
+};
+export type postDataType ={
+  title:string,
+  content:string
 }
