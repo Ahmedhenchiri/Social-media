@@ -59,13 +59,40 @@ module.exports={
 
      }
   },
-  updatePost :async(req,res)=>{
-    const update = await PostUser.findOneAndUpdate(req.params.id,req.body)
-    try{
-       res.status(201).json(update)
-    }catch(error){
-      res.status(500).json({ message: "Error fetching post", error });
+  // updatePost :async(req,res)=>{
+  //   const update = await PostUser.findOneAndUpdate(req.params.id,req.body)
+  //   try{
+  //      res.status(201).json(update)
+  //   }catch(error){
+  //     res.status(500).json({ message: "Error fetching post", error });
 
+  //   }
+  // },
+  updatePost: async (req, res) => {
+    try {
+      const post = await PostUser.findById(req.params.id);
+  
+      if (!post) {
+        return res.status(404).json({ message: "Post not found" });
+      }
+  
+      // Validate input data
+      const { title, content } = req.body;
+  
+      if (!title || !content) {
+        return res.status(400).json({ message: "Title and content are required" });
+      }
+  
+      post.title = title;
+      post.content = content;
+  
+      // Save updated post
+      const updatedPost = await post.save();
+  
+      res.status(200).json({ message: "Post updated successfully", data: updatedPost });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: "Error updating post" });
     }
   },
   findOnePost:async(req,res)=>{
