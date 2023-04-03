@@ -61,7 +61,7 @@ export type ChildrenType = {
 export type CostomModalType ={
   name:string,
   Name?:string,
-  postId:number,
+  postId?: number,
   onClick?: () => void | Promise<void>;
 
 };

@@ -28,17 +28,6 @@ const Modale = () => {
       setFile(file);
     }
   }
-  // const handleFileInputChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
-  //   const file = event.target.files?.[0];
-  //   if (file) {
-  //     setFile(file);
-  //     const imageUrl = await upladImage(file);
-  //     setForm({
-  //       ...form,
-  //       image: imageUrl,
-  //     });
-  //   }
-  
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
@@ -49,20 +38,7 @@ const Modale = () => {
       console.log(error);
     }
   };
-  // const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-  //   event.preventDefault();
-  //   try {
-  //     if (file) {
-  //       const imageUrl = await upladImage(file);
-  //       await addPost({...form, image: imageUrl, user: userId});
-  //     } else {
-  //       await addPost({...form, user: userId});
-  //     }
-  //     setShow(false);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
+  
 
 
   return (

@@ -14,7 +14,14 @@ const CostomModal = ({name,Name,postId}:CostomModalType) =>{
 
   useEffect(() => {
     if (show) {
-      getOne(postId);
+      if (postId !== undefined) {
+        // postId is defined, so we can safely pass it to the function
+        getOne(postId);
+      } else {
+        // postId is undefined, so we need to handle this case
+        console.log('postId is undefined');
+      }
+      
     }
   }, [show]);
   const handleTitleChange = (e:any) => {
@@ -39,7 +46,7 @@ const CostomModal = ({name,Name,postId}:CostomModalType) =>{
       setContent(onePost?.content);
     }
   }, [onePost]);
-  console.log(onePost._id)
+
   const handleSubmit = (event:React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     updatePost( onePost._id, { title, content }).then(()=>{
