@@ -15,15 +15,10 @@ const PostContext = createContext<PostContextType>({
 
 const PostProvider = ({ children }: ChildrenType) => {
   const [posts, setPosts] = useState<Post[]>([]);
+  console.log("🚀 ~ file: PostContext.tsx:18 ~ PostProvider ~ posts:", posts)
   const [onePost,setOnePost]= useState<any>([])
 
-  const upladImage = async(file:File)=>{
-    const forms = new FormData()
-    forms.append('file',file)
-    forms.append('upload_preset',"ahmedhen")
-    const response = await api.post("https://api.cloudinary.com/v1_1/dxpnslfmc/image/upload",forms)
-    return response.data.secure_url
-  }
+  
   const getAllPosts = async () => {
     try {
       const response = await api.get("/post/");
@@ -36,6 +31,7 @@ const PostProvider = ({ children }: ChildrenType) => {
     try{
      const response = await api.get(`/post/getOne/${postId}`)
      setOnePost(response.data)
+     console.log("🚀 ~ file: PostContext.tsx:34 ~ getOne ~ postId:", postId)
     }catch(error){
       console.log(error)
     }
@@ -55,6 +51,13 @@ const PostProvider = ({ children }: ChildrenType) => {
     }catch(error){
       console.log(error)
     }
+  }
+  const upladImage = async(file:File)=>{
+    const forms = new FormData()
+    forms.append('file',file)
+    forms.append('upload_preset',"ahmedhen")
+    const response = await api.post("https://api.cloudinary.com/v1_1/dxpnslfmc/image/upload",forms)
+    return response.data.secure_url
   }
   const addPost= async (form:formType) => {
    

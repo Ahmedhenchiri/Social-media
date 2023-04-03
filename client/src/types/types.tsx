@@ -71,7 +71,7 @@ export type postDataType ={
 }
 export type formType ={
   image:File | undefined,
-  userId:number,
+  user:any,
   title:string,
   content:string
 

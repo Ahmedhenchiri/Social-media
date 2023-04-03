@@ -39,6 +39,7 @@ const CostomModal = ({name,Name,postId}:CostomModalType) =>{
       setContent(onePost?.content);
     }
   }, [onePost]);
+  console.log(onePost._id)
   const handleSubmit = (event:React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     updatePost( onePost._id, { title, content }).then(()=>{
