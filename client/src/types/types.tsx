@@ -63,7 +63,7 @@ export type CostomModalType ={
   Name?:string,
   postId?: number,
   onClick?: () => void | Promise<void>;
-
+  // addPost:(event: React.FormEvent<HTMLFormElement>)=>Promise<void>;
 };
 export type postDataType ={
   title:string,

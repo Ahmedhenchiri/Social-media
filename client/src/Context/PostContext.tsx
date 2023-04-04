@@ -1,24 +1,28 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import api from "../api/Api";
-import { Post, PostContextType, ChildrenType,postDataType ,formType} from "../types/types";
+import {
+  Post,
+  PostContextType,
+  ChildrenType,
+  postDataType,
+  formType,
+} from "../types/types";
 
 const PostContext = createContext<PostContextType>({
   posts: [],
-  onePost:[],
+  onePost: [],
   getAllPosts: async () => {},
-  getOne: async ()=>{},
-  deletePost:async()=>{},
-  updatePost:async()=>{},
+  getOne: async () => {},
+  deletePost: async () => {},
+  updatePost: async () => {},
   upladImage: async () => {},
-  addPost: async () => {}
+  addPost: async () => {},
 });
 
 const PostProvider = ({ children }: ChildrenType) => {
   const [posts, setPosts] = useState<Post[]>([]);
-  console.log("🚀 ~ file: PostContext.tsx:18 ~ PostProvider ~ posts:", posts)
-  const [onePost,setOnePost]= useState<any>([])
+  const [onePost, setOnePost] = useState<any>([]);
 
-  
   const getAllPosts = async () => {
     try {
       const response = await api.get("/post/");
@@ -27,57 +31,69 @@ const PostProvider = ({ children }: ChildrenType) => {
       console.log(error);
     }
   };
-  const getOne = async(postId:number)=>{
-    try{
-     const response = await api.get(`/post/getOne/${postId}`)
-     setOnePost(response.data)
-     console.log("🚀 ~ file: PostContext.tsx:34 ~ getOne ~ postId:", postId)
-    }catch(error){
-      console.log(error)
-    }
-  }
-  const deletePost = async (postId:number )=>{
-     try{
-     await api.delete(`/post/deletePost/${postId}`)
-     setPosts(posts.filter((post)=>post._id !== postId))
-     }catch(error){
-      console.log(error)
-     }
-  }
-  const updatePost = async(postId:number,postData:postDataType) =>{
-    try{
-      await api.put(`/post/update/${postId}`,postData)
-      setPosts(posts.map(post => post._id === postId ? {...post, ...postData} : post));
-    }catch(error){
-      console.log(error)
-    }
-  }
-  const upladImage = async(file:File)=>{
-    const forms = new FormData()
-    forms.append('file',file)
-    forms.append('upload_preset',"ahmedhen")
-    const response = await api.post("https://api.cloudinary.com/v1_1/dxpnslfmc/image/upload",forms)
-    return response.data.secure_url
-  }
-  const addPost= async (form:formType) => {
-   
+  const getOne = async (postId: number) => {
     try {
-      
-      await api.post("/post/add",form);
-     
+      const response = await api.get(`/post/getOne/${postId}`);
+      setOnePost(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const deletePost = async (postId: number) => {
+    try {
+      await api.delete(`/post/deletePost/${postId}`);
+      setPosts(posts.filter((post) => post._id !== postId));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const updatePost = async (postId: number, postData: postDataType) => {
+    try {
+      await api.put(`/post/update/${postId}`, postData);
+      setPosts(
+        posts.map((post) =>
+          post._id === postId ? { ...post, ...postData } : post
+        )
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const upladImage = async (file: File) => {
+    const forms = new FormData();
+    forms.append("file", file);
+    forms.append("upload_preset", "ahmedhen");
+    const response = await api.post(
+      "https://api.cloudinary.com/v1_1/dxpnslfmc/image/upload",
+      forms
+    );
+    return response.data.secure_url;
+  };
+  const addPost = async (form: formType) => {
+    try {
+      await api.post("/post/add", form);
     } catch (error) {
       console.log(error);
     }
   };
 
-
   useEffect(() => {
-    getAllPosts(),
-    getOne(onePost._id)
+    getAllPosts(), getOne(onePost._id);
   }, []);
 
   return (
-    <PostContext.Provider value={{ posts, getAllPosts ,deletePost,getOne,onePost,updatePost,upladImage,addPost}}>
+    <PostContext.Provider
+      value={{
+        posts,
+        getAllPosts,
+        deletePost,
+        getOne,
+        onePost,
+        updatePost,
+        upladImage,
+        addPost,
+      }}
+    >
       {children}
     </PostContext.Provider>
   );

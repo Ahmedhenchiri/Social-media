@@ -1,10 +1,11 @@
 import {useEffect, useState} from "react"
 import { Button, Form, Modal } from "react-bootstrap";
+import api from "../../../api/Api";
 import { usePost } from "../../../Context/PostContext";
 import { CostomModalType, Post } from "../../../types/types";
 
 const CostomModal = ({name,Name,postId}:CostomModalType) =>{
-  const {getOne,onePost,updatePost} = usePost();
+  const {getOne,onePost,updatePost,upladImage} = usePost();
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -34,6 +35,12 @@ const CostomModal = ({name,Name,postId}:CostomModalType) =>{
       setImage(e.target.files[0]);
     }
   };
+  // const handleImageChange=(event: React.ChangeEvent<HTMLInputElement>) =>{
+  //   const file = event.target.files?.[0];
+  //   if (file) {
+  //     setFile(file);
+  //   }
+  // }
 
   // Update the state variable 'content' when the input value changes
   const handleContentChange = (e:any) => {
@@ -53,6 +60,16 @@ const CostomModal = ({name,Name,postId}:CostomModalType) =>{
       handleClose()
     })
   };
+  // const addPost = async (event: React.FormEvent<HTMLFormElement>) => {
+  //   event.preventDefault();
+  //   try {
+  //     const imageUrl = await upladImage(image)
+  //     await api.post("/post/add", {...form,image:imageUrl,user:userId});
+  //     setShow(false);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
   return(
     <>
     <Button variant="primary" onClick={handleShow}>
