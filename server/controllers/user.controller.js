@@ -1,76 +1,70 @@
-const UserModel = require("../models/user")
-const ValidateLogin = require("../validation/Login")
-const ValidateRegister = require("../validation/Register")
-const bcrypt =  require("bcryptjs") 
-const jwt = require ("jsonwebtoken")
-const { exists } = require("../models/user")
+const UserModel = require("../models/user");
+const ValidateLogin = require("../validation/Login");
+const ValidateRegister = require("../validation/Register");
+const bcrypt =  require("bcryptjs"); 
+const jwt = require("jsonwebtoken");
 const Login = async (req,res)=>{
-    const {error,isValid} = ValidateLogin(req.body)
-     try{
+    const {error,isValid} = ValidateLogin(req.body);
+    try{
       if(!isValid){
-        res.status(404).json(error)
+        res.status(404).json(error);
       }else{
         UserModel.findOne({email:req.body.email})
         .then(user=>{
             if(!user){
-                error.email="not fond email"
-                res.status(404).json(error)
+                error.email="not fond email";
+                res.status(404).json(error);
             }else {
-            bcrypt.compare(req.body.password,user.password)
-            .then(isMatch=>{
-                if (!isMatch){
-                error.password = "is incorrect"
-                res.status(404).json(error)
-            }else {
-                var token = jwt.sign({
-                    id:user._id,
-                    name:user.name,
-                    email:user.email
-                },process.env.PRIVETE_KEY,{expiresIn:'1h'})
-                res.status(200).json({
-                    message:'succses',
-                    token,
-                    user
-                })
+              bcrypt.compare(req.body.password,user.password)
+              .then(isMatch=>{
+                  if (!isMatch){
+                    error.password = "is incorrect";
+                    res.status(404).json(error);
+                  }else {
+                    var token = jwt.sign({
+                        id:user._id,
+                        name:user.name,
+                        email:user.email
+                    },process.env.PRIVATE_KEY,{expiresIn:'1h'});
+                    res.status(200).json({
+                        message:'success',
+                        token,
+                        user
+                    });
+                  }
+              });
             }
-            })
-            }
-        })
+        });
       }
-     }catch(error){
-      res.status(404).json(error.message)
-     }
+    }catch(error){
+      res.status(404).json(error.message);
+    }
+};
 
-}
 const Register = async (req,res)=>{
-    const {error, isValid}= ValidateRegister (req.body);
+    const {error, isValid}= ValidateRegister(req.body);
     try{
       if(!isValid){
-        res.status(404).json(error)
+        res.status(404).json(error);
       }else {
         UserModel.findOne({email:req.body.email})
         .then(async(exist)=>{
             if(exist){
-                error.email= "user exist"
-                res.status(404).json(error)
+                error.email= "user exist";
+                res.status(404).json(error);
             }else {
-                const hash = bcrypt.hashSync(req.body.password,10)
-                req.body.password= hash
-               await UserModel.create(req.body)
-               res.status(200).json({message:"success"})
+                const hash = bcrypt.hashSync(req.body.password,10);
+                req.body.password= hash;
+               await UserModel.create(req.body);
+               res.status(200).json({message:"success"});
             }
-        })
+        });
       }
     }catch(error){
-    res.status(404).json(error.message)
+      res.status(404).json(error.message);
     }
-}
-//  const  getAllPost = async(req,res) =>{
-//   let findAll = await UserModel.find({id:req.params.id})
-//   .populate("posts")
-//   res.json(findAll)
+};
 
-// }
 const getOneUser = async (req, res) => {
   try {
     let findOne = await UserModel.findById(req.params.id);
@@ -82,7 +76,7 @@ const getOneUser = async (req, res) => {
   } catch (error) {
     res.status(500).json({ error: 'Server error' });
   }
-}
+};
 
 const getAllPost = async (req, res) => {
   try {
@@ -90,21 +84,32 @@ const getAllPost = async (req, res) => {
       .populate({
         path: "posts",
         select: "posts",
-      })
-      // .populate({
-      //   path: "comments.user",
-      //   select: "username",
-      // });
+      });
     res.json(posts);
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Server error" });
   }
-
 };
-// const getOne = async ()=>{
-   
-// }
 
+const createPost = async (req, res) => {
+  try {
+    const userId = req.user.id; 
+    const user = await UserModel.findById(userId);
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+    const newPost = {
+      title: req.body.title,
+      content: req.body.content,
+    };
+    user.posts.push(newPost);
+    await user.save();
+    res.status(201).json({ message: 'Post created successfully' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Server error' });
+  }
+};
 
-module.exports={Login,Register,getAllPost,getOneUser}
+module.exports={Login, Register, getAllPost, getOneUser, createPost};
