@@ -21,3 +21,4 @@ Using validator to validate the User inputs
 -the User has the ability to see others post in the feed 
 there is a implimentation for the routes protection in the front-end by the jwt and of course force redirect when the User logged in
 there is a implimentation for routes protection in the backend attaching the user token to the cookies that will be attached to every request (and response) made between the client and server.
+
