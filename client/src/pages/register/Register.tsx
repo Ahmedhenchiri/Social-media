@@ -82,7 +82,11 @@ const Register = () => {
                 errors={errors.confirm}
               />
               <div className="d-flex justify-content-between">
-                <Buttons type="submit" name="Register" className="fa-solid fa-floppy-disk"  />
+                <Buttons
+                  type="submit"
+                  name="Register"
+                  className="fa-solid fa-floppy-disk"
+                />
                 <Link to="/login">I have account</Link>
               </div>
             </form>

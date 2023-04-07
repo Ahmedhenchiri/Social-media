@@ -8,10 +8,7 @@ const  Home = () => {
   return (
       <> 
       <Modal />
-      {/* <CostomModal name="Add Post" Name='Create Post' /> */}
-
       <Post />
-      
       </>
   )
 }
