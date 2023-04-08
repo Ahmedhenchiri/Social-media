@@ -3,43 +3,49 @@ const ValidateLogin = require("../validation/Login");
 const ValidateRegister = require("../validation/Register");
 const bcrypt =  require("bcryptjs"); 
 const jwt = require("jsonwebtoken");
-const Login = async (req,res)=>{
-    const {error,isValid} = ValidateLogin(req.body);
-    try{
-      if(!isValid){
-        res.status(404).json(error);
-      }else{
-        UserModel.findOne({email:req.body.email})
-        .then(user=>{
-            if(!user){
-                error.email="not fond email";
-                res.status(404).json(error);
-            }else {
-              bcrypt.compare(req.body.password,user.password)
-              .then(isMatch=>{
-                  if (!isMatch){
-                    error.password = "is incorrect";
-                    res.status(404).json(error);
-                  }else {
-                    var token = jwt.sign({
-                        id:user._id,
-                        name:user.name,
-                        email:user.email
-                    },process.env.PRIVATE_KEY,{expiresIn:'1h'});
-                    res.status(200).json({
-                        message:'success',
-                        token,
-                        user
-                    });
-                  }
-              });
-            }
-        });
-      }
-    }catch(error){
-      res.status(404).json(error.message);
-    }
-};
+const { exists } = require("../models/user")
+
+const Login = async(req,res)=>{
+  const {error,isValid} = ValidateLogin(req.body)
+try {
+  if(!isValid){
+      res.status(404).json(error)
+  }else{
+UserModel.findOne({email:req.body.email})
+.then(user=>{
+  if(!user){
+      error.email = "not found user"
+  res.status(404).json(error)
+  }else {
+      bcrypt.compare(req.body.password ,user.password)
+      .then(isMatch =>{
+          if(!isMatch){
+         error.password = "incorrect password"
+         res.status(404).json(error)
+          }else{ 
+      var token = jwt.sign({
+        id :user._id,
+        name:user.name,
+        email:user.email,
+        role:user.role
+          },process.env.PRIVETE_KEY ,{expiresIn : '1h'});    
+        res.status(200).json({
+          message:'success',
+          token,
+          user
+          
+        })
+      
+          }
+      })
+  }
+})
+}
+}catch(error){
+  res.status(404).json(error.message)
+}
+}
+
 
 const Register = async (req,res)=>{
     const {error, isValid}= ValidateRegister(req.body);
@@ -77,6 +83,23 @@ const getOneUser = async (req, res) => {
     res.status(500).json({ error: 'Server error' });
   }
 };
+const updateProfilePhoto=async (req, res) => {
+
+  try {
+    const user = await UserModel.findById(req.params.id);
+    if (!user) {
+      return res.status(404).json({ message: "Post not found" });
+    }
+    const { image } = req.body;
+    user.image=image 
+    const updatedPhoto = await user.save();
+
+    res.status(200).json({ message: "Photo updated successfully", data: updatedPhoto });
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
+
 
 const getAllPost = async (req, res) => {
   try {
@@ -112,4 +135,4 @@ const createPost = async (req, res) => {
   }
 };
 
-module.exports={Login, Register, getAllPost, getOneUser, createPost};
+module.exports={Login, Register, getAllPost, getOneUser, createPost,updateProfilePhoto};
