@@ -1,19 +1,41 @@
 import React, { useState } from 'react'
 import { Button, Form, Modal } from 'react-bootstrap'
 import { ModalTwoType } from '../../../types/types';
-
-
+import { usePost } from '../../../Context/PostContext';
+import { useLocaleStorge } from '../../../Context/LocalStorageContext';
+import api from '../../../api/Api';
 const Modaltwo = ({name,Name, Title,image,Content}:ModalTwoType) => {
+    const {upladImage} = usePost()
+    const {myData} = useLocaleStorge()
+  const Data = JSON.parse(myData);
+  const id = Data._id;
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+    const [file,setFile]=useState<any>("")
+    const handleFileInputChange=(event: React.ChangeEvent<HTMLInputElement>) =>{
+      const file = event.target.files?.[0];
+      if (file) {
+        setFile(file);
+      }
+    }
+    const handleSubmit= async(event: React.FormEvent<HTMLFormElement>)=>{
+    event.preventDefault();
+         try{
+        const imageURl =await upladImage(file)
+         await api.put(`/user/updatePhoto/${id}`,{image:imageURl})
+         setShow(false);
+         }catch(error){
+          console.log(error)
+         }
+    }
   return (
     <>
       <Button variant="primary" onClick={handleShow}>
         {name}
       </Button>
       <Modal show={show} onHide={handleClose}>
-        {/* <form onSubmit={handleSubmit}> */}
+        <form onSubmit={handleSubmit}>
           <Modal.Header closeButton>
        
            <Modal.Title>{Name}</Modal.Title>
@@ -40,7 +62,7 @@ const Modaltwo = ({name,Name, Title,image,Content}:ModalTwoType) => {
                   type="file"
                   placeholder="What is your image "
                   name="image"
-                //   onChange={handleFileInputChange}
+                  onChange={handleFileInputChange}
                 />
                 </>
               }
@@ -70,7 +92,7 @@ const Modaltwo = ({name,Name, Title,image,Content}:ModalTwoType) => {
               Save Changes
             </Button>
           </Modal.Footer>
-        {/* </form> */}
+        </form>
       </Modal>
     </>
   )

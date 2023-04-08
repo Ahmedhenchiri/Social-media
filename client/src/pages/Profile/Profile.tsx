@@ -50,12 +50,12 @@ const Profile = () => {
           />
          
         </svg>
-        <input  
+        {/* <input  
                type="file"   
                 placeholder="What is your image "
                 name="image"
                 // value={image}
-                onChange={handleImageChange} />
+                onChange={handleImageChange} /> */}
                 <Modaltwo name='change your photo' Name="Change your Photo" image="image "/>
         <h1>{data.name}</h1>
         <h1>{data.email}</h1>
