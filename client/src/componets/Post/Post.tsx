@@ -1,7 +1,7 @@
 import { usePost } from "../../Context/PostContext";
 import Buttons from "../custom/buttons/Buttons";
 import "./Post.css";
-import CostomModal from "../custom/Modal/CustomModal";
+import Modaltwo from "../custom/Modal/Modaltwo";
 
 const Post = () => {
   const { posts, deletePost } = usePost();
@@ -21,7 +21,7 @@ const Post = () => {
             <img src={post.image} alt="no image" />
           </div>
           <Buttons name="Delete" onClick={() => deletePost(post._id)} />
-          <CostomModal name="Update" postId={post._id} Name="Update Post" />
+          <Modaltwo name="Update" Name="Update Post" postId={post._id} Title="Title" image="image" Content="content"/>
         </div>
       ))}
     </div>

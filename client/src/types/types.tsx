@@ -70,10 +70,10 @@ export type postDataType ={
   content:string
 }
 export type formType ={
-  image:File | undefined,
-  user:any,
-  title:string,
-  content:string
+  image?:File | undefined,
+  user?:any,
+  title?:string,
+  content?:string
 
 }
 export   type ModalTwoType ={
@@ -81,5 +81,6 @@ export   type ModalTwoType ={
   Name?:string,
   Title?:string,
   image?:string,
-  Content?:string
+  Content?:string,
+  postId?:number
 }

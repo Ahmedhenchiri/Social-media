@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 import { ModalTwoType } from "../../../types/types";
 import { usePost } from "../../../Context/PostContext";
 import { useLocaleStorge } from "../../../Context/LocalStorageContext";
 import api from "../../../api/Api";
-const Modaltwo = ({ name, Name, Title, image, Content }: ModalTwoType) => {
-  const { upladImage } = usePost();
+
+const Modaltwo = ({ name, Name, Title, image, Content ,postId}: ModalTwoType) => {
+  const { upladImage,getOne ,onePost,updatePost} = usePost();
   const { myData } = useLocaleStorge();
   const Data = JSON.parse(myData);
   const id = Data._id;
@@ -15,9 +16,27 @@ const Modaltwo = ({ name, Name, Title, image, Content }: ModalTwoType) => {
   const [file, setFile] = useState<any>("");
   const [title,setTitle]=useState("")
   const [content,setContent]=useState("")
-  const handleFileInputChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
+
+  useEffect(() => {
+    if (show) {
+      if (postId !== undefined) {
+        // postId is defined, so we can safely pass it to the function
+        getOne(postId);
+      } else {
+        // postId is undefined, so we need to handle this case
+        console.log('postId is undefined');
+      }
+      
+    }
+  }, [show]);
+  useEffect(() => {
+    if (onePost) {
+      setTitle(onePost?.title);
+      setFile(onePost?.image);
+      setContent(onePost?.content);
+    }
+  }, [onePost]);
+  const handleFileInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {
       setFile(file);
@@ -49,6 +68,11 @@ const Modaltwo = ({ name, Name, Title, image, Content }: ModalTwoType) => {
       console.log(error);
     }
   }
+  if( Name === "Update Post"){
+    updatePost( onePost._id, { title, content }).then(()=>{
+      handleClose()
+    })
+  }
   };
   
   return (
@@ -74,7 +98,8 @@ const Modaltwo = ({ name, Name, Title, image, Content }: ModalTwoType) => {
                       type="text"
                       placeholder="What is your title  "
                       name="title"
-                        onChange={handleTitleChange}
+                      value={title}
+                      onChange={handleTitleChange}
                     />
                   </>
                 )}
@@ -85,6 +110,7 @@ const Modaltwo = ({ name, Name, Title, image, Content }: ModalTwoType) => {
                       type="file"
                       placeholder="What is your image "
                       name="image"
+                      // value={file}
                       onChange={handleFileInputChange}
                     />
                   </>
@@ -101,6 +127,7 @@ const Modaltwo = ({ name, Name, Title, image, Content }: ModalTwoType) => {
                       as="textarea"
                       rows={3}
                       name="content"
+                      value={content}
                         onChange={handleContentChange}
                       placeholder="What is your content "
                     />

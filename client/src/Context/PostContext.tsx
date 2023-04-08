@@ -69,9 +69,9 @@ const PostProvider = ({ children }: ChildrenType) => {
     );
     return response.data.secure_url;
   };
-  const addPost = async (form: formType) => {
+  const addPost = async ({title,content,image,user}: formType) => {
     try {
-      await api.post("/post/add", form);
+      await api.post("/post/add", {title,content,image,user});
     } catch (error) {
       console.log(error);
     }
