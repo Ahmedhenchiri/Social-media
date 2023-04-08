@@ -76,3 +76,10 @@ export type formType ={
   content:string
 
 }
+export   type ModalTwoType ={
+  name?:string,
+  Name?:string,
+  Title?:string,
+  image?:string,
+  Content?:string
+}
