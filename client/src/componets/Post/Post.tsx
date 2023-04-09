@@ -26,7 +26,7 @@ const Post = () => {
             Name="Are you sure to delete this Post"
             postId={post._id}
             modalContent="Are you sure ?"
-            buttonSubmit="Delete"
+            buttonDanger="Delete "
           />
           <Modale
             name="Update"

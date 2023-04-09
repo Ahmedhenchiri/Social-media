@@ -5,7 +5,7 @@ import { usePost } from "../../../Context/PostContext";
 import { useLocaleStorge } from "../../../Context/LocalStorageContext";
 import api from "../../../api/Api";
 
-const Modale = ({ name, Name, Title, image, Content ,postId,modalContent,buttonSubmit}: ModalTwoType) => {
+const Modale = ({ name, Name, Title, image, Content ,postId,modalContent,buttonSubmit,buttonDanger}: ModalTwoType) => {
   const { upladImage,getOne ,onePost,updatePost,deletePost} = usePost();
   const { myData } = useLocaleStorge();
   const Data = JSON.parse(myData);
@@ -55,6 +55,17 @@ const Modale = ({ name, Name, Title, image, Content ,postId,modalContent,buttonS
       const imageURl = await upladImage(file);
       await api.put(`/user/updatePhoto/${id}`, { image: imageURl });
       setShow(false);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  if(Name === "Change your Cover Photo"){
+    try {
+      const imageURl = await upladImage(file);
+      console.log("🚀 ~ file: Modal.tsx:65 ~ handleSubmit ~ imageURl:", imageURl)
+    const  result = await api.put(`/user/updateCover/${id}`, { coverPhoto: imageURl });
+      setShow(false);
+    console.log("🚀 ~ file: Modal.tsx:68 ~ handleSubmit ~ result:", result)
     } catch (error) {
       console.log(error);
     }
@@ -145,9 +156,20 @@ const Modale = ({ name, Name, Title, image, Content ,postId,modalContent,buttonS
             <Button variant="secondary" onClick={handleClose}>
               Close
             </Button>
+            { buttonSubmit  && (
+            <>  
             <Button variant="primary" type="submit">
              { buttonSubmit}
             </Button>
+            </>)
+          }
+            { buttonDanger &&(
+            <>
+            <Button variant="danger" type="submit">
+             { buttonDanger}
+            </Button>
+            </>)
+          }
           </Modal.Footer>
         </form>
       </Modal>
