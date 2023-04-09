@@ -11,6 +11,7 @@ const Home = () => {
         image="image"
         Content="Content"
         buttonSubmit="Add Post "
+        buttonColor="primary"
       />
       <Post />
     </>

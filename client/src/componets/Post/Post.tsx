@@ -28,6 +28,8 @@ const Post = () => {
             modalContent="Are you sure to delete this Post ?
             this process cannot be undone"
             buttonDanger="Delete "
+            buttonColor="primary"
+
           />
           <Modale
             name="Update"
@@ -37,6 +39,8 @@ const Post = () => {
             image="image"
             Content="content"
             buttonSubmit="Save Change"
+            buttonColor="primary"
+
           />
         </div>
       ))}

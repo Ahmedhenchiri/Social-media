@@ -86,5 +86,6 @@ export   type ModalTwoType ={
   modalContent?:string,
   buttonSubmit?:string,
   buttonDanger?:string,
-  icon?:string
+  icon?:string,
+  buttonColor?:string
 }

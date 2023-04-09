@@ -5,7 +5,7 @@ import { usePost } from "../../../Context/PostContext";
 import { useLocaleStorge } from "../../../Context/LocalStorageContext";
 import api from "../../../api/Api";
 
-const Modale = ({ name, Name, Title, image, Content ,postId,modalContent,buttonSubmit,buttonDanger,icon}: ModalTwoType) => {
+const Modale = ({ name, Name, Title, image, Content ,postId,modalContent,buttonSubmit,buttonDanger,icon,buttonColor}: ModalTwoType) => {
   const { upladImage,getOne ,onePost,updatePost,deletePost} = usePost();
   const { myData } = useLocaleStorge();
   const Data = JSON.parse(myData);
@@ -91,10 +91,17 @@ const Modale = ({ name, Name, Title, image, Content ,postId,modalContent,buttonS
   
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+    {buttonColor ? (  
+    <Button variant={buttonColor} onClick={handleShow}>
         <i className={icon}></i>
       {name}
       </Button>
+      ):(
+        <Button variant="" onClick={handleShow}>
+        <i className={icon}></i>
+      {name}
+      </Button> 
+      )}
       <Modal show={show} onHide={handleClose}>
         <form onSubmit={handleSubmit}>
           <Modal.Header closeButton>
