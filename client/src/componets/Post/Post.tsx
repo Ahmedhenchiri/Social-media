@@ -1,10 +1,10 @@
 import { usePost } from "../../Context/PostContext";
 import Buttons from "../custom/buttons/Buttons";
 import "./Post.css";
-import Modaltwo from "../custom/Modal/Modaltwo";
+import Modale from "../custom/Modal/Modal";
 
 const Post = () => {
-  const { posts, deletePost } = usePost();
+  const { posts } = usePost();
 
   return (
     <div>
@@ -18,10 +18,25 @@ const Post = () => {
             </span>
           </div>
           <div className="post-list-item-lede">
-            <img src={post.image} alt="no image" />
+            <img src={post.image} alt="no image" width="800"
+            height="600"/>
           </div>
-          <Buttons name="Delete" onClick={() => deletePost(post._id)} />
-          <Modaltwo name="Update" Name="Update Post" postId={post._id} Title="Title" image="image" Content="content"/>
+          <Modale
+            name="Delete"
+            Name="Are you sure to delete this Post"
+            postId={post._id}
+            modalContent="Are you sure ?"
+            buttonSubmit="Delete"
+          />
+          <Modale
+            name="Update"
+            Name="Update Post"
+            postId={post._id}
+            Title="Title"
+            image="image"
+            Content="content"
+            buttonSubmit="Save Change"
+          />
         </div>
       ))}
     </div>

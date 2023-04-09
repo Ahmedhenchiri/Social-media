@@ -82,5 +82,7 @@ export   type ModalTwoType ={
   Title?:string,
   image?:string,
   Content?:string,
-  postId?:number
+  postId?:any,
+  modalContent?:string,
+  buttonSubmit?:string
 }

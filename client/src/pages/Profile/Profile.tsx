@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import api from "../../api/Api";
-import Modaltwo from "../../componets/custom/Modal/Modaltwo";
+import Modale from "../../componets/custom/Modal/Modal";
 import { useLocaleStorge } from "../../Context/LocalStorageContext";
 import { usePost } from "../../Context/PostContext";
 import "./Profile.css";
@@ -50,13 +50,7 @@ const Profile = () => {
           />
          
         </svg>
-        {/* <input  
-               type="file"   
-                placeholder="What is your image "
-                name="image"
-                // value={image}
-                onChange={handleImageChange} /> */}
-                <Modaltwo name='change your photo' Name="Change your Photo" image="image "/>
+        <Modale name='change your photo' Name="Change your Photo" image="image "buttonSubmit="Change Photo Profile "/>
         <h1>{data.name}</h1>
         <h1>{data.email}</h1>
       </div>

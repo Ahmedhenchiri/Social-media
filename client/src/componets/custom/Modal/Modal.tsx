@@ -5,8 +5,8 @@ import { usePost } from "../../../Context/PostContext";
 import { useLocaleStorge } from "../../../Context/LocalStorageContext";
 import api from "../../../api/Api";
 
-const Modaltwo = ({ name, Name, Title, image, Content ,postId}: ModalTwoType) => {
-  const { upladImage,getOne ,onePost,updatePost} = usePost();
+const Modale = ({ name, Name, Title, image, Content ,postId,modalContent,buttonSubmit}: ModalTwoType) => {
+  const { upladImage,getOne ,onePost,updatePost,deletePost} = usePost();
   const { myData } = useLocaleStorge();
   const Data = JSON.parse(myData);
   const id = Data._id;
@@ -73,6 +73,9 @@ const Modaltwo = ({ name, Name, Title, image, Content ,postId}: ModalTwoType) =>
       handleClose()
     })
   }
+  if (Name === "Are you sure to delete this Post"){
+    deletePost(postId)
+  }
   };
   
   return (
@@ -91,6 +94,8 @@ const Modaltwo = ({ name, Name, Title, image, Content ,postId}: ModalTwoType) =>
                 className="mb-3"
                 controlId="exampleForm.ControlInput1"
               >
+            <Modal.Title>{modalContent}</Modal.Title>
+
                 {Title && (
                   <>
                     <Form.Label>{Title}</Form.Label>
@@ -141,7 +146,7 @@ const Modaltwo = ({ name, Name, Title, image, Content ,postId}: ModalTwoType) =>
               Close
             </Button>
             <Button variant="primary" type="submit">
-              Save Changes
+             { buttonSubmit}
             </Button>
           </Modal.Footer>
         </form>
@@ -150,4 +155,4 @@ const Modaltwo = ({ name, Name, Title, image, Content ,postId}: ModalTwoType) =>
   );
 };
 
-export default Modaltwo;
+export default Modale;

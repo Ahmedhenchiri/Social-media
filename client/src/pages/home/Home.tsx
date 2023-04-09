@@ -1,16 +1,20 @@
-import Modaltwo from '../../componets/custom/Modal/Modaltwo';
-import Post from '../../componets/Post/Post';
+import Modale from "../../componets/custom/Modal/Modal";
+import Post from "../../componets/Post/Post";
 
-
-
-
-const  Home = () => {
+const Home = () => {
   return (
-      <> 
-      <Modaltwo name='Add Post' Name='Add Post' Title='Title'image='image'Content='Content'/>
+    <>
+      <Modale
+        name="Add Post"
+        Name="Add Post"
+        Title="Title"
+        image="image"
+        Content="Content"
+        buttonSubmit="Add Post "
+      />
       <Post />
-      </>
-  )
-}
+    </>
+  );
+};
 
-export default Home
+export default Home;
