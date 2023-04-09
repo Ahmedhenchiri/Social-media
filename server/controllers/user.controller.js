@@ -103,15 +103,15 @@ const updateProfilePhoto=async (req, res) => {
   
   }
 };
-const updateCoverPhoto=async (req, res) => {
+const updateCoverPhoto= async (req, res) => {
 
   try {
     const user = await UserModel.findById(req.params.id);
     if (!user) {
       return res.status(404).json({ message: "Post not found" });
     }
-    const { coverphoto} = req.body;
-    user.coverPhoto=coverphoto
+    const { coverPhoto} = req.body;
+    user.coverPhoto=coverPhoto
     const updatedPhoto = await user.save();
 
     res.status(200).json({ message: "Photo updated successfully", data: updatedPhoto });
