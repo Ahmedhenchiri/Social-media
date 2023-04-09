@@ -25,7 +25,8 @@ const Post = () => {
             name="Delete"
             Name="Are you sure to delete this Post"
             postId={post._id}
-            modalContent="Are you sure ?"
+            modalContent="Are you sure to delete this Post ?
+            this process cannot be undone"
             buttonDanger="Delete "
           />
           <Modale

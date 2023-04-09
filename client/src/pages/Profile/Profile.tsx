@@ -2,11 +2,10 @@ import { useEffect, useState } from "react";
 import api from "../../api/Api";
 import Modale from "../../componets/custom/Modal/Modal";
 import { useLocaleStorge } from "../../Context/LocalStorageContext";
-import { usePost } from "../../Context/PostContext";
 import "./Profile.css";
+
 const Profile = () => {
   const { myData } = useLocaleStorge();
-  const { upladImage } = usePost();
   const [data, setData] = useState({
     name: "",
     image: "",
@@ -14,7 +13,6 @@ const Profile = () => {
     coverPhoto: "",
   });
 
-  const [file, setFile] = useState("");
   const Data = JSON.parse(myData);
   const id = Data._id;
 
@@ -27,12 +25,6 @@ const Profile = () => {
       setData(response.data);
     } catch (error) {
       console.log(error);
-    }
-  };
-  const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-    if (file) {
-      // setFile(file);
     }
   };
 
@@ -53,10 +45,11 @@ const Profile = () => {
             }}
           >
             <Modale
-              name="change your photo"
+              name="change your Cover Photo"
               Name="Change your Cover Photo"
               image="image "
               buttonSubmit="Change your Cover Photo"
+              icon="fa-solid fa-camera"
             />
           </div>
           <div style={{ position: "relative", top: "-50px", left: "20px" }}>
@@ -65,22 +58,22 @@ const Profile = () => {
               alt="Profile Picture"
               style={{ width: "180px", height: "180px", borderRadius: "50%" }}
             />
-            <h1 style={{ marginTop: "-10%", marginLeft: "19%" }}>
-              {data.name}
-            </h1>
-
-            {/* <h1>{data.email}</h1> */}
-          </div>
-        </div>
-
-        {/* <img src={data.coverPhoto} alt="no image" width="500"
-            height="500"/> */}
-        <Modale
-          name="change your photo"
+           <Modale
           Name="Change your Photo"
           image="image "
           buttonSubmit="Change Photo Profile "
+          icon="fa-solid fa-camera"
+
         />
+            <h1 style={{ marginTop: "-10%", marginLeft: "19%" }}>
+           
+              {data.name}
+             
+            </h1>
+          </div>
+        </div>
+          
+       
       </div>
     </div>
   );
