@@ -92,11 +92,34 @@ const updateProfilePhoto=async (req, res) => {
     }
     const { image } = req.body;
     user.image=image 
+
     const updatedPhoto = await user.save();
 
     res.status(200).json({ message: "Photo updated successfully", data: updatedPhoto });
+  
   } catch (error) {
+    
     res.status(404).json({ message: error.message });
+  
+  }
+};
+const updateCoverPhoto=async (req, res) => {
+
+  try {
+    const user = await UserModel.findById(req.params.id);
+    if (!user) {
+      return res.status(404).json({ message: "Post not found" });
+    }
+    const { coverphoto} = req.body;
+    user.coverPhoto=coverphoto
+    const updatedPhoto = await user.save();
+
+    res.status(200).json({ message: "Photo updated successfully", data: updatedPhoto });
+  
+  } catch (error) {
+    
+    res.status(404).json({ message: error.message });
+  
   }
 };
 
@@ -135,4 +158,4 @@ const createPost = async (req, res) => {
   }
 };
 
-module.exports={Login, Register, getAllPost, getOneUser, createPost,updateProfilePhoto};
+module.exports={Login, Register, getAllPost, getOneUser, createPost,updateProfilePhoto,updateCoverPhoto};
