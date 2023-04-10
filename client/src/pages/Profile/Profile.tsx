@@ -44,27 +44,29 @@ const Profile = () => {
               borderRadius: "15px",
             }}
           >
+            {/* <div style={{marginLeft:"13%",marginTop:"-10%",position: "relative" }}> */}
             <Modale
-              name="change your Cover Photo"
+              name=" Change your Cover Photo"
               Name="Change your Cover Photo"
               image="image "
               buttonSubmit="Change your Cover Photo"
               icon="fa-solid fa-camera"
+              // buttonColor="secondary"
+          buttonColor=" bg-light"
+             
             />
+            {/* </div> */}
           </div>
+         
           <div style={{ position: "relative", top: "-50px", left: "20px" }}>
             <img
               src={data.image}
               alt="Profile Picture"
               style={{ width: "180px", height: "180px", borderRadius: "50%" }}
             />
-           <Modale
-          Name="Change your Photo"
-          image="image "
-          buttonSubmit="Change Photo Profile "
-          icon="fa-solid fa-camera"
+        
+           
 
-        />
             <h1 style={{ marginTop: "-10%", marginLeft: "19%" }}>
            
               {data.name}
@@ -72,7 +74,15 @@ const Profile = () => {
             </h1>
           </div>
         </div>
-          
+        <div style={{marginLeft:"13%",marginTop:"-3%",position: "relative" }}>
+          <Modale
+            Name="Change your Photo"
+            image="image "
+            buttonSubmit="Change Photo Profile "
+            icon="fa-solid fa-camera"
+            buttonColor=" bg-light"
+             />
+             </div>
        
       </div>
     </div>
