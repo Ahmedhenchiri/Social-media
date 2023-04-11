@@ -52,7 +52,7 @@ module.exports={
   // }
   deletePost:async(req,res)=>{
      try{
-      const result = await PostUser.findOneAndDelete({id:req.params.id})
+      const result = await PostUser.findOneAndDelete({ _id: req.params.id })
       res.status(201).json(result)
      }catch(error){
       res.status(500).json({ message: "Error fetching post", error });
