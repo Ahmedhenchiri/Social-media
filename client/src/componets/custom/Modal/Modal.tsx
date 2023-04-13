@@ -5,8 +5,20 @@ import { usePost } from "../../../Context/PostContext";
 import { useLocaleStorge } from "../../../Context/LocalStorageContext";
 import api from "../../../api/Api";
 
-const Modale = ({ name, Name, Title, image, Content ,postId,modalContent,buttonSubmit,buttonDanger,icon,buttonColor}: ModalTwoType) => {
-  const { upladImage,getOne ,onePost,updatePost,deletePost} = usePost();
+const Modale = ({
+  name,
+  Name,
+  Title,
+  image,
+  Content,
+  postId,
+  modalContent,
+  buttonSubmit,
+  buttonDanger,
+  icon,
+  buttonColor,
+}: ModalTwoType) => {
+  const { upladImage, getOne, onePost, updatePost, deletePost } = usePost();
   const { myData } = useLocaleStorge();
   const Data = JSON.parse(myData);
   const id = Data._id;
@@ -14,8 +26,8 @@ const Modale = ({ name, Name, Title, image, Content ,postId,modalContent,buttonS
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [file, setFile] = useState<any>("");
-  const [title,setTitle]=useState("")
-  const [content,setContent]=useState("")
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
 
   useEffect(() => {
     if (show) {
@@ -24,11 +36,15 @@ const Modale = ({ name, Name, Title, image, Content ,postId,modalContent,buttonS
         getOne(postId);
       } else {
         // postId is undefined, so we need to handle this case
-        console.log('postId is undefined');
+        setTitle("");
+        setFile("");
+        setContent("");
+      //  getOne()
+        console.log("postId is undefined");
       }
-      
+        console.log("🚀 ~ file: Modal.tsx:45 ~ useEffect ~ postId:", postId)
     }
-  }, [show]);
+  }, [show,setShow]);
   useEffect(() => {
     if (onePost) {
       setTitle(onePost?.title);
@@ -36,72 +52,81 @@ const Modale = ({ name, Name, Title, image, Content ,postId,modalContent,buttonS
       setContent(onePost?.content);
     }
   }, [onePost]);
-  const handleFileInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileInputChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
     const file = event.target.files?.[0];
     if (file) {
       setFile(file);
     }
   };
-  const handleTitleChange = (e:any) => {
+  const handleTitleChange = (e: any) => {
     setTitle(e.target.value);
   };
-  const handleContentChange = (e:any) => {
+  const handleContentChange = (e: any) => {
     setContent(e.target.value);
   };
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (Name === "Change your Photo"){
-    try {
-      const imageURl = await upladImage(file);
-      await api.put(`/user/updatePhoto/${id}`, { image: imageURl });
-      setShow(false);
-    } catch (error) {
-      console.log(error);
+    if (Name === "Change your Photo") {
+      try {
+        const imageURl = await upladImage(file);
+        await api.put(`/user/updatePhoto/${id}`, { image: imageURl });
+        setShow(false);
+      } catch (error) {
+        console.log(error);
+      }
     }
-  }
-  if(Name === "Change your Cover Photo"){
-    try {
-      const imageURl = await upladImage(file);
-      console.log("🚀 ~ file: Modal.tsx:65 ~ handleSubmit ~ imageURl:", imageURl)
-    const  result = await api.put(`/user/updateCover/${id}`, { coverPhoto: imageURl });
-      setShow(false);
-    console.log("🚀 ~ file: Modal.tsx:68 ~ handleSubmit ~ result:", result)
-    } catch (error) {
-      console.log(error);
+    if (Name === "Change your Cover Photo") {
+      try {
+        const imageURl = await upladImage(file);
+        console.log(
+          "🚀 ~ file: Modal.tsx:65 ~ handleSubmit ~ imageURl:",
+          imageURl
+        );
+        const result = await api.put(`/user/updateCover/${id}`, {
+          coverPhoto: imageURl,
+        });
+        setShow(false);
+        console.log("🚀 ~ file: Modal.tsx:68 ~ handleSubmit ~ result:", result);
+      } catch (error) {
+        console.log(error);
+      }
     }
-  }
-  if (Name === "Add Post"){
-    try {
-      const imageUrl = await upladImage(file)
-      await api.post("/post/add", {title,content,image:imageUrl,user:id});
-      setShow(false);
-    } catch (error) {
-      console.log(error);
+    if (Name === "Add Post") {
+      try {
+        const imageUrl = await upladImage(file);
+        await api.post("/post/add", {
+          title,
+          content,
+          image: imageUrl,
+          user: id,
+        });
+        setShow(false);
+      } catch (error) {
+        console.log(error);
+      }
     }
-  }
-  if( Name === "Update Post"){
-    updatePost( onePost._id, { title, content }).then(()=>{
-      handleClose()
-    })
-  }
-  if (Name === "Are you sure to delete this Post"){
-    deletePost(postId)
-  }
+    if (Name === "Update Post") {
+      updatePost(onePost._id, { title, content }).then(() => {
+        handleClose();
+      });
+    }
+    if (Name === "Are you sure to delete this Post") {
+      deletePost(postId);
+    }
+      console.log("🚀 ~ file: Modal.tsx:117 ~ handleSubmit ~ postId:", postId)
   };
-  
+
   return (
     <>
-    {buttonColor ? (  
-    <Button variant={buttonColor} onClick={handleShow}>
-        <i className={icon}></i>
-      {name}
-      </Button>
-      ):(
-        <Button variant="" onClick={handleShow}>
-        <i className={icon}></i>
-      {name}
-      </Button> 
+      {buttonColor && (
+        <Button variant={buttonColor} onClick={handleShow}>
+          <i className={icon}></i>
+          {name}
+        </Button>
       )}
+
       <Modal show={show} onHide={handleClose}>
         <form onSubmit={handleSubmit}>
           <Modal.Header closeButton>
@@ -113,7 +138,7 @@ const Modale = ({ name, Name, Title, image, Content ,postId,modalContent,buttonS
                 className="mb-3"
                 controlId="exampleForm.ControlInput1"
               >
-            <Modal.Title>{modalContent}</Modal.Title>
+                <Modal.Title>{modalContent}</Modal.Title>
 
                 {Title && (
                   <>
@@ -152,7 +177,7 @@ const Modale = ({ name, Name, Title, image, Content ,postId,modalContent,buttonS
                       rows={3}
                       name="content"
                       value={content}
-                        onChange={handleContentChange}
+                      onChange={handleContentChange}
                       placeholder="What is your content "
                     />
                   </>
@@ -164,20 +189,20 @@ const Modale = ({ name, Name, Title, image, Content ,postId,modalContent,buttonS
             <Button variant="secondary" onClick={handleClose}>
               Close
             </Button>
-            { buttonSubmit  && (
-            <>  
-            <Button variant="primary" type="submit">
-             { buttonSubmit}
-            </Button>
-            </>)
-          }
-            { buttonDanger &&(
-            <>
-            <Button variant="danger" type="submit">
-             { buttonDanger}
-            </Button>
-            </>)
-          }
+            {buttonSubmit && (
+              <>
+                <Button variant="primary" type="submit">
+                  {buttonSubmit}
+                </Button>
+              </>
+            )}
+            {buttonDanger && (
+              <>
+                <Button variant="danger" type="submit">
+                  {buttonDanger}
+                </Button>
+              </>
+            )}
           </Modal.Footer>
         </form>
       </Modal>

@@ -40,9 +40,11 @@ const PostProvider = ({ children }: ChildrenType) => {
     }
   };
   const deletePost = async (postId: number) => {
+    console.log("🚀 ~ file: PostContext.tsx:43 ~ deletePost ~ postId:", postId)
     try {
-      await api.delete(`/post/deletePost/${postId}`);
+      const result = await api.delete(`/post/deletePost/${postId}`);
       setPosts(posts.filter((post) => post._id !== postId));
+      console.log("🚀 ~ file: PostContext.tsx:47 ~ deletePost ~ result:", result)
     } catch (error) {
       console.log(error);
     }
@@ -70,8 +72,10 @@ const PostProvider = ({ children }: ChildrenType) => {
     return response.data.secure_url;
   };
   const addPost = async ({title,content,image,user}: formType) => {
+
     try {
       await api.post("/post/add", {title,content,image,user});
+    
     } catch (error) {
       console.log(error);
     }
