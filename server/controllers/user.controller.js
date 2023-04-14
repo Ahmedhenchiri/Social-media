@@ -1,4 +1,5 @@
-const UserModel = require("../models/user");
+const UserModel = require("../models/user")
+const PostModel = require("../models/post")
 const ValidateLogin = require("../validation/Login");
 const ValidateRegister = require("../validation/Register");
 const bcrypt =  require("bcryptjs"); 
@@ -138,17 +139,63 @@ const getAllPost = async (req, res) => {
   }
 };
 
+// const createPost = async (req, res) => {
+//   try {
+//     const userId = req.body.user; 
+//     const user = await UserModel.findById(userId);
+//     if (!user) {
+//       return res.status(404).json({ error: 'User not found' });
+//     }
+//     const newPost = {
+//       title: req.body.title,
+//       content: req.body.content,
+//     };
+//     user.posts.push(newPost);
+//     await user.save();
+//     res.status(201).json({ message: 'Post created successfully' });
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ error: 'Server error' });
+//   }
+// };
+// const createPost = async (req, res) => {
+//   try {
+//     const userId = req.body.user; 
+//     const user = await UserModel.findById(userId);
+//     if (!user) {
+//       return res.status(404).json({ error: 'User not found' });
+//     }
+//     const { title, content } = req.body;
+//     const image = req.file ? req.file.path : undefined; // get image path from uploaded file
+//     const newPost = {
+//       title : req.body.title,
+//       content:req.body.content,
+//       image,
+//       user: user._id,
+//     };
+//     const post = await PostModel.create(newPost); // create post document
+//     user.posts.push(post); // add post to user's posts array
+//     console.log("🚀 ~ file: user.controller.js:178 ~ createPost ~ post:", post)
+//     await user.save();
+//     res.status(201).json({ message: 'Post created successfully', post });
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ error: 'Server error' });
+//   }
+// };
 const createPost = async (req, res) => {
   try {
-    const userId = req.user.id; 
+    const userId = req.body.user; 
     const user = await UserModel.findById(userId);
     if (!user) {
       return res.status(404).json({ error: 'User not found' });
     }
-    const newPost = {
+    const newPost = new PostModel({
       title: req.body.title,
       content: req.body.content,
-    };
+      user: userId
+    });
+    await newPost.save();
     user.posts.push(newPost);
     await user.save();
     res.status(201).json({ message: 'Post created successfully' });
@@ -157,5 +204,7 @@ const createPost = async (req, res) => {
     res.status(500).json({ error: 'Server error' });
   }
 };
+
+
 
 module.exports={Login, Register, getAllPost, getOneUser, createPost,updateProfilePhoto,updateCoverPhoto};

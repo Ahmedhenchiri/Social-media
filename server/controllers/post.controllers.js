@@ -11,15 +11,26 @@ module.exports={
       res.status(404).json(error)
     }
    },
-   getallPostOfUser:async(req,res) =>{
-    const all =await PostUser.find({user:req.body.user})
-    try{
-      res.status(201).json(all)
-    }catch(error){
-      res.status(500).json({ message: "Error fetching post", error });
+  //  getallPostOfUser:async(req,res) =>{
+  //   const all =await PostUser.find({user:req.body.user})
+  //   try{
+  //     res.status(201).json(all)
+  //   }catch(error){
+  //     res.status(500).json({ message: "Error fetching post", error });
 
+  //   }
+  //  },
+   getallPostOfUser :async (req, res) => {
+    try {
+      const userId = req.params.userId;
+      const allPosts = await PostUser.find({ user: userId }).populate('user', 'name email');
+      res.status(200).json(allPosts);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Server error' });
     }
-   },
+  },
+  
    addPost: async (req,res) => {
 
   
