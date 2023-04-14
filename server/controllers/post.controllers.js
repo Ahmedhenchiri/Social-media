@@ -4,26 +4,18 @@ const PostUser = require ("../models/post")
 module.exports={
 
    getAll: async (req,res) =>{
-    const allPost = await PostUser.find({}) 
+    const allPost = await PostUser.find({}).populate('user','name image') 
     try{
       res.status(201).json(allPost)
     }catch(error){
       res.status(404).json(error)
     }
    },
-  //  getallPostOfUser:async(req,res) =>{
-  //   const all =await PostUser.find({user:req.body.user})
-  //   try{
-  //     res.status(201).json(all)
-  //   }catch(error){
-  //     res.status(500).json({ message: "Error fetching post", error });
 
-  //   }
-  //  },
    getallPostOfUser :async (req, res) => {
     try {
-      const userId = req.params.userId;
-      const allPosts = await PostUser.find({ user: userId }).populate('user', 'name email');
+      const userId = req.params.id;
+      const allPosts = await PostUser.find({ user: userId }).populate('user', 'name email image');
       res.status(200).json(allPosts);
     } catch (error) {
       console.error(error);
