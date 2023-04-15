@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import api from "../../api/Api";
 import Modale from "../../componets/custom/Modal/Modal";
+import PostProfile from "../../componets/PostProfile/PostProfile";
 import { useLocaleStorge } from "../../Context/LocalStorageContext";
 import { usePost } from "../../Context/PostContext";
 import "./Profile.css";
@@ -79,6 +80,9 @@ const Profile = () => {
             buttonColor=" bg-light"
           />
         </div>
+      </div>
+      <div className="PostProfile">
+      <PostProfile />
       </div>
     </div>
   );

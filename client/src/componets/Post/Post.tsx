@@ -6,7 +6,6 @@ import { useLocaleStorge } from "../../Context/LocalStorageContext";
 
 const Post = () => {
   const { posts } = usePost();
-
   const {myData} = useLocaleStorge();
   const Data = JSON.parse(myData);
   const id = Data._id;

@@ -51,6 +51,7 @@ export type Post = {
 
 export type PostContextType = {
   posts: Post[];
+  userPosts:Post[];
   onePost:any;
   getAllPosts: () => Promise<void>;
   getOne:(postId: number)=>Promise<void>;

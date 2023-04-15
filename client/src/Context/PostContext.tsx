@@ -10,6 +10,7 @@ import {
 
 const PostContext = createContext<PostContextType>({
   posts: [],
+  userPosts:[],
   onePost: [],
   getAllPosts: async () => {},
   getOne: async () => {},
@@ -24,7 +25,8 @@ const PostProvider = ({ children }: ChildrenType) => {
   const [posts, setPosts] = useState<Post[]>([]);
 
   const [onePost, setOnePost] = useState<any>([]);
-  const [userPosts,setUserPosts] = useState([])
+  const [userPosts,setUserPosts] = useState<any>([])
+  console.log("🚀 ~ file: PostContext.tsx:28 ~ PostProvider ~ userPosts:", userPosts)
 
   const getAllPosts = async () => {
     try {
@@ -99,6 +101,7 @@ const PostProvider = ({ children }: ChildrenType) => {
   return (
     <PostContext.Provider
       value={{
+        userPosts,
         posts,
         getAllPosts,
         deletePost,
