@@ -42,6 +42,10 @@ export type Post = {
   title: string;
   content: string;
   image: string;
+  user:{
+    image:string,
+    name:string
+  },
 };
 
 export type PostContextType = {
@@ -53,6 +57,7 @@ export type PostContextType = {
   updatePost: (postId: number, postData: postDataType) => Promise<void>; 
   upladImage:(file: File) =>Promise<void>;
   addPost:(form:formType)=>Promise<void>;
+  getAllPostOfUser: (userID: number) => Promise<void>;
  
 };
 export type ChildrenType = {

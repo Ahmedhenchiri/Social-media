@@ -6,10 +6,18 @@ import Modale from "../custom/Modal/Modal";
 const Post = () => {
   const { posts } = usePost();
 
+  // const data = posts[0].user
+  // console.log("🚀 ~ file: Post.tsx:10 ~ Post ~ data:", data)
   return (
     <div>
       {posts.map((post) => (
         <div className="post-list-item" key={post._id}>
+          <div className="post-list-item-lede">
+            <img src={post.user.image} alt="no image"  style={{ width: "70px", height: "70px", borderRadius: "50%" }}
+            />
+          <div className="post-list-item-title" style={{marginTop:"-8%",marginLeft:"10%"}}>{post.user.name}</div>
+
+          </div>
           <div className="post-list-item-title">{post.title}</div>
           <div className="post-list-item-byline">
             <span className="post-list-item-byline-author">

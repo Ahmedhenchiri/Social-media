@@ -17,12 +17,15 @@ const PostContext = createContext<PostContextType>({
   updatePost: async () => {},
   upladImage: async () => {},
   addPost: async () => {},
+  getAllPostOfUser: async()=>{}
 });
 
 const PostProvider = ({ children }: ChildrenType) => {
   const [posts, setPosts] = useState<Post[]>([]);
+  console.log("🚀 ~ file: PostContext.tsx:25 ~ PostProvider ~ posts:", posts)
   const [onePost, setOnePost] = useState<any>([]);
-
+  const [userPosts,setUserPosts] = useState([])
+  console.log("🚀 ~ file: PostContext.tsx:27 ~ PostProvider ~ userPosts:", userPosts)
   const getAllPosts = async () => {
     try {
       const response = await api.get("/post/");
@@ -39,6 +42,16 @@ const PostProvider = ({ children }: ChildrenType) => {
       console.log(error);
     }
   };
+  const getAllPostOfUser=async(userID:number)=>{
+    try{
+     const response = await api.get(`/post/getAll/${userID}`)
+     setUserPosts(response.data)
+     console.log("🚀 ~ file: PostContext.tsx:48 ~ getAllPostOfUser ~ response:", response)
+     console.log("🚀 ~ file: PostContext.tsx:48 ~ getAllPostOfUser ~ userID:", userID)
+    }catch(error){
+      console.log(error)
+    }
+  }
   const deletePost = async (postId: number) => {
     console.log("🚀 ~ file: PostContext.tsx:43 ~ deletePost ~ postId:", postId)
     try {
@@ -96,6 +109,7 @@ const PostProvider = ({ children }: ChildrenType) => {
         updatePost,
         upladImage,
         addPost,
+        getAllPostOfUser
       }}
     >
       {children}

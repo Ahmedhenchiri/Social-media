@@ -2,10 +2,12 @@ import { useEffect, useState } from "react";
 import api from "../../api/Api";
 import Modale from "../../componets/custom/Modal/Modal";
 import { useLocaleStorge } from "../../Context/LocalStorageContext";
+import { usePost } from "../../Context/PostContext";
 import "./Profile.css";
 
 const Profile = () => {
   const { myData } = useLocaleStorge();
+  const {getAllPostOfUser}=usePost()
   const [data, setData] = useState({
     name: "",
     image: "",
@@ -18,6 +20,7 @@ const Profile = () => {
 
   useEffect(() => {
     getOneUser();
+    getAllPostOfUser(id)
   }, []);
   const getOneUser = async () => {
     try {
@@ -49,7 +52,6 @@ const Profile = () => {
               image="image "
               buttonSubmit="Change your Cover Photo"
               icon="fa-solid fa-camera"
-              // buttonColor="secondary"
               buttonColor=" bg-light"
             />
           </div>
