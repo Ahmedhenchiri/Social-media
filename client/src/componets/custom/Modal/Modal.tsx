@@ -71,7 +71,9 @@ const Modale = ({
     if (Name === "Change your Photo") {
       try {
         const imageURl = await upladImage(file);
-        await api.put(`/user/updatePhoto/${id}`, { image: imageURl });
+        console.log("🚀 ~ file: Modal.tsx:74 ~ handleSubmit ~ imageURl:", imageURl)
+        const result = await api.put(`/user/updatePhoto/${id}`, { image: imageURl });
+        console.log("🚀 ~ file: Modal.tsx:77 ~ handleSubmit ~ result:", result)
         setShow(false);
       } catch (error) {
         console.log(error);

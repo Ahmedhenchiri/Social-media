@@ -22,10 +22,10 @@ const PostContext = createContext<PostContextType>({
 
 const PostProvider = ({ children }: ChildrenType) => {
   const [posts, setPosts] = useState<Post[]>([]);
-  console.log("🚀 ~ file: PostContext.tsx:25 ~ PostProvider ~ posts:", posts)
+
   const [onePost, setOnePost] = useState<any>([]);
   const [userPosts,setUserPosts] = useState([])
-  console.log("🚀 ~ file: PostContext.tsx:27 ~ PostProvider ~ userPosts:", userPosts)
+
   const getAllPosts = async () => {
     try {
       const response = await api.get("/post/");
@@ -46,8 +46,6 @@ const PostProvider = ({ children }: ChildrenType) => {
     try{
      const response = await api.get(`/post/getAll/${userID}`)
      setUserPosts(response.data)
-     console.log("🚀 ~ file: PostContext.tsx:48 ~ getAllPostOfUser ~ response:", response)
-     console.log("🚀 ~ file: PostContext.tsx:48 ~ getAllPostOfUser ~ userID:", userID)
     }catch(error){
       console.log(error)
     }

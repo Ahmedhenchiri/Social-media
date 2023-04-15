@@ -43,6 +43,7 @@ export type Post = {
   content: string;
   image: string;
   user:{
+    _id:number,
     image:string,
     name:string
   },

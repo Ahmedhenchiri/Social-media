@@ -2,12 +2,14 @@ import { usePost } from "../../Context/PostContext";
 import Buttons from "../custom/buttons/Buttons";
 import "./Post.css";
 import Modale from "../custom/Modal/Modal";
+import { useLocaleStorge } from "../../Context/LocalStorageContext";
 
 const Post = () => {
   const { posts } = usePost();
 
-  // const data = posts[0].user
-  // console.log("🚀 ~ file: Post.tsx:10 ~ Post ~ data:", data)
+  const {myData} = useLocaleStorge();
+  const Data = JSON.parse(myData);
+  const id = Data._id;
   return (
     <div>
       {posts.map((post) => (
@@ -29,6 +31,8 @@ const Post = () => {
             <img src={post.image} alt="no image" width="800"
             height="600"/>
           </div>
+          {id === post.user._id && (
+            <>
           <Modale
             name="Delete"
             Name="Are you sure to delete this Post"
@@ -48,8 +52,9 @@ const Post = () => {
             Content="content"
             buttonSubmit="Save Change"
             buttonColor="primary"
-
           />
+          </>
+          )}
         </div>
       ))}
     </div>

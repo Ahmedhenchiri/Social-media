@@ -13,6 +13,7 @@ const LocalStorage = ({ children }: ChildrenType) => {
     return savedData ? savedData : "";
   });
 
+
   const logout = () => {
     localStorage.clear();
     setMyData("");
