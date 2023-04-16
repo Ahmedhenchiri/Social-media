@@ -1,8 +1,9 @@
 import React from 'react'
 import { usePost } from '../../Context/PostContext'
+import Modale from '../custom/Modal/Modal'
 const PostProfile = () => {
     const {userPosts} = usePost()
-    console.log("🚀 ~ file: PostProfile.tsx:5 ~ PostProfile ~ userPosts:", userPosts)
+
   return (
     <div>
     {userPosts.map((post)=>(
@@ -24,7 +25,28 @@ const PostProfile = () => {
             <img src={post.image} alt="no image" width="800"
             height="600"/>
           </div>
-        
+      
+          <Modale
+            name="Delete"
+            Name="Are you sure to delete this Post"
+            postId={post._id}
+            modalContent="Are you sure to delete this Post ?
+            this process cannot be undone"
+            buttonDanger="Delete "
+            buttonColor="primary"
+
+          />
+          <Modale
+            name="Update"
+            Name="Update Post"
+            postId={post._id}
+            Title="Title"
+            image="image"
+            Content="content"
+            buttonSubmit="Save Change"
+            buttonColor="primary"
+          />
+     
           </div>
           ))}
           </div>
