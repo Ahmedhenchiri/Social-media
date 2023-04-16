@@ -1,19 +1,24 @@
 .image{
     left: 50%;
     /* display: flex; */
+  /* border: 3px solid #00000069; */
+
     
 
 }
 .profile{
     margin-left: 15%;
     margin-top: 0%;
+
 }
 .modal{
     /* margin-left: 1px; */
     right: 50%;
     top: 30%;
+
 }
 .PostProfile{
     margin-top: 5%;
     margin-right: 15%;
+
 }

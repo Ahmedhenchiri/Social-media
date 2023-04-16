@@ -81,6 +81,26 @@ const Profile = () => {
           />
         </div>
       </div>
+      <div style={{
+  border: "3px outset #00000069",
+  marginTop: "5%",
+  marginRight: "20%",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  
+
+      }}>
+      <Modale
+        name="Add Post"
+        Name="Add Post"
+        Title="Title"
+        image="image"
+        Content="Content"
+        buttonSubmit="Add Post "
+        buttonColor="primary"
+      />
+      </div>
       <div className="PostProfile">
       <PostProfile />
       </div>

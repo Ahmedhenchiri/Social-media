@@ -25,11 +25,13 @@
   font-size: 35px;
   font-family: "Francois One";
   margin-bottom: 10px;
+
 }
 
 .post-list-item-lede {   
   display: block;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
+
 }
 
 
@@ -38,9 +40,14 @@
   font-size: 1em;
   margin-bottom: 15px;
   color: #030303;
-}
 
-.post-list-item-byline-author {  
-  font-weight: bolder;
 }
+/* .modal{
+  border: 1px solid #00000069;
+
+} */
+
+/* .post-list-item-byline-author {  
+  font-weight: bolder;
+} */
 
