@@ -8,7 +8,7 @@ import "./Profile.css";
 
 const Profile = () => {
   const { myData } = useLocaleStorge();
-  const {getAllPostOfUser}=usePost()
+  const { getAllPostOfUser } = usePost();
   const [data, setData] = useState({
     name: "",
     image: "",
@@ -21,7 +21,7 @@ const Profile = () => {
 
   useEffect(() => {
     getOneUser();
-    getAllPostOfUser(id)
+    getAllPostOfUser(id);
   }, []);
   const getOneUser = async () => {
     try {
@@ -81,28 +81,28 @@ const Profile = () => {
           />
         </div>
       </div>
-      <div style={{
-  border: "3px outset #00000069",
-  marginTop: "5%",
-  marginRight: "20%",
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  
-
-      }}>
-      <Modale
-        name="Add Post"
-        Name="Add Post"
-        Title="Title"
-        image="image"
-        Content="Content"
-        buttonSubmit="Add Post "
-        buttonColor="primary"
-      />
+      <div
+        style={{
+          border: "3px outset #00000069",
+          marginTop: "5%",
+          marginRight: "20%",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Modale
+          name="Add Post"
+          Name="Add Post"
+          Title="Title"
+          image="image"
+          Content="Content"
+          buttonSubmit="Add Post "
+          buttonColor="primary"
+        />
       </div>
       <div className="PostProfile">
-      <PostProfile />
+        <PostProfile />
       </div>
     </div>
   );
