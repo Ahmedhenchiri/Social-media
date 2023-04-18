@@ -26,7 +26,7 @@ const PostProfile = () => {
             <img src={post.image} alt="no image" width="800"
             height="600"/>
           </div>
-         <div style={{  border: "3px outset #00000069",marginLeft:"%50"}}>
+         <div style={{  border: "3px outset #00000069",marginLeft:"%50",display:"flex",justifyContent:"end"}}>
           <Modale
             name="Delete"
             Name="Are you sure to delete this Post"

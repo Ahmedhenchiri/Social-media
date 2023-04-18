@@ -4,7 +4,6 @@ import Post from "../../componets/Post/Post";
 const Home = () => {
   return (
     <>
-  
       <Modale
         name="Add Post"
         Name="Add Post"
@@ -15,7 +14,7 @@ const Home = () => {
         buttonColor="primary"
       />
       <Post />
-      </>
+    </>
   );
 };
 
