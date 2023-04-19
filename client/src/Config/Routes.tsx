@@ -44,14 +44,7 @@ const routes = [
       </PriveteRouter>
     ),
   },
-  // {
-  //   path: "/modal",
-  //   element: (
-  //     <PriveteRouter>
-  //       <Modal />
-  //     </PriveteRouter>
-  //   ),
-  // },
+ 
 ] as { path: string; element: React.ReactNode }[];
 
 export default routes;
