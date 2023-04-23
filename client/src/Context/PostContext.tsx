@@ -25,8 +25,8 @@ const PostProvider = ({ children }: ChildrenType) => {
   const [posts, setPosts] = useState<Post[]>([]);
 
   const [onePost, setOnePost] = useState<any>([]);
-  const [userPosts,setUserPosts] = useState<any>([])
-  console.log("🚀 ~ file: PostContext.tsx:28 ~ PostProvider ~ userPosts:", userPosts)
+  const [userPosts,setUserPosts] = useState<Post[]>([])
+
 
   const getAllPosts = async () => {
     try {
@@ -55,9 +55,11 @@ const PostProvider = ({ children }: ChildrenType) => {
   const deletePost = async (postId: number) => {
     console.log("🚀 ~ file: PostContext.tsx:43 ~ deletePost ~ postId:", postId)
     try {
-      const result = await api.delete(`/post/deletePost/${postId}`);
+       await api.delete(`/post/deletePost/${postId}`);
       setPosts(posts.filter((post) => post._id !== postId));
-      console.log("🚀 ~ file: PostContext.tsx:47 ~ deletePost ~ result:", result)
+      setUserPosts(userPosts.filter((post) => post._id !== postId));
+
+
     } catch (error) {
       console.log(error);
     }
@@ -67,6 +69,11 @@ const PostProvider = ({ children }: ChildrenType) => {
       await api.put(`/post/update/${postId}`, postData);
       setPosts(
         posts.map((post) =>
+          post._id === postId ? { ...post, ...postData } : post
+        )
+      );
+      setUserPosts(
+        userPosts.map((post) =>
           post._id === postId ? { ...post, ...postData } : post
         )
       );
