@@ -66,60 +66,63 @@ const Modale = ({
   const handleContentChange = (e: any) => {
     setContent(e.target.value);
   };
+
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (Name === "Change your Photo") {
-      try {
-        const imageURl = await upladImage(file);
-        console.log("🚀 ~ file: Modal.tsx:74 ~ handleSubmit ~ imageURl:", imageURl)
-        const result = await api.put(`/user/updatePhoto/${id}`, { image: imageURl });
-        console.log("🚀 ~ file: Modal.tsx:77 ~ handleSubmit ~ result:", result)
-        setShow(false);
-      } catch (error) {
-        console.log(error);
+    switch (Name) {
+      case "Change your Photo": {
+        try {
+          const imageURl = await upladImage(file);
+          await api.put(`/user/updatePhoto/${id}`, { image: imageURl });
+          setShow(false);
+        } catch (error) {
+          console.log(error);
+        }
+        break;
       }
-    }
-    if (Name === "Change your Cover Photo") {
-      try {
-        const imageURl = await upladImage(file);
-        console.log(
-          "🚀 ~ file: Modal.tsx:65 ~ handleSubmit ~ imageURl:",
-          imageURl
-        );
-        const result = await api.put(`/user/updateCover/${id}`, {
-          coverPhoto: imageURl,
-        });
-        setShow(false);
-        console.log("🚀 ~ file: Modal.tsx:68 ~ handleSubmit ~ result:", result);
-      } catch (error) {
-        console.log(error);
-      }
-    }
-    if (Name === "Add Post") {
-      try {
-        const imageUrl = await upladImage(file);
-        await api.post("/post/add", {
-          title,
-          content,
-          image: imageUrl,
-          user: id,
-        });
-        setShow(false);
-      } catch (error) {
-        console.log(error);
-      }
-    }
-    if (Name === "Update Post") {
-      updatePost(onePost._id, { title, content }).then(() => {
-        handleClose();
-      });
-    }
-    if (Name === "Are you sure to delete this Post") {
-      deletePost(postId);
-    }
-      console.log("🚀 ~ file: Modal.tsx:117 ~ handleSubmit ~ postId:", postId)
-  };
+      case "Change your Cover Photo": {
+        try {
+          const imageURl = await upladImage(file);
+         await api.put(`/user/updateCover/${id}`, {
+            coverPhoto: imageURl,
+          });
+          setShow(false);
 
+        } catch (error) {
+          console.log(error);
+        }
+        break;
+      }
+      case "Add Post": {
+        try {
+          const imageUrl = await upladImage(file);
+          await api.post("/post/add", {
+            title,
+            content,
+            image: imageUrl,
+            user: id,
+          });
+          setShow(false);
+        } catch (error) {
+          console.log(error);
+        }
+        break;
+      }
+      case "Update Post": {
+        updatePost(onePost._id, { title, content }).then(() => {
+          handleClose();
+        });
+        break;
+      }
+      case "Are you sure to delete this Post": {
+        deletePost(postId);
+        console.log("🚀 ~ file: Modal.tsx:117 ~ handleSubmit ~ postId:", postId)
+        break;
+      }
+      default:
+        break;
+    }
+  };
   return (
     <>
       {buttonColor && (

@@ -53,7 +53,6 @@ const PostProvider = ({ children }: ChildrenType) => {
     }
   }
   const deletePost = async (postId: number) => {
-    console.log("🚀 ~ file: PostContext.tsx:43 ~ deletePost ~ postId:", postId)
     try {
        await api.delete(`/post/deletePost/${postId}`);
       setPosts(posts.filter((post) => post._id !== postId));
