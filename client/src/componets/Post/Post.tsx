@@ -10,13 +10,16 @@ const Post = () => {
   const {myData} = useLocaleStorge();
   const Data = JSON.parse(myData);
   const id = Data._id;
+  const handleProfileClick = (userId?:number|undefined) => {
+    navigate(`/profile`,{ state: { userId } });
+  };
   return (
     <div>
       {posts.map((post) => (
         <div className="post-list-item" key={post._id}>
           <div className="post-list-item-lede">
             <img src={post.user.image} alt="no image"  style={{ width: "70px", height: "70px", borderRadius: "50%" }}
-            onClick={()=>navigate("/profile")}
+            onClick={()=>handleProfileClick(post.user._id)}
             />
           <div className="post-list-item-title" style={{marginTop:"-8%",marginLeft:"10%"}}>{post.user.name}</div>
 

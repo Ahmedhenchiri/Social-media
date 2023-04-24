@@ -5,8 +5,12 @@ import PostProfile from "../../componets/PostProfile/PostProfile";
 import { useLocaleStorge } from "../../Context/LocalStorageContext";
 import { usePost } from "../../Context/PostContext";
 import "./Profile.css";
-
+import { useLocation } from 'react-router-dom';
 const Profile = () => {
+  const location = useLocation();
+  const { userId = null } = location.state || {};
+  console.log("🚀 ~ file: Profile.tsx:12 ~ Profile ~ userId:", userId)
+
   const { myData } = useLocaleStorge();
   const { getAllPostOfUser } = usePost();
   const [data, setData] = useState({
@@ -21,15 +25,26 @@ const Profile = () => {
 
   useEffect(() => {
     getOneUser();
-    getAllPostOfUser(id);
+    getAllPostOfUser(id );
   }, []);
   const getOneUser = async () => {
+    if(userId === null){
     try {
       const response = await api.get(`/user/getOne/${id}`);
       setData(response.data);
+      console.log("🚀 ~ file: Profile.tsx:33 ~ getOneUser ~ response:", response)
     } catch (error) {
       console.log(error);
     }
+  }else {
+    try {
+      const response = await api.get(`/user/getOne/${userId}`);
+      setData(response.data);
+      console.log("🚀 ~ file: Profile.tsx:33 ~ getOneUser ~ response:", response)
+    } catch (error) {
+      console.log(error);
+    }
+  }
   };
 
   return (
