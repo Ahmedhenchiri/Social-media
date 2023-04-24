@@ -25,7 +25,9 @@ const Profile = () => {
 
   useEffect(() => {
     getOneUser();
-    getAllPostOfUser(id );
+    if(userId === null ){
+    getAllPostOfUser(id);}
+    else  getAllPostOfUser( userId)
   }, []);
   const getOneUser = async () => {
     if(userId === null){
@@ -62,6 +64,7 @@ const Profile = () => {
               borderRadius: "15px",
             }}
           >
+            {id === userId  &&(
             <Modale
               name=" Change your Cover Photo"
               Name="Change your Cover Photo"
@@ -70,6 +73,7 @@ const Profile = () => {
               icon="fa-solid fa-camera"
               buttonColor=" bg-light"
             />
+            )}
           </div>
 
           <div style={{ position: "relative", top: "-50px", left: "20px" }}>
@@ -87,13 +91,15 @@ const Profile = () => {
         <div
           style={{ marginLeft: "13%", marginTop: "-3%", position: "relative" }}
         >
+           {id === userId  &&(
           <Modale
             Name="Change your Photo"
             image="image "
             buttonSubmit="Change Photo Profile "
             icon="fa-solid fa-camera"
             buttonColor=" bg-light"
-          />
+          /> 
+          )}
         </div>
       </div>
       <div
@@ -106,6 +112,7 @@ const Profile = () => {
           alignItems: "center",
         }}
       >
+    {id === userId  &&(
         <Modale
           name="Add Post"
           Name="Add Post"
@@ -115,6 +122,7 @@ const Profile = () => {
           buttonSubmit="Add Post "
           buttonColor="primary"
         />
+        )}
       </div>
       <div className="PostProfile">
         <PostProfile />

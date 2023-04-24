@@ -1,10 +1,13 @@
+import { useLocaleStorge } from '../../Context/LocalStorageContext'
 import { usePost } from '../../Context/PostContext'
 import Modale from '../custom/Modal/Modal'
 import "./PostProfile.css"
 
 const PostProfile = () => {
     const {userPosts} = usePost()
-
+    const {myData} = useLocaleStorge();
+    const Data = JSON.parse(myData);
+    const id = Data._id;
   return (
     <div>
     {userPosts.map((post)=>(
@@ -26,7 +29,9 @@ const PostProfile = () => {
             <img src={post.image} alt="no image" width="800"
             height="600"/>
           </div>
+          {id === post.user._id &&(
          <div style={{  border: "3px outset #00000069",marginLeft:"%50",display:"flex",justifyContent:"end" }}>
+         
           <Modale
             name="Delete"
             Name="Are you sure to delete this Post"
@@ -48,6 +53,7 @@ const PostProfile = () => {
             buttonColor="primary"
           />
          </div>
+          )}
           </div>
           ))}
           </div>
