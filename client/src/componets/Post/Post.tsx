@@ -3,8 +3,9 @@ import Buttons from "../custom/buttons/Buttons";
 import "./Post.css";
 import Modale from "../custom/Modal/Modal";
 import { useLocaleStorge } from "../../Context/LocalStorageContext";
-
+import { useNavigate } from 'react-router-dom';
 const Post = () => {
+  const navigate = useNavigate();
   const { posts } = usePost();
   const {myData} = useLocaleStorge();
   const Data = JSON.parse(myData);
@@ -15,6 +16,7 @@ const Post = () => {
         <div className="post-list-item" key={post._id}>
           <div className="post-list-item-lede">
             <img src={post.user.image} alt="no image"  style={{ width: "70px", height: "70px", borderRadius: "50%" }}
+            onClick={()=>navigate("/profile")}
             />
           <div className="post-list-item-title" style={{marginTop:"-8%",marginLeft:"10%"}}>{post.user.name}</div>
 

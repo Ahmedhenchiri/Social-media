@@ -116,7 +116,6 @@ const Modale = ({
       }
       case "Are you sure to delete this Post": {
         deletePost(postId);
-        console.log("🚀 ~ file: Modal.tsx:117 ~ handleSubmit ~ postId:", postId)
         break;
       }
       default:

@@ -1,7 +1,7 @@
-import React from 'react'
 import { usePost } from '../../Context/PostContext'
 import Modale from '../custom/Modal/Modal'
 import "./PostProfile.css"
+
 const PostProfile = () => {
     const {userPosts} = usePost()
 
@@ -26,7 +26,7 @@ const PostProfile = () => {
             <img src={post.image} alt="no image" width="800"
             height="600"/>
           </div>
-         <div style={{  border: "3px outset #00000069",marginLeft:"%50",display:"flex",justifyContent:"end"}}>
+         <div style={{  border: "3px outset #00000069",marginLeft:"%50",display:"flex",justifyContent:"end" }}>
           <Modale
             name="Delete"
             Name="Are you sure to delete this Post"
