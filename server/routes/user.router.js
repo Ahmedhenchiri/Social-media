@@ -5,13 +5,13 @@ const {Login,Register,getAllPost,getOneUser,createPost,updateProfilePhoto,update
 
 
 
-router.post("/register",authenticateToken,Register)
+router.post("/register",Register)
 router.post("/login",Login)
 router.get("/getAll/posts",getAllPost)
 router.get("/getOne/:id",getOneUser)
 router.post("/add",createPost)
-router.put("/updatePhoto/:id",authenticateToken,updateProfilePhoto)
-router.put("/updateCover/:id",authenticateToken,updateCoverPhoto)
+router.put("/updatePhoto/:id",updateProfilePhoto)
+router.put("/updateCover/:id",updateCoverPhoto)
 
 
 module.exports=router
