@@ -79,7 +79,7 @@ const Footer = () => {
       >
         © 2020 Copyright:
         <a className="text-white" href="https://mdbootstrap.com/">
-          MDBootstrap.com
+      Ahmed henchiri
         </a>
       </div>
     </MDBFooter>
