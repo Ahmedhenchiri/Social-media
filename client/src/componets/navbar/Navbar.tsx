@@ -3,13 +3,11 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { useLocaleStorge } from "../../Context/LocalStorageContext";
-
-
+// import "./Navbar.css"
 const Navba = () => {
   const { myData, logout } = useLocaleStorge();
-  const Data =  myData ? JSON.parse(myData)  : {};
+  const Data = myData ? JSON.parse(myData) : {};
   const image = Data.image;
-
 
   return (
     <Navbar bg="primary" variant="dark">
@@ -19,38 +17,47 @@ const Navba = () => {
           {myData ? (
             <>
               <Nav.Link href="/">Home</Nav.Link>
-             
-              <Nav.Link href="/profile"> 
-               {/* <img src={image} alt="no image"  style={{ width: "35px", height: "35px", borderRadius: "50%" }}
-            /> */}
-            <NavDropdown id="basic-nav-dropdown" title={<img src={image} alt="no image" style={{ width: "35px", height: "35px", borderRadius: "50%" }} />}>
-              <NavDropdown.Item href="/profile">
+
+              <Nav.Link href="/profile">
+                <NavDropdown
+                  style={{ position: "absolute", right: 95, top: 1 }}
+                  id="basic-nav-dropdown"
+                  title={
                     <img
                       src={image}
                       alt="no image"
-                      style={{ width: "35px", height: "35px", borderRadius: "50%" }}
+                      style={{
+                        width: "35px",
+                        height: "35px",
+                        borderRadius: "50%",
+                      }}
+                    />
+                  }
+                >
+                  <NavDropdown.Item href="/profile">
+                    <img
+                      src={image}
+                      alt="no image"
+                      style={{
+                        width: "35px",
+                        height: "35px",
+                        borderRadius: "50%",
+                      }}
                     />
                     {"  "}
                     {Data.name}
                   </NavDropdown.Item>
-             
-              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                Another action
-              </NavDropdown.Item>
-              {/* <NavDropdown.Item href="/login" onClick={logout}> Log Out <i className="fa-solid fa-right-to-bracket "></i></NavDropdown.Item>
-              <NavDropdown.Divider /> */}
-              <NavDropdown.Item href="/login" onClick={logout}>
-              Log Out <i className="fa-solid fa-right-to-bracket "></i>
-               
-              </NavDropdown.Item>
-            </NavDropdown>
-            </Nav.Link>
-              
-              {/* <Nav.Link href="/login" onClick={logout}>
-                {" "}
-                Log Out <i className="fa-solid fa-right-to-bracket "></i>
-              </Nav.Link> */}
+
+                  {/* <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item> */}
+                  {/* <NavDropdown.Item href="#action/3.2">
+                    Another action
+                  </NavDropdown.Item> */}
+                  
+                  <NavDropdown.Item href="/login" onClick={logout}>
+                    Log Out <i className="fa-solid fa-right-to-bracket "></i>
+                  </NavDropdown.Item>
+                </NavDropdown>
+              </Nav.Link>
             </>
           ) : (
             <>

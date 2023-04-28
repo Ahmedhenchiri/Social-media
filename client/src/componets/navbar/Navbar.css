@@ -1,0 +1,8 @@
+.dropdown-profile{
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+.dropdown-profile img{
+    margin-left: 1000px;
+}
