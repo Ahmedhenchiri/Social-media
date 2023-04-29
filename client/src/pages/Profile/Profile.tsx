@@ -61,6 +61,7 @@ const Profile = () => {
               backgroundPosition: "center",
               border: "3px solid black",
               borderRadius: "15px",
+            
             }}
           >
             {id === data._id  &&(
@@ -109,6 +110,8 @@ const Profile = () => {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
+          backgroundColor:"#A6A6A6",
+          borderRadius:"5px"
         }}
       >
     {id === data._id  &&(
@@ -120,6 +123,7 @@ const Profile = () => {
           Content="Content"
           buttonSubmit="Add Post "
           buttonColor="primary"
+         
         />
         )}
       </div>

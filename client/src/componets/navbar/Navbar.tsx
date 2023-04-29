@@ -3,7 +3,7 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { useLocaleStorge } from "../../Context/LocalStorageContext";
-// import "./Navbar.css"
+
 const Navba = () => {
   const { myData, logout } = useLocaleStorge();
   const Data = myData ? JSON.parse(myData) : {};
@@ -47,11 +47,6 @@ const Navba = () => {
                     {"  "}
                     {Data.name}
                   </NavDropdown.Item>
-
-                  {/* <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item> */}
-                  {/* <NavDropdown.Item href="#action/3.2">
-                    Another action
-                  </NavDropdown.Item> */}
                   
                   <NavDropdown.Item href="/login" onClick={logout}>
                     Log Out <i className="fa-solid fa-right-to-bracket "></i>
