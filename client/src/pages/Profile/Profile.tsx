@@ -5,16 +5,15 @@ import PostProfile from "../../componets/PostProfile/PostProfile";
 import { useLocaleStorge } from "../../Context/LocalStorageContext";
 import { usePost } from "../../Context/PostContext";
 import "./Profile.css";
-import { useLocation } from 'react-router-dom';
+import { useLocation } from "react-router-dom";
 const Profile = () => {
   const location = useLocation();
   const { userId = null } = location.state || {};
 
-
   const { myData } = useLocaleStorge();
   const { getAllPostOfUser } = usePost();
   const [data, setData] = useState({
-    _id:"",
+    _id: "",
     name: "",
     image: "",
     email: "",
@@ -26,26 +25,26 @@ const Profile = () => {
 
   useEffect(() => {
     getOneUser();
-    if(userId === null ){
-    getAllPostOfUser(id);}
-    else  getAllPostOfUser( userId)
+    if (userId === null) {
+      getAllPostOfUser(id);
+    } else getAllPostOfUser(userId);
   }, []);
   const getOneUser = async () => {
-    if(userId === null){
-    try {
-      const response = await api.get(`/user/getOne/${id}`);
-      setData(response.data);
-    } catch (error) {
-      console.log(error);
+    if (userId === null) {
+      try {
+        const response = await api.get(`/user/getOne/${id}`);
+        setData(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      try {
+        const response = await api.get(`/user/getOne/${userId}`);
+        setData(response.data);
+      } catch (error) {
+        console.log(error);
+      }
     }
-  }else {
-    try {
-      const response = await api.get(`/user/getOne/${userId}`);
-      setData(response.data);
-    } catch (error) {
-      console.log(error);
-    }
-  }
   };
 
   return (
@@ -61,18 +60,17 @@ const Profile = () => {
               backgroundPosition: "center",
               border: "3px solid black",
               borderRadius: "15px",
-            
             }}
           >
-            {id === data._id  &&(
-            <Modale
-              name=" Change your Cover Photo"
-              Name="Change your Cover Photo"
-              image="image "
-              buttonSubmit="Change your Cover Photo"
-              icon="fa-solid fa-camera"
-              buttonColor=" bg-light"
-            />
+            {id === data._id && (
+              <Modale
+                name=" Change your Cover Photo"
+                Name="Change your Cover Photo"
+                image="image "
+                buttonSubmit="Change your Cover Photo"
+                icon="fa-solid fa-camera"
+                buttonColor=" bg-light"
+              />
             )}
           </div>
 
@@ -91,14 +89,14 @@ const Profile = () => {
         <div
           style={{ marginLeft: "13%", marginTop: "-3%", position: "relative" }}
         >
-           {id === data._id  &&(
-          <Modale
-            Name="Change your Photo"
-            image="image "
-            buttonSubmit="Change Photo Profile "
-            icon="fa-solid fa-camera"
-            buttonColor=" bg-light"
-          /> 
+          {id === data._id && (
+            <Modale
+              Name="Change your Photo"
+              image="image "
+              buttonSubmit="Change Photo Profile "
+              icon="fa-solid fa-camera"
+              buttonColor=" bg-light"
+            />
           )}
         </div>
       </div>
@@ -110,21 +108,20 @@ const Profile = () => {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          backgroundColor:"#A6A6A6",
-          borderRadius:"5px"
+          backgroundColor: "#A6A6A6",
+          borderRadius: "5px",
         }}
       >
-    {id === data._id  &&(
-        <Modale
-          name="Add Post"
-          Name="Add Post"
-          Title="Title"
-          image="image"
-          Content="Content"
-          buttonSubmit="Add Post "
-          buttonColor="primary"
-         
-        />
+        {id === data._id && (
+          <Modale
+            name="Add Post"
+            Name="Add Post"
+            Title="Title"
+            image="image"
+            Content="Content"
+            buttonSubmit="Add Post "
+            buttonColor="primary"
+          />
         )}
       </div>
       <div className="PostProfile">
