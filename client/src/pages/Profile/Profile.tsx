@@ -9,7 +9,6 @@ import { useLocation } from "react-router-dom";
 const Profile = () => {
   const location = useLocation();
   const { userId = null } = location.state || {};
-
   const { myData } = useLocaleStorge();
   const { getAllPostOfUser } = usePost();
   const [data, setData] = useState({
