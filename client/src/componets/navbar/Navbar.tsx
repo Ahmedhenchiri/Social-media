@@ -20,7 +20,7 @@ const Navba = () => {
 
               <Nav.Link href="/profile">
                 <NavDropdown
-                  style={{ position: "absolute", right: 95, top: 1 }}
+                  style={{ position: "absolute", right: 95, top: 1 ,}}
                   id="basic-nav-dropdown"
                   title={
                     <img
@@ -33,6 +33,8 @@ const Navba = () => {
                       }}
                     />
                   }
+                //   id="basic-nav-dropdown"
+                // alignRight={false}
                 >
                   <NavDropdown.Item href="/profile">
                     <img
@@ -51,6 +53,7 @@ const Navba = () => {
                   <NavDropdown.Item href="/login" onClick={logout}>
                     Log Out <i className="fa-solid fa-right-to-bracket "></i>
                   </NavDropdown.Item>
+                
                 </NavDropdown>
               </Nav.Link>
             </>
