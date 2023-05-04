@@ -33,8 +33,7 @@ const Navba = () => {
                       }}
                     />
                   }
-                //   id="basic-nav-dropdown"
-                // alignRight={false}
+                
                 >
                   <NavDropdown.Item href="/profile">
                     <img
