@@ -36,7 +36,7 @@ const Post = () => {
             height="600"/>
           </div>
           {id === post.user._id && (
-            <>
+            <div style={{  border: "3px outset #00000069",marginLeft:"%50",display:"flex",justifyContent:"end" }}>
           <Modale
             name="Delete"
             Name="Are you sure to delete this Post"
@@ -57,7 +57,7 @@ const Post = () => {
             buttonSubmit="Save Change"
             buttonColor="primary"
           />
-          </>
+          </div>
           )}
         </div>
       ))}
