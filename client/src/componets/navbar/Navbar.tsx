@@ -3,6 +3,7 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { useLocaleStorge } from "../../Context/LocalStorageContext";
+import Search from "../search/Search";
 
 const Navba = () => {
   const { myData, logout } = useLocaleStorge();
@@ -16,6 +17,7 @@ const Navba = () => {
         <Nav className="me-auto">
           {myData ? (
             <>
+            <Search />
               <Nav.Link href="/">Home</Nav.Link>
 
               <Nav.Link href="/profile">
@@ -54,16 +56,9 @@ const Navba = () => {
                   </NavDropdown.Item>
                 
                 </NavDropdown>
-                <Form className="d-flex">
-               <Form.Control
-              type="search"
-              placeholder="Search"
-              className="me-2"
-              aria-label="Search"
-            />
-            <Button variant="outline-success">Search</Button>
-          </Form>
+              
               </Nav.Link>
+           
             </>
           ) : (
             <>
