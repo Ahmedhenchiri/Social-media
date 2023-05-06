@@ -1,8 +1,9 @@
 
-import React from 'react'
+import React, { useState } from 'react'
 import { Button, Form } from 'react-bootstrap'
-
+import "./Search.css"
 const Search = () => {
+    const [show,setShow]= useState(false)
   return (
     <>
     <Form className="d-flex">
@@ -11,9 +12,15 @@ const Search = () => {
     placeholder="Search"
     className="me-2"
     aria-label="Search"
+    onClick={()=>setShow(true)}
     />
   <Button variant="outline-success">Search</Button>
-</Form>
+ </Form>
+ {show && (
+<div className='show'>
+
+</div>
+ )}
 </>
   )
 }
