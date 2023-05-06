@@ -31,4 +31,3 @@ const UserModel = new mongoose.Schema({
 module.exports = mongoose.model("users", UserModel) 
 
 
-//https://nakedsecurity.sophos.com/wp-content/uploads/sites/2/2013/08/facebook-silhouette_thumb.jpg
