@@ -1,9 +1,11 @@
 
 import React, { useState } from 'react'
 import { Button, Form } from 'react-bootstrap'
+import AllUsersSearch from './AllUsersSearch/AllUsersSearch'
 import "./Search.css"
 const Search = () => {
     const [show,setShow]= useState(false)
+    // console.log("🚀 ~ file: Search.tsx:8 ~ Search ~ show:", show)
   return (
     <>
     <Form className="d-flex">
@@ -16,11 +18,12 @@ const Search = () => {
     />
   <Button variant="outline-success">Search</Button>
  </Form>
- {show && (
-<div className='show'>
+ {show == true&&(
+<>
+     <AllUsersSearch /> 
+</>
+)}
 
-</div>
- )}
 </>
   )
 }

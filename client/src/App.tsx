@@ -4,12 +4,14 @@ import Navba from "./componets/navbar/Navbar";
 import Footer from "./componets/footer/Footer";
 import { PostProvider } from "./Context/PostContext";
 import { LocalStorage } from "./Context/LocalStorageContext";
+import AllUsersSearch from "./componets/search/AllUsersSearch/AllUsersSearch";
 
 const App: React.FC = () => {
   return (
     <PostProvider>
       <LocalStorage>
         <Navba />
+        <AllUsersSearch />
         <Routes>
           {routes.map((route) => (
             <Route key={route.path} path={route.path} element={route.element} />

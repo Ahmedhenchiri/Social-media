@@ -1,0 +1,13 @@
+.show{
+    width: 250px;
+    min-height: 500px;
+    margin: auto;
+    margin-top: 95px;
+    border: 1px solid #00000069;
+    background-color: whitesmoke;
+    border-radius: 4px;
+    padding: 20px 60px;
+    box-shadow: 0 0 1em #cecece66; 
+    margin-left: 10px;
+   
+}
