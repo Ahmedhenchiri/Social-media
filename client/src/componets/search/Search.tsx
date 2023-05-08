@@ -20,7 +20,7 @@ const Search = () => {
  </Form>
  {show == true&&(
 <>
-     <AllUsersSearch /> 
+     {/* <AllUsersSearch />  */}
 </>
 )}
 

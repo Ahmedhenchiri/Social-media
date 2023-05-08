@@ -11,7 +11,7 @@ const App: React.FC = () => {
     <PostProvider>
       <LocalStorage>
         <Navba />
-        <AllUsersSearch />
+        {/* <AllUsersSearch /> */}
         <Routes>
           {routes.map((route) => (
             <Route key={route.path} path={route.path} element={route.element} />
