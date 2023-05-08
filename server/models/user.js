@@ -13,7 +13,7 @@ const UserModel = new mongoose.Schema({
      },
      coverPhoto:{
         type:String,
-        default:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARwAAACxCAMAAAAh3/JWAAAAA1BMVEX///+nxBvIAAAASElEQVR4nO3BMQEAAADCoPVPbQ0PoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIALA8UNAAFusnLHAAAAAElFTkSuQmCC"
+        default:"https://media.sproutsocial.com/uploads/4e_facebook-cover-photo_clean@2x.png"
      },
     number:"string",
     
