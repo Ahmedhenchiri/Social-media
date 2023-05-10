@@ -2,7 +2,7 @@ import React from 'react'
 import "./AllUsersSearch.css"
 const AllUsersSearch = () => {
   return (
-    <div className='show'>AllUsersSearch</div>
+    <div className='show'></div>
   )
 }
 
