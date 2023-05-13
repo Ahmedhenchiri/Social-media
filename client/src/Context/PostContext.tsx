@@ -23,7 +23,7 @@ const PostContext = createContext<PostContextType>({
 
 const PostProvider = ({ children }: ChildrenType) => {
   const [posts, setPosts] = useState<Post[]>([]);
-
+  const [loading, setLoading] = useState<boolean>(true);
   const [onePost, setOnePost] = useState<any>([]);
   const [userPosts,setUserPosts] = useState<Post[]>([])
 
@@ -41,9 +41,10 @@ const PostProvider = ({ children }: ChildrenType) => {
         return b.createdAt.getTime() - a.createdAt.getTime();
       });
       setPosts(sortedPosts);
-    
+      setLoading(false); 
     } catch (error) {
       console.log(error);
+      setLoading(false); 
     }
   };
   const getOne = async (postId: number) => {
@@ -99,11 +100,17 @@ const PostProvider = ({ children }: ChildrenType) => {
       forms
     );
     return response.data.secure_url;
+
+
   };
   const addPost = async ({title,content,image,user}: formType) => {
 
     try {
-      await api.post("/post/add", {title,content,image,user});
+      setLoading(true); 
+    const response=  await api.post("/post/add", {title,content,image,user});
+       setPosts([...posts, response.data]);
+      setLoading(false); 
+
     
     } catch (error) {
       console.log(error);
@@ -129,7 +136,39 @@ const PostProvider = ({ children }: ChildrenType) => {
         getAllPostOfUser
       }}
     >
-      {children}
+      {loading ? (
+  <div className="loader">
+    <style>
+      {`
+        .loader {
+          border: 5px solid #f3f3f3; /* Light grey */
+          border-top: 5px solid #3498db; /* Blue */
+          border-radius: 50%;
+          width: 30px;
+          height: 30px;
+          animation: spin 1s linear infinite;
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          height: '100vh'
+        }
+        
+        @keyframes spin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+        body {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 100vh;
+        }
+      `}
+    </style>
+  </div>
+) : (
+  children
+)} 
     </PostContext.Provider>
   );
 };
