@@ -40,6 +40,7 @@ const PostProvider = ({ children }: ChildrenType) => {
       const sortedPosts = postsWithTimestamp.sort((a: Post, b: Post) => {
         return b.createdAt.getTime() - a.createdAt.getTime();
       });
+    
       setPosts(sortedPosts);
       setLoading(false); 
     } catch (error) {
@@ -58,7 +59,16 @@ const PostProvider = ({ children }: ChildrenType) => {
   const getAllPostOfUser=async(userID:number)=>{
     try{
      const response = await api.get(`/post/getAll/${userID}`)
-     setUserPosts(response.data)
+     const postsWithTimestamp = response.data.map((post: any) => {
+      return {
+        ...post,
+        createdAt: new Date(post.createdAt)
+      }
+    });
+    const sortedPosts = postsWithTimestamp.sort((a: Post, b: Post) => {
+      return b.createdAt.getTime() - a.createdAt.getTime();
+    });
+     setUserPosts(sortedPosts)
     }catch(error){
       console.log(error)
     }
