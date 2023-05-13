@@ -16,6 +16,7 @@ const PostProfile = () => {
             <img src={post.user.image} alt="no image"  style={{ width: "70px", height: "70px", borderRadius: "50%" }}
             />
           <div className="post-list-item-title" style={{marginTop:"-8%",marginLeft:"10%"}}>{post.user.name}</div>
+          <div className="post-list-item-timestamp" style={{marginTop:"-2%",marginLeft:"10%"}}>{new Date(post.createdAt).toLocaleString()}</div>
 
           </div>
           <div className="post-list-item-title">{post.title}</div>

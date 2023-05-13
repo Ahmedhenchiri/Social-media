@@ -26,7 +26,7 @@ const Post = () => {
             onClick={()=>handleProfileClick(post.user._id)}
             />
           <div className="post-list-item-title" style={{marginTop:"-8%",marginLeft:"10%"}}>{post.user.name}</div>
-          <div className="post-list-item-timestamp">{new Date(post.createdAt).toLocaleString()}</div>
+          <div className="post-list-item-timestamp" style={{marginTop:"-2%",marginLeft:"10%"}}>{new Date(post.createdAt).toLocaleString()}</div>
           </div>
           <div className="post-list-item-title">{post.title}</div>
           <div className="post-list-item-byline">
