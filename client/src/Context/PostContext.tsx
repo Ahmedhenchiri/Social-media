@@ -31,7 +31,17 @@ const PostProvider = ({ children }: ChildrenType) => {
   const getAllPosts = async () => {
     try {
       const response = await api.get("/post/");
-      setPosts(response.data);
+      const postsWithTimestamp = response.data.map((post: any) => {
+        return {
+          ...post,
+          createdAt: new Date(post.createdAt)
+        }
+      });
+      const sortedPosts = postsWithTimestamp.sort((a: Post, b: Post) => {
+        return b.createdAt.getTime() - a.createdAt.getTime();
+      });
+      setPosts(sortedPosts);
+    
     } catch (error) {
       console.log(error);
     }
