@@ -4,7 +4,10 @@ import "./Post.css";
 import Modale from "../custom/Modal/Modal";
 import { useLocaleStorge } from "../../Context/LocalStorageContext";
 import { useNavigate } from 'react-router-dom';
+
+import { useState } from "react";
 const Post = () => {
+
   const navigate = useNavigate();
   const { posts } = usePost();
   const {myData} = useLocaleStorge();
@@ -17,12 +20,13 @@ const Post = () => {
     <div>
       {posts.map((post) => (
         <div className="post-list-item" key={post._id}>
+         
           <div className="post-list-item-lede">
             <img src={post.user.image} alt="no image"  style={{ width: "70px", height: "70px", borderRadius: "50%" }}
             onClick={()=>handleProfileClick(post.user._id)}
             />
           <div className="post-list-item-title" style={{marginTop:"-8%",marginLeft:"10%"}}>{post.user.name}</div>
-
+          <div className="post-list-item-timestamp">{new Date(post.createdAt).toLocaleString()}</div>
           </div>
           <div className="post-list-item-title">{post.title}</div>
           <div className="post-list-item-byline">

@@ -42,6 +42,7 @@ export type Post = {
   title: string;
   content: string;
   image: string;
+  createdAt:Date
   user:{
     _id:number,
     image:string,

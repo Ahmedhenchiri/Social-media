@@ -42,12 +42,10 @@
   color: #030303;
 
 }
-/* .modal{
-  border: 1px solid #00000069;
+.post-list-item-timestamp {
+  font-size: 12px;
+  color: #999;
+  margin-bottom: 4px;
+}
 
-} */
-
-/* .post-list-item-byline-author {  
-  font-weight: bolder;
-} */
 
