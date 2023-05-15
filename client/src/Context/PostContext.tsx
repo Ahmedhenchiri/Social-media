@@ -128,7 +128,8 @@ const PostProvider = ({ children }: ChildrenType) => {
   };
 
   useEffect(() => {
-    getAllPosts(), getOne(onePost._id);
+    getAllPosts(), 
+    getOne(onePost._id);
   }, []);
 
   return (

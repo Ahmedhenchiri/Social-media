@@ -5,7 +5,7 @@ import Modale from "../custom/Modal/Modal";
 import { useLocaleStorge } from "../../Context/LocalStorageContext";
 import { useNavigate } from 'react-router-dom';
 
-import { useState } from "react";
+
 const Post = () => {
 
   const navigate = useNavigate();
