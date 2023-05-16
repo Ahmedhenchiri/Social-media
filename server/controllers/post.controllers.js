@@ -40,19 +40,7 @@ module.exports={
 
       }
    } ,
-  //  addPost: async (req, res) => {
-  //   try {
-  //     const { userId } = req.user; // Extract the user ID from the request object
-  //     const newPost = new PostUser({
-  //       ...req.body,
-  //       userID: userId // Associate the post with the user who created it
-  //     });
-  //     const result = await newPost.save();
-  //     res.status(201).json(result);
-  //   } catch (error) {
-  //     res.status(500).json({ error: 'Failed to create post.' });
-  //   }
-  // }
+
   deletePost:async(req,res)=>{
      try{
       const result = await PostUser.findOneAndDelete({ _id: req.params.id })
@@ -62,15 +50,7 @@ module.exports={
 
      }
   },
-  // updatePost :async(req,res)=>{
-  //   const update = await PostUser.findOneAndUpdate(req.params.id,req.body)
-  //   try{
-  //      res.status(201).json(update)
-  //   }catch(error){
-  //     res.status(500).json({ message: "Error fetching post", error });
 
-  //   }
-  // },
   updatePost: async (req, res) => {
     try {
       const post = await PostUser.findById(req.params.id);
@@ -81,10 +61,6 @@ module.exports={
   
       // Validate input data
       const { title, content } = req.body;
-  
-      // if (!title || !content) {
-      //   return res.status(400).json({ message: "Title and content are required" });
-      // }
   
       post.title = title;
       post.content = content;
