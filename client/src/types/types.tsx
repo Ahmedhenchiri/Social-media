@@ -61,6 +61,7 @@ export type PostContextType = {
   upladImage:(file: File) =>Promise<void>;
   addPost:(form:formType)=>Promise<void>;
   getAllPostOfUser: (userID: number) => Promise<void>;
+  getAllUsers: () => Promise<void>;
  
 };
 export type ChildrenType = {

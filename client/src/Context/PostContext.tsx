@@ -18,7 +18,9 @@ const PostContext = createContext<PostContextType>({
   updatePost: async () => {},
   upladImage: async () => {},
   addPost: async () => {},
-  getAllPostOfUser: async()=>{}
+  getAllPostOfUser: async()=>{},
+  getAllUsers: async()=>{}
+
 });
 
 const PostProvider = ({ children }: ChildrenType) => {
@@ -26,7 +28,7 @@ const PostProvider = ({ children }: ChildrenType) => {
   const [loading, setLoading] = useState<boolean>(true);
   const [onePost, setOnePost] = useState<any>([]);
   const [userPosts,setUserPosts] = useState<Post[]>([])
-
+  
 
   const getAllPosts = async () => {
     try {
@@ -126,9 +128,18 @@ const PostProvider = ({ children }: ChildrenType) => {
       console.log(error);
     }
   };
+  const getAllUsers = async ()=>{
+   try{
+    const response = await api.get("/user/")
+    console.log("🚀 ~ file: PostContext.tsx:132 ~ getAllUsers ~ response:", response.data)
+   }catch(error){
+    console.log(error)
+   }
+  }
 
   useEffect(() => {
     getAllPosts(), 
+    getAllUsers(),
     getOne(onePost._id);
   }, []);
 
@@ -144,7 +155,8 @@ const PostProvider = ({ children }: ChildrenType) => {
         updatePost,
         upladImage,
         addPost,
-        getAllPostOfUser
+        getAllPostOfUser,
+        getAllUsers
       }}
     >
       {loading ? (
