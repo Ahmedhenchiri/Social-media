@@ -28,7 +28,8 @@ const PostProvider = ({ children }: ChildrenType) => {
   const [loading, setLoading] = useState<boolean>(true);
   const [onePost, setOnePost] = useState<any>([]);
   const [userPosts,setUserPosts] = useState<Post[]>([])
-  
+  const [users,setUsers]= useState([])
+
 
   const getAllPosts = async () => {
     try {
@@ -131,7 +132,7 @@ const PostProvider = ({ children }: ChildrenType) => {
   const getAllUsers = async ()=>{
    try{
     const response = await api.get("/user/")
-    console.log("🚀 ~ file: PostContext.tsx:132 ~ getAllUsers ~ response:", response.data)
+    setUsers(response.data)
    }catch(error){
     console.log(error)
    }
