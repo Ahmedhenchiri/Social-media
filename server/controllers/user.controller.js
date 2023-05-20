@@ -160,7 +160,16 @@ const createPost = async (req, res) => {
     res.status(500).json({ error: 'Server error' });
   }
 };
+const getAllUsers = async (req,res) => {
+   const AllUsers = await UserModel.find({})
+   try{
+     res.status(200).json(AllUsers)
+   }catch(error){
+   res.status(404).json(error)
+   }
+
+}
 
 
 
-module.exports={Login, Register, getAllPost, getOneUser, createPost,updateProfilePhoto,updateCoverPhoto};
+module.exports={Login, Register, getAllPost, getOneUser, createPost,updateProfilePhoto,updateCoverPhoto,getAllUsers};
