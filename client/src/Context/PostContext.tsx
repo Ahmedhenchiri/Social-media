@@ -12,6 +12,7 @@ const PostContext = createContext<PostContextType>({
   posts: [],
   userPosts:[],
   onePost: [],
+  users:[],
   getAllPosts: async () => {},
   getOne: async () => {},
   deletePost: async () => {},
@@ -157,7 +158,8 @@ const PostProvider = ({ children }: ChildrenType) => {
         upladImage,
         addPost,
         getAllPostOfUser,
-        getAllUsers
+        getAllUsers,
+        users
       }}
     >
       {loading ? (

@@ -49,11 +49,16 @@ export type Post = {
     name:string
   },
 };
+export type Users ={
+  _id :number,
+  name:string
+}
 
 export type PostContextType = {
   posts: Post[];
   userPosts:Post[];
   onePost:any;
+  users : Users[]
   getAllPosts: () => Promise<void>;
   getOne:(postId: number)=>Promise<void>;
   deletePost: (postId: number) => Promise<void>;
